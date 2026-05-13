@@ -17,7 +17,7 @@
 #define C_BOLD    "\033[1m"
 #define C_WHITE   "\033[37m"
 
-typedef enum { STATE_FIND_MIN, STATE_RELAX_EDGES, STATE_FINISHED } AlgoState;
+typedef enum {STATE_FIND_MIN,STATE_RELAX_EDGES,STATE_FINISHED} AlgoState;
 
 struct Graph {
     int n;
@@ -28,55 +28,59 @@ struct Graph {
     int par[N];  
 };
 
-char stepLogs[300][128];
-int logCount = 0;
 
-void AddLog(const char* msg) {
-    if (logCount < 300) {
-        strcpy(stepLogs[logCount], msg);
-        logCount++;
+
+void AddLog(const char* msg,char stepLogs[300][128],int *logCount) {
+    if (*logCount<300) {
+        strcpy(stepLogs[*logCount],msg);
+        (*logCount)++;
     }
 }
 
-void PrintCentered(const char* text, const char* color) {
-    int width = 80; 
-    int len = strlen(text);
-    int padding = (width - len) / 2;
-    for (int i = 0; i < padding; i++) printf(" ");
-    printf("%s%s%s\n", color, text, RESET);
+void PrintCentered(const char* text,const char* color) {
+    int width=80; 
+    int len=strlen(text);
+    int padding=(width-len)/2;
+    for (int i=0; i<padding;i++) 
+        printf(" ");
+    printf("%s%s%s\n",color,text,RESET);
 }
 
-void inputdata(struct Graph *g, int *u, int *v, const char *path) {
+void inputdata(struct Graph *g,int *u,int *v,const char *path) {
     FILE *f = fopen(path, "r");
-    if (!f) { printf("Loi: Khong mo duoc file du lieu!\n"); exit(1); }
-    fscanf(f, "%d", &g->n);
-    for (int i = 1; i <= g->n; i++)
-        for (int j = 1; j <= g->n; j++)
-            fscanf(f, "%d", &g->A[i][j]);  
-    fscanf(f, "%d", u);
-    fscanf(f, "%d", v);
+    if (!f) { 
+        printf("Loi: Khong mo duoc file du lieu!\n"); 
+        exit(1); 
+    }
+    fscanf(f,"%d",&g->n);
+    for (int i=1;i<=g->n;i++)
+        for (int j=1;j<=g->n;j++)
+            fscanf(f,"%d",&g->A[i][j]);  
+    fscanf(f,"%d",u); 
+    fscanf(f,"%d",v);
     fclose(f);
 }
 
-void drawArrow(Vector2 start, Vector2 end, float rDinh, Color mau, int trongSo, float thickness) {
-    float angle = atan2f(end.y - start.y, end.x - start.x);
-    Vector2 tip = { end.x - (rDinh + 5) * cosf(angle), end.y - (rDinh + 5) * sinf(angle) };
-    DrawLineEx(start, tip, thickness, mau);
-    
-    float arrowSize = 14.0f;
-    Vector2 p1 = { tip.x + arrowSize * cosf(angle + PI - 0.45f), tip.y + arrowSize * sinf(angle + PI - 0.45f) };
-    Vector2 p2 = { tip.x + arrowSize * cosf(angle + PI + 0.45f), tip.y + arrowSize * sinf(angle + PI + 0.45f) };
-    DrawTriangle(tip, p2, p1, mau); 
+void drawArrow(Vector2 start,Vector2 end,float rDinh,Color mau,int trongSo,float thickness) {
+    float angle=atan2f(end.y-start.y,end.x-start.x);
+    Vector2 tip={end.x-(rDinh+5)*cosf(angle),end.y-(rDinh+5)*sinf(angle)};
+    DrawLineEx(start,tip,thickness,mau);
 
-    if (trongSo != -1) {
-        char buf[10]; sprintf(buf, "%d", trongSo);
-        Vector2 mid = { (start.x + tip.x) / 2, (start.y + tip.y) / 2 };
-        DrawRectangle(mid.x - 2, mid.y - 2, MeasureText(buf, 20) + 8, 24, Fade(RAYWHITE, 0.7f));
-        DrawText(buf, mid.x + 2, mid.y, 20, (mau.r > 200 && mau.g < 100) ? RED : DARKGRAY);
+    float arrowSize=14.0f;
+    Vector2 p1={tip.x+arrowSize*cosf(angle+PI-0.45f),tip.y+arrowSize*sinf(angle+PI-0.45f)};
+    Vector2 p2={tip.x+arrowSize*cosf(angle+PI+0.45f),tip.y+arrowSize*sinf(angle+PI+0.45f)};
+    DrawTriangle(tip,p2,p1,mau); 
+
+    if (trongSo!=-1) {
+        char buf[10]; 
+        sprintf(buf,"%d",trongSo);
+        Vector2 mid={(start.x+tip.x)/2,(start.y+tip.y)/2};
+        DrawRectangle(mid.x-2,mid.y-2,MeasureText(buf,20)+8,24,Fade(RAYWHITE, 0.7f));
+        DrawText(buf,mid.x+2,mid.y,20,(mau.r>200&&mau.g<100) ? RED : DARKGRAY);
     }
 }
 
-void drawGraph(struct Graph g, int u_start, int v_target) {
+void UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target,char stepLogs[300][128],int *logCount) {
     InitWindow(1800, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
     
     Vector2 center = { 430, 400 }; 
@@ -95,7 +99,7 @@ void drawGraph(struct Graph g, int u_start, int v_target) {
     char pathResult[512] = "";
     bool onPath[N] = { false };
 
-    AddLog("BAT DAU: Khoi tao L[nguon]=0, cac dinh khac = INF");
+    AddLog("BAT DAU: Khoi tao L[nguon]=0, cac dinh khac = INF",stepLogs,logCount);
 
     SetTargetFPS(60);
     while (!WindowShouldClose()) {
@@ -106,24 +110,31 @@ void drawGraph(struct Graph g, int u_start, int v_target) {
             if (state == STATE_FIND_MIN) {
                 int min_d = INF; currentV = -1;
                 for (int i = 1; i <= g.n; i++)
-                    if (g.T[i] && g.L[i] < min_d) { min_d = g.L[i]; currentV = i; }
+                    if (g.T[i] && g.L[i] < min_d) { 
+                        min_d = g.L[i]; 
+                        currentV = i; 
+                    }
 
                 if (currentV == -1 || currentV == v_target) {
                     state = STATE_FINISHED;
                     if (g.L[v_target] != INF) {
                         int t = v_target;
                         int temp[N], count = 0;
-                        while (t != -1) { onPath[t] = true; temp[count++] = t; t = g.par[t]; }
+                        while (t != -1) { 
+                            onPath[t] = true; 
+                            temp[count++] = t; 
+                            t = g.par[t]; }
                         sprintf(pathResult, "LO TRINH: ");
                         for (int i = count - 1; i >= 0; i--) {
-                            char b[15]; sprintf(b, "%d%s", temp[i], (i == 0 ? "" : " -> "));
+                            char b[15]; 
+                            sprintf(b, "%d%s", temp[i], (i==0 ? "" : " -> "));
                             strcat(pathResult, b);
                         }
                     } else sprintf(pathResult, "KET QUA: KHONG TIM THAY DUONG DI");
-                    AddLog(">>> KET THUC: Da xac dinh lo trinh.");
+                    AddLog(">>> KET THUC: Da xac dinh lo trinh.",stepLogs,logCount);
                 } else {
                     g.T[currentV] = 0; neighborIdx = 1; state = STATE_RELAX_EDGES;
-                    AddLog(TextFormat("Chon dinh %d (L=%d) nho nhat", currentV, g.L[currentV]));
+                    AddLog(TextFormat("Chon dinh %d (L=%d) nho nhat", currentV, g.L[currentV]),stepLogs,logCount);
                 }
             } 
             else if (state == STATE_RELAX_EDGES) {
@@ -134,8 +145,8 @@ void drawGraph(struct Graph g, int u_start, int v_target) {
                         if (newD < g.L[neighborIdx]) {
                             g.L[neighborIdx] = newD;
                             g.par[neighborIdx] = currentV;
-                            AddLog(TextFormat("  + Toi uu L[%d] xuong con %d", neighborIdx, newD));
-                        } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, neighborIdx));
+                            AddLog(TextFormat("  + Toi uu L[%d] xuong con %d", neighborIdx, newD),stepLogs,logCount);
+                        } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, neighborIdx),stepLogs,logCount);
                         neighborIdx++; found = true; break;
                     }
                     neighborIdx++;
@@ -149,10 +160,10 @@ void drawGraph(struct Graph g, int u_start, int v_target) {
 
         DrawRectangle(900, 0, 500, 900, Fade(LIGHTGRAY, 0.3f));
         DrawLineEx((Vector2){900, 0}, (Vector2){900, 900}, 2.0f, DARKGRAY);
-        DrawText("NHAT KY THUAT TOAN", 940, 30, 24, DARKBLUE);
-        for (int i = 0; i < logCount; i++) {
-            if (i >= logCount - MAX_LOG_DISPLAY) {
-                int pos = i - (logCount > MAX_LOG_DISPLAY ? logCount - MAX_LOG_DISPLAY : 0);
+        DrawText("MO PHONG THUAT TOAN", 940, 30, 24, DARKBLUE);
+        for (int i = 0; i < *logCount; i++) {
+            if (i >= *logCount - MAX_LOG_DISPLAY) {
+                int pos = i - (*logCount > MAX_LOG_DISPLAY ? *logCount - MAX_LOG_DISPLAY : 0);
                 DrawText(stepLogs[i], 925, 80 + pos * 35, 20, DARKGREEN);
             }
         }
@@ -213,17 +224,23 @@ void UIconsole() {
     printf("\n%s%s%s\n", C_YELLOW, "================================================================================", RESET);
 }
 void filename(char file[128],char path[256]) {
-    printf("\nNhap duong dan thu muc (vd: D:/data): "); scanf("%s", path);
-    if (path[strlen(path)-1] != '/' && path[strlen(path)-1] != '\\') strcat(path, "/");
-    printf("Nhap ten file (vd: input.txt): "); scanf("%s", file); strcat(path, file);
+    printf("\nNhap duong dan thu muc (vd: D:/data): "); 
+    scanf("%s",path);
+    if (path[strlen(path)-1]!='/' && path[strlen(path)-1]!='\\') 
+        strcat(path, "/");
+    printf("Nhap ten file (vd: input.dat): "); 
+    scanf("%s", file); 
+    strcat(path, file);
 }
 int main() {
+    char stepLogs[300][128];
+    int logCount = 0;
     UIconsole();
     struct Graph g; 
     int u,v; 
     char path[256],file[128];
     filename(file,path);
-    inputdata(&g, &u, &v, path);
-    drawGraph(g, u, v);
+    inputdata(&g,&u,&v,path);
+    UIRaylib_Dijkstra(g,u,v,stepLogs,&logCount);
     return 0;
 }
