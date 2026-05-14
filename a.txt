@@ -1,0 +1,4 @@
+1. Sửa đồ thị từ -1 -> 0
+2. Ẩn UI thừa
+3. Làm rõ cái đồ thị(Chia ra 3 bước)
+4. Chỉnh delay
