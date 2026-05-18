@@ -2,4 +2,4 @@
 2. Ẩn UI thừa
 3. Làm rõ cái đồ thị(Chia ra 3 bước)
 4. Chỉnh delay
-5
+5d
