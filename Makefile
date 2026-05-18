@@ -51,7 +51,7 @@ all: $(PROJECT_NAME)
 # Liên kết (Link)
 $(PROJECT_NAME): $(OBJECTS)
 	$(CC) -o $(PROJECT_NAME)$(EXT) $(OBJECTS) $(LDFLAGS) $(LDLIBS)
-	@echo "Build thành công cho $(PLATFORM_OS)!"
+	@echo "Khoi chay thanh cong~~~~ $(PLATFORM_OS)!"
 
 # Biên dịch (Compile)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
@@ -72,4 +72,4 @@ ifeq ($(PLATFORM_OS),WINDOWS)
 else
 	$(RM) $(OBJ_DIR) $(PROJECT_NAME)
 endif
-	@echo "Đã dọn dẹp xong!"
+	@echo "Da don dep xong!"
