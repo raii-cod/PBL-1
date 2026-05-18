@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  18 MAY 2026 08:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  18 MAY 2026 10:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,6 +496,23 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
 \Hy@SectionHShift=\skip56
+) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+\f@nch@headwidth=\skip57
+\f@nch@offset@elh=\skip58
+\f@nch@offset@erh=\skip59
+\f@nch@offset@olh=\skip60
+\f@nch@offset@orh=\skip61
+\f@nch@offset@elf=\skip62
+\f@nch@offset@erf=\skip63
+\f@nch@offset@olf=\skip64
+\f@nch@offset@orf=\skip65
+\f@nch@height=\skip66
+\f@nch@footalignment=\skip67
+\f@nch@widthL=\skip68
+\f@nch@widthC=\skip69
+\f@nch@widthR=\skip70
+\@temptokenb=\toks28
 ) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count321
@@ -509,26 +526,26 @@ Package babel Info: 'vietnamese' activates 'vietnamese' shorthands.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
  (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count322
@@ -536,12 +553,12 @@ LaTeX Font Info:    ... okay on input line 48.
 \scratchbox=\box58
 \nofMPsegments=\count323
 \nofMParguments=\count324
-\everyMPshowfont=\toks28
+\everyMPshowfont=\toks29
 \MPscratchCnt=\count325
 \MPscratchDim=\dimen183
 \MPnumerator=\count326
 \makeMPintoPDFobject=\count327
-\everyMPtoPDFconversion=\toks29
+\everyMPtoPDFconversion=\toks30
 ) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -583,7 +600,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count328
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 65.
 (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -591,21 +608,16 @@ Package hyperref Info: Link coloring OFF on input line 48.
 <Picture/itf.jpg, id=115, 963.6pt x 963.6pt>
 File: Picture/itf.jpg Graphic file (type jpg)
 <use Picture/itf.jpg>
-Package pdftex.def Info: Picture/itf.jpg  used on input line 59.
+Package pdftex.def Info: Picture/itf.jpg  used on input line 76.
 (pdftex.def)             Requested size: 91.04742pt x 91.04303pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 71.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
  (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 71.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
  (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (53.08624pt too wide) in paragraph at lines 70--76
-[]  
- []
-
-[1
+) [1
 
 {C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Picture/itf.jpg>] (main.toc)
 \tf@toc=\write4
@@ -623,7 +635,7 @@ Overfull \hbox (53.08624pt too wide) in paragraph at lines 70--76
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.123 \chapter
+l.137 \chapter
               {TỔNG QUAN ĐỀ TÀI} [1
 
 ]
@@ -635,7 +647,7 @@ Ch\uhorn \ohorn ng 2.
 [4
 
 ]
-LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 187.
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 193.
  (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) [5] [6]
@@ -648,15 +660,15 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 )
 LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 219.
+(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 225.
  [7
 
 ]
 Ch\uhorn \ohorn ng 4.
-<Picture/hinh1_giao_dien_console.png, id=247, 584.68437pt x 374.90062pt>
+<Picture/hinh1_giao_dien_console.png, id=251, 584.68437pt x 374.90062pt>
 File: Picture/hinh1_giao_dien_console.png Graphic file (type png)
 <use Picture/hinh1_giao_dien_console.png>
-Package pdftex.def Info: Picture/hinh1_giao_dien_console.png  used on input line 261.
+Package pdftex.def Info: Picture/hinh1_giao_dien_console.png  used on input line 266.
 (pdftex.def)             Requested size: 318.66948pt x 204.3368pt.
 [8
 
@@ -674,20 +686,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 08C7E70D14039043213FB8BD0A8A2236;6617.
+(rerunfilecheck)             Checksum: 79C70922E216615109CF54FA1E797ED1;6431.
  ) 
 Here is how much of TeX's memory you used:
- 14633 strings out of 467871
- 221394 string characters out of 5419828
- 1292896 words of memory out of 5000000
- 43176 multiletter control sequences out of 15000+600000
+ 14977 strings out of 467871
+ 227705 string characters out of 5419828
+ 1300579 words of memory out of 5000000
+ 43516 multiletter control sequences out of 15000+600000
  643248 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,116p,884b,2055s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,116p,1271b,2061s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnitt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr6.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnti12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on main.pdf (17 pages, 340028 bytes).
+Output written on main.pdf (17 pages, 341558 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
+ 439 PDF objects out of 1000 (max. 8388607)
  145 named destinations out of 1000 (max. 500000)
  235 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1779069191.97856 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1779069193.89882 0
-  "C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1779065601 88371 b965f57369ed322039596060d18f4416 ""
+["pdflatex"] 1779073467.6282 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1779073469.31658 0
+  "C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1779072213 88371 b965f57369ed322039596060d18f4416 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1779065606 14064 318fd82ca32a8752618f02c160d0e2f9 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1779065523 13332035 cb4ac74bf02d92c1e07bd8e20bf2fc70 ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
@@ -79,6 +79,7 @@
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/base/size12.clo" 1761900684 8449 8dc66c6c313c8eb2d774af83bca435dd ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1623003186 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty" 1759409308 46885 8953c67ffba03252c6090aa19568b8ba ""
+  "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty" 1740138435 31715 19e60610b63819fe670dfa1cd84a4e94 ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg" 1773583286 1083 f69f5eb2d8e249286c59dd1340122e59 ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1773583286 41904 7711079366884e0d15963c9d40019853 ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg" 1465894292 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -115,12 +116,12 @@
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "Picture/hinh1_giao_dien_console.png" 1779068007 36904 9f9f27af796d617c521227072ee88083 ""
   "Picture/itf.jpg" 1778985734 50575 28df0be127ff810070dd6ad57ddd65e6 ""
-  "d:/PBL-1/Latex/main.tex" 1779069190 33367 abfa5a7a6da6ddd06143d63ca9c106ff ""
-  "main.aux" 1779069193 6162 b2de79d6d2a4bc813ba7ec72253e16f7 "pdflatex"
-  "main.lof" 1779069193 812 dc79961ab36f35cac8b458f8792346b8 "pdflatex"
-  "main.out" 1779069193 6617 08c7e70d14039043213fb8bd0a8a2236 "pdflatex"
-  "main.tex" 1779069190 33367 abfa5a7a6da6ddd06143d63ca9c106ff ""
-  "main.toc" 1779069193 2784 434cf78ab57ab54283744da4ae18f321 "pdflatex"
+  "d:/PBL-1/Latex/main.tex" 1779073464 34102 20172392c2b867a3ecd66354b45a046a ""
+  "main.aux" 1779073469 6160 451411c0e4b3911b812bd1e0780f059d "pdflatex"
+  "main.lof" 1779073469 812 dc79961ab36f35cac8b458f8792346b8 "pdflatex"
+  "main.out" 1779073469 6431 79c70922e216615109cf54fa1e797ed1 "pdflatex"
+  "main.tex" 1779073464 34102 20172392c2b867a3ecd66354b45a046a ""
+  "main.toc" 1779073469 2750 1f73ff5b0329bc30f283a74672be7719 "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

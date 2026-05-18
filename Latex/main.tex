@@ -13,6 +13,23 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 
+% --- CẤU HÌNH CHÂN TRANG ĐÚNG YÊU CẦU ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot[L]{Trần Văn Trường Vũ -- Trần Ngọc Bảo Quyên} 
+\fancyfoot[R]{\thepage} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[L]{Trần Văn Trường Vũ -- Trần Ngọc Bảo Quyên}
+    \fancyfoot[R]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+
 % Cấu hình hiển thị tiêu đề hệ thống chương mục theo đúng file mẫu DUT
 \titleformat{\chapter}[hang]{\bfseries\Large\color{black}}{\thechapter.}{0.5em}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{-10pt}{15pt}
@@ -47,7 +64,7 @@
 
 \begin{document}
 
-% ==================== TRANG BÌA CHUẨN ĐÚNG THÔNG TIN ẢNH ====================
+% ==================== TRANG BÌA CHUẨN ĐÚNG THÔNG TIN SỬA ĐỔI ====================
 \begin{titlepage}
 \begin{center}
     {\large TRƯỜNG ĐẠI HỌC BÁCH KHOA} \\
@@ -59,8 +76,7 @@
         \includegraphics[width=0.2\textwidth]{Picture/itf.jpg} 
     \end{figure}
     \vspace{1.5cm}
-    
-{\Large \textbf{ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN}} \\
+    {\Large \textbf{ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN}} \\
     \vspace{1cm}
     {\Large \bfseries XÂY DỰNG CHƯƠNG TRÌNH TÌM ĐƯỜNG ĐI NGẮN NHẤT \\ TRÊN ĐỒ THỊ CÓ HƯỚNG CÓ TRỌNG SỐ} \\
     
@@ -69,9 +85,9 @@
     \begin{flushleft}
     \hspace{1cm}
     \begin{tabular}{lll}
-        \textbf{Người hướng dẫn:} & ThS. TRẦN HỒ THUỶ TIÊN & \\
-        \textbf{Sinh viên thực hiện:} & Trần Văn Trường Vũ & LỚP: 25T\_DT2 \quad NHÓM: 25.Nh11A \\
-        & Trần Hồ Thuỷ Tiên & LỚP: 25T\_DT2 \quad NHÓM: 25.Nh11A \\
+        \textbf{Người hướng dẫn:} & ThS. TRẦN HỒ THỦY TIÊN & \\
+        \textbf{Sinh viên thực hiện:} & Trần Văn Trường Vũ & LỚP: 25Nh11 \\
+        & Trần Ngọc Bảo Quyên & LỚP: 25Nh11 \\
     \end{tabular}
     \end{flushleft}
     
@@ -98,9 +114,7 @@
 \addcontentsline{toc}{chapter}{MỞ ĐẦU}
 
 \section*{1. Mục đích thực hiện đề tài}
-Trong thời đại khoa học và công nghệ bùng nổ hiện nay, nhu cầu ứng dụng công nghệ thông tin vào bài toán thực tế ngày càng tăng cao. Phần mềm hỗ trợ trực quan hóa giúp công việc thiết kế và quản trị trở nên tối ưu và tự động hóa dễ dàng hơn. 
-
-Đề tài là cơ sở giúp nhóm rèn luyện tư duy thiết kế giải thuật hợp lý, áp dụng các kiến thức cốt lõi đã học trong học phần Toán rời rạc, Kỹ thuật lập trình và Cấu trúc dữ liệu nhằm giải quyết các bài toán kỹ thuật phức tạp. Qua đồ án này, nhóm hướng tới việc nắm bắt sâu sắc bản chất của thuật toán Dijkstra trên cấu trúc đồ thị có hướng, đồng thời nâng cao tư duy xây dựng ứng dụng tương tác thời gian thực.
+Trong thời đại khoa học và công nghệ bùng nổ hiện nay, nhu cầu ứng dụng công nghệ thông tin vào bài toán thực tế ngày càng tăng cao. Phần mềm hỗ trợ trực quan hóa giúp công việc thiết kế và quản trị trở nên tối ưu và tự động hóa dễ dàng hơn. Đề tài là cơ sở giúp nhóm rèn luyện tư duy thiết kế giải thuật hợp lý, áp dụng các kiến thức cốt lõi đã học trong học phần Toán rời rạc, Kỹ thuật lập trình và Cấu trúc dữ liệu nhằm giải quyết các bài toán kỹ thuật phức tạp. Qua đồ án này, nhóm hướng tới việc nắm bắt sâu sắc bản chất của thuật toán Dijkstra trên cấu trúc đồ thị có hướng, đồng thời nâng cao tư duy xây dựng ứng dụng tương tác thời gian thực.
 
 \section*{2. Mục tiêu đề tài}
 Mục tiêu chính của đồ án này là phân tích chuyên sâu, thiết kế và thực thi ứng dụng tìm đường đi ngắn nhất giữa hai điểm bất kỳ được chọn trên mô hình đồ thị có hướng có trọng số.
@@ -124,24 +138,16 @@ Nhóm tập trung nghiên cứu hệ thống giáo trình, tài liệu chuyên n
 Hệ thống tập trung nghiên cứu và xây dựng chương trình giải quyết bài toán cốt lõi trên mô hình lý thuyết đồ thị kết hợp kỹ thuật kết xuất máy tính. Các nền tảng lý thuyết cấu thành đề tài bao gồm:
 
 \section{Lý thuyết đồ thị có hướng (Directed Graph / Digraph)}
-Đồ thị có hướng là một cấu trúc toán học được định nghĩa bằng bộ cặp vô hướng $G = (V, E)$, trong đó $V$ là tập hợp các nút gọi là đỉnh (Vertices), và $E$ là tập hợp các cung gọi là cạnh có hướng (Directed Edges). Mỗi cung thuộc tập $E$ được biểu diễn dưới dạng một cặp đỉnh có thứ tự $(u, v)$, xác định hướng đi một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$. 
-
-Trong các bài toán thực tiễn, đồ thị có hướng mô hình hóa hoàn hảo các hệ thống bất đối xứng như dòng luân chuyển giao thông đường một chiều, sơ đồ quan hệ phụ thuộc giữa các tiến trình công việc, hoặc kiến trúc liên kết điều hướng dữ liệu trên không gian Internet toàn cầu. Khi mỗi cung $(u, v)$ được gán kèm một giá trị số thực $W(u, v) > 0$, mô hình trở thành đồ thị có hướng có trọng số, biểu thị cho chi phí, khoảng cách vật lý hoặc lượng thời gian tiêu hao để dịch chuyển qua lại giữa các nút hạ tầng \cite{ref1} \cite{ref2}.
+Đồ thị có hướng là một cấu trúc toán học được định nghĩa bằng bộ cặp vô hướng $G = (V, E)$, trong đó $V$ là tập hợp các nút gọi là đỉnh (Vertices), và $E$ là tập hợp các cung gọi là cạnh có hướng (Directed Edges) \cite{ref1, ref2}. Mỗi cung thuộc tập $E$ được biểu diễn dưới dạng một cặp đỉnh có thứ tự $(u, v)$, xác định hướng đi một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$. Trong các bài toán thực tiễn, đồ thị có hướng mô hình hóa hoàn hảo các hệ thống bất đối xứng như dòng luân chuyển giao thông đường một chiều, sơ đồ quan hệ phụ thuộc giữa các tiến trình công việc, hoặc kiến trúc liên kết điều hướng dữ liệu trên không gian Internet toàn cầu. Khi mỗi cung $(u, v)$ được gán kèm một giá trị số thực $W(u, v) > 0$, mô hình trở thành đồ thị có hướng có trọng số, biểu thị cho chi phí, khoảng cách vật lý hoặc lượng thời gian tiêu hao để dịch chuyển qua lại giữa các nút hạ tầng.
 
 \section{Bài toán tìm đường đi ngắn nhất (Shortest Path Problem)}
-Bài toán tìm đường đi ngắn nhất là bài toán tìm một quỹ đạo di chuyển nối liền giữa một đỉnh nguồn gốc $u_{start}$ cho tới một đỉnh đích $v_{target}$ trên không gian mạng lưới liên kết sao cho tổng chi phí trọng số của tất cả các cung cấu thành nên lộ trình đó đạt giá trị cực tiểu. 
-
-Đây là một bài toán tối ưu hóa tổ hợp kinhdefini có phổ ứng dụng thực tiễn vô cùng rộng lớn. Lời giải chính xác của bài toán này chính là lõi thuật toán vận hành cho các hệ thống phần mềm định vị vệ tinh toàn cầu (GPS), hệ thống quản trị bài toán phân phối Logistic chuỗi cung ứng, hệ quy hoạch mạch tích hợp bán dẫn trên bo mạch điện tử, và các cơ chế định tuyến, phân tách luồng gói tin truyền tải trên hạ tầng mạng máy tính.
+Bài toán tìm đường đi ngắn nhất là bài toán tìm một quỹ đạo di chuyển nối liền giữa một đỉnh nguồn gốc $u_{start}$ cho tới một đỉnh đích $v_{target}$ trên không gian mạng lưới liên kết sao cho tổng chi phí trọng số của tất cả các cung cấu thành nên lộ trình đó đạt giá trị cực tiểu. Đây là một bài toán tối ưu hóa tổ hợp kinh điển có phổ ứng dụng thực tiễn vô cùng rộng lớn. Lời giải chính xác của bài toán này chính là lõi thuật toán vận hành cho các hệ thống phần mềm định vị vệ tinh toàn cầu (GPS), hệ thống quản trị bài toán phân phối Logistic chuỗi cung ứng, hệ quy hoạch mạch tích hợp bán dẫn trên bo mạch điện tử, và các cơ chế định tuyến, phân tách luồng gói tin truyền tải trên hạ tầng mạng máy tính.
 
 \section{Thuật toán Dijkstra}
-Thuật toán Dijkstra được phát minh bởi nhà khoa học máy tính Edsger W. Dijkstra vào năm 1956 và công bố chính thức vào năm 1959. Đây là giải thuật tối ưu hóa tham lam (Greedy) kinh điển dùng để tìm đường đi ngắn nhất từ một đỉnh nguồn đơn lẻ đến một hoặc toàn bộ các đỉnh còn lại trên mô hình đồ thị có hướng có trọng số với điều kiện tất cả các cung đều có giá trị chi phí không âm ($W(u, v) \ge 0$). 
+Thuật toán Dijkstra được phát minh bởi nhà khoa học máy tính Edsger W. Dijkstra vào năm 1956 và công bố chính thức vào năm 1959 \cite{ref3}. Đây là giải thuật tối ưu hóa tham lam (Greedy) kinh điển dùng để tìm đường đi ngắn nhất từ một đỉnh nguồn đơn lẻ đến một hoặc toàn bộ các đỉnh còn lại trên mô hình đồ thị có hướng có trọng số với điều kiện tất cả các cung đều có giá trị chi phí không âm ($W(u, v) \ge 0$). Nguyên lý cốt lõi của giải thuật dựa trên việc duy trì và loang một tập các nhãn khoảng cách tạm thời. Tại mỗi bước lặp, thuật toán trích xuất ra một đỉnh có giá trị khoảng cách ngắn nhất hiện tại để cố định nhãn, sau đó tiến hành quá trình tối ưu hóa (Relaxation) để hạ thấp chi phí nhãn khoảng cách của toàn bộ các nút lân cận kề sau nó. Do áp dụng chiến lược tham lam, thuật toán luôn đảm bảo tính chính xác và đạt tới nghiệm tối ưu toàn cục mà không cần phải duyệt vét cạn toàn bộ không gian trạng thái.
 
-Nguyên lý cốt lõi của giải thuật dựa trên việc duy trì và loang một tập các nhãn khoảng cách tạm thời. Tại mỗi bước lặp, thuật toán trích xuất ra một đỉnh có giá trị khoảng cách ngắn nhất hiện tại để cố định nhãn, sau đó tiến hành quá trình tối ưu hóa (Relaxation) để hạ thấp chi phí nhãn khoảng cách của toàn bộ các nút lân cận kề sau nó. Do áp dụng chiến lược tham lam, thuật toán luôn đảm bảo tính chính xác và đạt tới nghiệm tối ưu toàn cục mà không cần phải duyệt vét cạn toàn bộ không gian trạng thái.
-
-\section{Đồ họa máy tính và mô phỏng trực quan (Computer Graphics \& Simulation)}
-Đồ họa máy tính đóng vai trò thiết yếu trong việc hiện đại hóa cách thức tiếp cận hệ thống tri thức giải thuật trừu tượng. Thay vì chỉ hiển thị các kết quả tính toán cuối cùng dưới dạng văn bản (Console) tĩnh lập lờ, việc ứng dụng kỹ thuật mô phỏng hình ảnh động thời gian thực cho phép người dùng trực tiếp quan sát toàn bộ cơ chế vận hành bên trong của thuật toán. 
-
-Thông qua các đối tượng đồ họa trực quan (như khối tròn biểu diễn đỉnh, cung vẽ bằng mũi tên hình học kết hợp hộp thoại trọng số), hệ thống đồ họa sẽ tái hiện sinh động tiến trình loang nhãn. Bằng cách thay đổi linh hoạt các gam màu trạng thái của hệ thống kết xuất (sắc vàng cho phần tử đang duyệt, sắc xanh cho các đỉnh đã tối ưu hoàn toàn, sắc đỏ cho lộ trình cuối cùng), tiến trình hoạt động nội tại của cấu trúc dữ liệu đồ thị sẽ được phơi bày trực quan từng bước (\textit{Step-by-Step}), giúp tối ưu hóa hiệu quả học tập và thử nghiệm.
+\section{Đồ họa máy tính và mô phỏng trực quan}
+Đồ họa máy tính đóng vai trò thiết yếu trong việc hiện đại hóa cách thức tiếp cận hệ thống tri thức giải thuật trừu tượng \cite{ref4}. Thay vì chỉ hiển thị các kết quả tính toán cuối cùng dưới dạng văn bản (Console) tĩnh lập lờ, việc ứng dụng kỹ thuật mô phỏng hình ảnh động thời gian thực cho phép người dùng trực tiếp quan sát toàn bộ cơ chế vận hành bên trong của thuật toán. Thông qua các đối tượng đồ họa trực quan (như khối tròn biểu diễn đỉnh, cung vẽ bằng mũi tên hình học kết hợp hộp thoại trọng số), hệ thống đồ họa sẽ tái hiện sinh động tiến trình loang nhãn. Bằng cách thay đổi linh hoạt các gam màu trạng thái của hệ thống kết xuất (sắc vàng cho phần tử đang duyệt, sắc xanh cho các đỉnh đã tối ưu hoàn toàn, sắc đỏ cho lộ trình cuối cùng), tiến trình hoạt động nội tại của cấu trúc dữ liệu đồ thị sẽ được phơi bày trực quan từng bước (\textit{Step-by-Step}), giúp tối ưu hóa hiệu quả học tập và thử nghiệm.
 
 % ==================== CHƯƠNG 2 ====================
 \chapter{CƠ SỞ LÝ THUYẾT}
@@ -164,7 +170,7 @@ Gọi $G = (V, E)$ là đồ thị có hướng có trọng số. Hàm trọng s
 \end{enumerate}
 
 \subsection{Lý thuyết đồ họa và tính toán tọa độ vector hình học}
-Để biểu diễn toàn vẹn một đồ thị có hướng lên không gian màn hình hai chiều tương tác, hệ thống cần xử lý bài toán hình học tính toán một cách tuần tự từ pha phân bố vị trí đỉnh, pha thiết lập đường thẳng liên kết cho đến pha dựng mũi tên hướng tiếp xúc ngoài biên hạt tròn. Tiến trình toán học được rã chi tiết như sau:
+Để biểu diễn toàn vẹn một đồ thị có hướng lên không gian màn hình hai chiều tương tác, hệ thống cần xử lý bài toán hình học tính toán một cách tuần tự từ pha phân bộ vị trí đỉnh, pha thiết lập đường thẳng liên kết cho đến pha dựng mũi tên hướng tiếp xúc ngoài biên hạt tròn. Tiến trình toán học được rã chi tiết như sau:
 
 \subsubsection*{a) Tiến trình 1: Tính toán tọa độ và phân bố vị trí các đỉnh (Phần Đầu)}
 Khi bắt đầu khởi tạo, hệ thống cần sắp xếp đồng đều $n$ đỉnh thực tế lên không gian đồ họa nhằm tối ưu hóa góc nhìn trực quan, tránh hiện tượng các nút tròn nằm đè chồng chéo. Chương trình vận dụng hệ phương trình tham số của đường tròn trong hình học không gian phẳng Descartes để quy hoạch các đỉnh cố định theo một quỹ đạo elip/tròn đồng tâm liên tục:
@@ -182,14 +188,14 @@ Nhờ đó, toàn bộ hệ thống tọa độ mảng tĩnh của từng đỉn
 Sau khi hạ tầng vị trí các nút tròn đã định vị vững chắc, một cung liên kết hướng xuất phát từ đỉnh nguồn $U(x_{\text{start}}, y_{\text{start}})$ di chuyển đến đỉnh đích $V(x_{\text{end}}, y_{\text{end}})$ ban đầu được xác định bởi một đoạn thẳng nối tuyến tính giữa tâm hai hình tròn. Tuy nhiên, nếu chỉ sử dụng nét thẳng đơn thuần đè thẳng từ tâm sang tâm, nét vẽ này sẽ che khuất nhãn ký tự định danh của nút tròn, đồng thời làm mất đi không gian để đặt thành phần điều hướng. Do đó, hệ thống bắt buộc phải tính toán và trích xuất một góc chỉ phương $\theta$ chạy dọc theo cạnh nối nhằm xác định xu hướng dốc của đường thẳng liên kết.
 
 \subsubsection*{c) Tiến trình 3: Tính toán điểm dừng biên và dựng mũi tên chỉ hướng (Phần Đuôi)}
-Đây là phân đoạn hình học xử lý cốt lõi: đầu nhọn nhọn của mũi tên hướng bắt buộc phải dừng lại và chạm vừa khít vào phần đường biên ngoài của vòng tròn nút đích $V$, tuyệt đối không được xâm lấn hay chui vào bên trong tâm.
+Đây là phân đoạn hình học xử lý cốt lõi: đầu nhọn của mũi tên hướng bắt buộc phải dừng lại và chạm vừa khít vào phần đường biên ngoài của vòng tròn nút đích $V$, tuyệt đối không được xâm lấn hay chui vào bên trong tâm.
 \begin{itemize}
-    \item \textbf{Bước 1: Xác định góc nghiêng chỉ phương $\theta$:} Sử dụng hàm toán học lượng giác ngược ngược \texttt{atan2f} dựa trên độ sai lệch không gian $(\Delta y, \Delta x)$ giữa hai điểm tâm. Hàm này giúp xác định góc hướng $\theta$ (Radian) chuẩn xác trên mọi góc phần tư hình học và loại trừ triệt để lỗi chia cho số 0 khi hai nút nằm thẳng hàng dọc đứng:
+    \item \textbf{Bước 1: Xác định góc nghiêng chỉ phương $\theta$:} Sử dụng hàm toán học lượng giác ngược \texttt{atan2f} dựa trên độ sai lệch không gian $(\Delta y, \Delta x)$ giữa hai điểm tâm. Hàm này giúp xác định góc hướng $\theta$ (Radian) chuẩn xác trên mọi góc phần tư hình học và loại trừ triệt để lỗi chia cho số 0 khi hai nút nằm thẳng hàng dọc đứng:
     \begin{equation}
         \theta = \text{atan2}(y_{\text{end}} - y_{\text{start}}, x_{\text{end}} - x_{\text{start}})
     \end{equation}
     
-    \item \textbf{Bước 2: Tính tọa độ điểm tiếp xúc rìa ngoài đường tròn (Tip):} Mỗi hạt đỉnh trong chương trình có bán kính cố định là $r = 32$ pixel. Để đầu nhọn mũi tên chạm đúng biên ngoài (và cách ra một khoảng hở $5$ pixel giúp sơ đồ thoáng đãng hơn), điểm dừng $\text{tip}(x_{\text{tip}}, y_{\text{tip}})$ phải lùi ngược hướng từ tâm nút đích $V$ về phía nút nguồn $U$ một khoảng cách bằng $r + 5 = 37$ pixel. Công thức lượng giác xác định điểm này là:
+    \item \textbf{Bước 2: Tính tọa độ điểm tiếp xúc rìa ngoài đường tròn (Tip):} Mỗi hạt đỉnh trong chương trình có bán kính cố định là $r = 32$ pixel. Để đầu nhọn mũi tên chạm đúng biên ngoài (and cách ra một khoảng hở $5$ pixel giúp sơ đồ thoáng đãng hơn), điểm dừng $\text{tip}(x_{\text{tip}}, y_{\text{tip}})$ phải lùi ngược hướng từ tâm nút đích $V$ về phía nút nguồn $U$ một khoảng cách bằng $r + 5 = 37$ pixel. Công thức lượng giác xác định điểm này là:
     \begin{align}
         x_{\text{tip}} &= x_{\text{end}} - 37 \cdot \cos(\theta) \\
         y_{\text{tip}} &= y_{\text{end}} - 37 \cdot \sin(\theta)
@@ -203,7 +209,7 @@ Sau khi hạ tầng vị trí các nút tròn đã định vị vững chắc, m
         y_{P2} &= y_{\text{tip}} + 14 \cdot \sin(\theta + \pi + 0.45)
     \end{align}
 \end{itemize}
-
+Sự kết hợp đồng bộ tuần tự từ việc quy hoạch phân bổ đa giác đều cho đến kỹ thuật tịnh tiến lượng giác lùi biên đã giúp hệ thống kết xuất thành công mạng lưới đồ thị trực quan động một cách chính xác tuyệt đối.
 
 % ==================== CHƯƠNG 3 ====================
 \chapter{TỔ CHỨC CẤU TRÚC DỮ LIỆU VÀ THUẬT TOÁN}
@@ -244,9 +250,9 @@ struct Graph {
 Hệ thống chương trình được phân rã chức năng mạch lạc thành các phân vùng module:
 \begin{itemize}
     \item Khối khởi tạo điều phối giao diện trang bìa Console truyền thống giới thiệu thông tin đề tài học phần.
-    \item Khối xử lý luồng tệp tin dữ liệu đọc cấu trúc đầu vào (`inputdata()`).
-    \item Khối xử lý tính toán hình học không gian đa điểm và vẽ thành phần đồ họa liên kết phối màu (`drawArrow()`).
-    \item Khối động cơ máy trạng thái mô phỏng tương tác chính điều khiển cửa sổ Raylib độ phân giải $1400 \times 900$ (`UIRaylib\_Dijkstra()`).
+    \item Khối xử lý luồng tệp tin dữ liệu đọc cấu trúc đầu vào (\texttt{inputdata()}).
+    \item Khối xử lý tính toán hình học không gian đa điểm và vẽ thành phần đồ họa liên kết phối màu (\texttt{drawArrow()}).
+    \item Khối động cơ máy trạng thái mô phỏng tương tác chính điều khiển cửa sổ Raylib độ phân giải $1400 \times 900$ (\texttt{UIRaylib\_Dijkstra()}).
 \end{itemize}
 
 \section{Ngôn ngữ cài đặt}
@@ -255,7 +261,6 @@ Hệ thống sử dụng ngôn ngữ lập trình C++ chuẩn hóa kiến trúc 
 \section{Kết quả thực thi chương trình}
 \subsection{Giao diện trang thông tin đồ án ban đầu}
 Khi khởi tạo, ứng dụng hiển thị màn hình giới thiệu định dạng căn lề trung tâm hiển thị đầy đủ thông tin mã hiệu lớp sinh hoạt, tên thành viên nhóm thực hiện và giảng viên hướng dẫn khoa Công nghệ thông tin chuẩn hóa theo cấu trúc của Trường Đại học Bách Khoa.
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\textwidth]{Picture/hinh1_giao_dien_console.png}
