@@ -43,4 +43,4 @@ Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều
 ### Hướng dẫn biên dịch nhanh bằng G++ (giao diện dòng lệnh Compiler):
 
 ```bash
-g++ main.cpp -o main -lraylib -lopengl32 -lgdi32 -lwinmm
+mingw32-make
