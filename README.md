@@ -24,7 +24,7 @@ Chương trình kết hợp sức mạnh tính toán tối ưu mảng tĩnh củ
 
 ## 🎮 Cơ Chế Điều Khiển Tương Tác (Keybindings)
 
-Khi cửa sổ đồ họa Raylib được kích hoạt, ông có thể điều phối tiến trình thông qua hệ thống phím tắt:
+Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều phối tiến trình thông qua hệ thống phím tắt:
 
 * `SPACE`: Bắt đầu kích hoạt luồng chạy mô phỏng máy trạng thái thuật toán.
 * `R`: Tiến hành đặt lại toàn bộ thông số cấu trúc nhãn về trạng thái ban đầu để theo dõi lại từ đầu.
@@ -35,7 +35,7 @@ Khi cửa sổ đồ họa Raylib được kích hoạt, ông có thể điều 
 
 ## ⚙️ Yêu Cầu Hệ Thống & Cài Đặt Phụ Thuộc
 
-Để biên dịch và chạy được dự án này, máy tính của ông cần cài đặt sẵn:
+Để biên dịch và chạy được dự án này, máy tính của bạn cần cài đặt sẵn:
 
 1. **Trình biên dịch C/C++**: GCC/MinGW (Hỗ trợ tiêu chuẩn C++11 trở lên).
 2. **Thư viện Raylib**: Thư viện đồ họa tương tác đa nền tảng.
