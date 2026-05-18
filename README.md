@@ -1,4 +1,4 @@
-# PBL1: Xây dựng Chương trình Tìm Đường đi Ngắn nhất trên Đồ thị Có hướng Có trọng số
+# PBL1: Xây dựng chương trình: Tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số
 
 Một ứng dụng mô phỏng trực quan tương tác từng bước (*Step-by-Step*) thuật toán Dijkstra giải bài toán đường đi ngắn nhất trên cấu trúc đồ thị định hướng. Dự án được phát triển trong khuôn khổ học phần Đồ án Lập trình Tính toán (PBL1) tại Trường Đại học Bách Khoa - ĐHĐN.
 
@@ -6,7 +6,7 @@ Chương trình kết hợp sức mạnh tính toán tối ưu mảng tĩnh củ
 
 ---
 
-## 🌟 Các Tính Năng Cốt Lõi
+## Các tính năng cốt lõi
 
 * **Giao diện dòng lệnh khởi tạo (Console)**: Xuất màn hình giới thiệu định dạng căn lề trung tâm chuẩn hóa thông tin học phần.
 * **Đọc dữ liệu từ file cấu trúc tĩnh**: Tự động phân tích tệp cấu trúc bao gồm số đỉnh, ma trận kề chi phí và cặp đỉnh nguồn/đích.
@@ -22,7 +22,7 @@ Chương trình kết hợp sức mạnh tính toán tối ưu mảng tĩnh củ
 
 ---
 
-## 🎮 Cơ Chế Điều Khiển Tương Tác (Keybindings)
+## 🎮 Cơ chế điều khiển tương tác (Keybindings)
 
 Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều phối tiến trình thông qua hệ thống phím tắt:
 
@@ -33,7 +33,7 @@ Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều
 
 ---
 
-## ⚙️ Yêu Cầu Hệ Thống & Cài Đặt Phụ Thuộc
+## ⚙️ Yêu cầu hệ thống & cài đặt 
 
 Để biên dịch và chạy được dự án này, máy tính của bạn cần cài đặt sẵn:
 
