@@ -43,6 +43,7 @@ Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều
 ### Hướng dẫn biên dịch và chạy nhanh bằng G++ (giao diện dòng lệnh Compiler):
 
 ```bash
-mingw32-make
-```bash
+mingw32-make```
+
+###Sau đó
 ./game
