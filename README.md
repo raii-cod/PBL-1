@@ -40,7 +40,9 @@ Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều
 1. **Trình biên dịch C/C++**: GCC/MinGW (Hỗ trợ tiêu chuẩn C++11 trở lên).
 2. **Thư viện Raylib**: Thư viện đồ họa tương tác đa nền tảng.
 
-### Hướng dẫn biên dịch nhanh bằng G++ (giao diện dòng lệnh Compiler):
+### Hướng dẫn biên dịch và chạy nhanh bằng G++ (giao diện dòng lệnh Compiler):
 
 ```bash
 mingw32-make
+```bash
+./game
