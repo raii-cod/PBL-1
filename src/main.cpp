@@ -144,7 +144,7 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
         g.L[u_start] = 0;
         logCount = 0;
     };
-
+    
     ResetAlgo();
     AlgoState state = STATE_FIND_MIN;
     int currentV = -1, neighborIdx = 1;

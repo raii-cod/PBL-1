@@ -44,6 +44,3 @@ Khi cửa sổ đồ họa Raylib được kích hoạt, bạn có thể điều
 
 ```bash
 mingw32-make```
-
-###Sau đó
-./game
