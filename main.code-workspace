@@ -53,6 +53,7 @@
 			"typeinfo": "cpp"
 		},
 		"git.autoRepositoryDetection": false,
-		"git.enabled": true
+		"git.enabled": true,
+		"makefile.configureOnOpen": true
 	}
 }

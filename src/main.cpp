@@ -66,7 +66,7 @@ void UIConsole() {
     printf("%s%40s %-30s%s\n", C_WHITE, "Nguoi huong dan:", "ThS. TRAN HO THUY TIEN", RESET);
     printf("%s%40s %-30s%s\n", C_WHITE, "Sinh vien thuc hien:", "Tran Van Truong Vu", RESET);
     printf("%s%40s %-30s%s\n", C_WHITE, "", "Tran Ngoc Bao Quyen", RESET);
-    printf("%s%40s %-30s%s\n", C_WHITE, "Lop:", "25Nh11", RESET);
+    printf("%s%40s %-30s%s\n", C_WHITE, "Lop:", "25Nh.11A", RESET);
     printf("\n\n\n");
     PrintCentered("Da Nang, 06/2026", C_WHITE);
     printf("\n%s%s%s\n", C_YELLOW, "================================================================================", RESET);
@@ -289,7 +289,7 @@ int main() {
         if (!check) continue;
         fclose(check);
 
-        printf("\n%sDang chuan bi he thong do hoa", C_CYAN);
+        printf("\n%sDang chuan bi thuat toan", C_CYAN);
         for(int i = 0; i < 40; i++) { printf("."); fflush(stdout); MyDelay(0.02f); }
         system("cls");
 

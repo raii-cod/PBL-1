@@ -146,25 +146,7 @@
 \chapter*{MỞ ĐẦU}
 \addcontentsline{toc}{chapter}{MỞ ĐẦU}
 
-\section*{1. Mục đích thực hiện đề tài}
-Trong kỷ nguyên công nghệ số và sự phát triển mạnh mẽ của các hệ thống mạng lưới, bài toán tối ưu hóa đường đi trên đồ thị đóng vai trò cốt lõi trong nhiều lĩnh vực thực tiễn. Phần mềm hỗ trợ trực quan hóa giúp công việc thiết kế, phân tích và học tập trở nên tối ưu và thân thiện hơn. Đề tài này được thực hiện nhằm mục đích giúp nhóm sinh viên rèn luyện tư duy thiết kế giải thuật hợp lý, hiện thực hóa các kiến thức cốt lõi đã học trong học phần Toán rời rạc, Kỹ thuật lập trình và Cấu trúc dữ liệu để giải quyết một bài toán thực tiễn phức tạp. 
-
-\section*{2. Mục tiêu đề tài}
-Mục tiêu trung tâm của đồ án là phân tích chuyên sâu, thiết kế và thực thi ứng dụng tìm đường đi ngắn nhất giữa hai điểm bất kỳ trên đồ thị có hướng có trọng số. Các mục tiêu cụ thể bao gồm:
-\begin{itemize}
-    \item \textbf{Xử lý dữ liệu linh hoạt:} Thiết lập module tự động đọc và phân tích cấu trúc ma trận kề từ tệp tin văn bản định dạng tĩnh.
-    \item \textbf{Cài đặt thuật toán chính xác:} Áp dụng và tối ưu hóa giải thuật Dijkstra để tính toán nhãn đường đi tối ưu, đồng thời lưu vết phục vụ truy xuất lộ trình logic.
-    \item \textbf{Mô phỏng đồ họa trực quan:} Tích hợp thư viện đồ họa Raylib để thiết kế không gian tương tác động, biểu diễn quá trình loang duyệt đỉnh một cách sinh động nhất.
-\end{itemize}
-
-\section*{3. Phạm vi và đối tượng nghiên cứu}
-\begin{itemize}
-    \item \textbf{Đối tượng nghiên cứu:} Cơ sở toán học của đồ thị có hướng, thuật toán tối ưu hóa nhãn Dijkstra, cấu trúc dữ liệu ma trận kề, phương trình hình học tọa độ vector và nguyên lý máy trạng thái (State Machine).
-    \item \textbf{Phạm vi nghiên cứu:} Vận dụng tổng hợp ngôn ngữ lập trình C/C++ thuần túy kết hợp thư viện Raylib. Giới hạn trên mô hình đồ thị có trọng số cạnh không âm (điều kiện hội tụ của thuật toán Dijkstra).
-\end{itemize}
-
-\section*{4. Phương pháp nghiên cứu}
-Đồ án vận dụng phương pháp nghiên cứu lý thuyết kết hợp thực nghiệm. Nhóm đã tiến hành khảo sát các giáo trình Toán rời rạc chuyên ngành, nghiên cứu tài liệu lập trình đồ họa tương tác. Từ đó, xây dựng thuật toán, tiến hành code thực nghiệm, đánh giá kết quả chạy trên các tập dữ liệu giả lập và tinh chỉnh logic hiển thị để đạt được trải nghiệm quan sát tốt nhất.
+Do thời gian hạn hẹp và trình độ chuyên môn còn hạn chế, chúng em nhận thức rằng đồ án không tránh khỏi những thiếu sót. Chúng em xin chân thành cảm ơn sự hướng dẫn tận tâm của cô ThS. Trần Hồ Thuỷ Tiên trong suốt quá trình thực hiện đề tài. Nhóm chúng em rất mong nhận được những ý kiến đóng góp quý báu từ quý thầy cô để hoàn thiện hơn nữa đề tài này.
 
 \vspace{1cm}
 \hfill Nhóm sinh viên thực hiện
@@ -172,12 +154,100 @@ Mục tiêu trung tâm của đồ án là phân tích chuyên sâu, thiết k�
 \chapter{TỔNG QUAN ĐỀ TÀI}
 
 \section{Bài toán tìm đường đi ngắn nhất và tầm quan trọng}
-Bài toán tìm đường đi ngắn nhất (Shortest Path Problem) là một trong những bài toán tối ưu hóa tổ hợp kinh điển nhất của lý thuyết đồ thị. Bài toán yêu cầu tìm kiếm một lộ trình di chuyển từ điểm bắt đầu $u_{start}$ đến điểm kết thúc $v_{target}$ sao cho tổng chi phí (trọng số) của các cung cấu thành nên lộ trình đó đạt giá trị cực tiểu.
+Trong toán học và lý thuyết đồ thị, Bài toán tìm đường đi ngắn nhất là việc tìm kiếm một đường đi giữa hai đỉnh (nút) trong một đồ thị sao cho tổng trọng số (chi phí, độ dài, thời gian, v.v.) của các cạnh tạo nên đường đi đó là nhỏ nhất.
 
-Trong thực tiễn hiện đại, tính ứng dụng của bài toán này là vô cùng rộng lớn. Lời giải của nó là "trái tim" vận hành của hệ thống định vị vệ tinh GPS, hệ thống quản trị bài toán phân phối Logistic chuỗi cung ứng, hệ quy hoạch mạch điện tử bán dẫn, cũng như các giao thức định tuyến luồng gói tin truyền tải trên hạ tầng mạng viễn thông Internet. Việc nắm vững và cài đặt được giải thuật này là bước đệm cơ sở cho mọi kỹ sư phần mềm.
+Định nghĩa toán học một cách hình thức: Cho một đồ thị có trọng số với tập đỉnh $V$, tập cạnh $E$, và một hàm trọng số $f: E \to \mathbb{R}$. Với hai đỉnh bất kỳ $v$ và $v'$, cần tìm một đường đi $P$ nối từ $v$ đến $v'$ sao cho tổng trọng số $\sum_{p \in P}f(p)$ đạt giá trị nhỏ nhất so với tất cả các đường đi khác có thể nối hai đỉnh này.
 
+\subsection*{1. Các biến thể của bài toán}
+Bài toán này được chia thành các dạng chính dựa trên nhu cầu tìm kiếm:
+
+\begin{enumerate}
+    \item \textbf{Đường đi ngắn nhất nguồn đơn (Single-source shortest path):} Tìm đường đi ngắn nhất từ một đỉnh xuất phát (nguồn) đến tất cả các đỉnh còn lại trong đồ thị.
+    \item \textbf{Đường đi ngắn nhất mọi cặp đỉnh (All-pairs shortest path):} Tìm đường đi ngắn nhất giữa mọi cặp đỉnh bất kỳ trong hệ thống.
+    \item \textbf{Đường đi ngắn nhất đích đơn (Single-destination shortest path):} Tìm đường đi từ tất cả các đỉnh khác hướng về chung một đích đến.
+    \item \textbf{Đường đi ngắn nhất giữa một cặp đỉnh (Single-pair shortest path):} Tìm đường đi nối từ đỉnh A đến đỉnh B cụ thể.
+\end{enumerate}
+
+\subsection*{2. Các thuật toán tiêu biểu}
+Để giải quyết bài toán này, các nhà khoa học máy tính đã phát triển nhiều thuật toán tối ưu cho các trường hợp khác nhau:
+
+\begin{itemize}
+    \item \textbf{Thuật toán Dijkstra:} Là thuật toán nổi tiếng nhất giải quyết bài toán nguồn đơn trên đồ thị có trọng số không âm. Thuật toán này lan truyền từ điểm xuất phát, luôn ưu tiên mở rộng đường đi có chi phí thấp nhất hiện tại.
+    \item \textbf{Thuật toán Bellman-Ford:} Cũng giải quyết bài toán nguồn đơn nhưng mạnh mẽ hơn Dijkstra ở chỗ nó có thể xử lý các đồ thị có trọng số âm (ví dụ: các giao dịch tài chính có lợi nhuận/thua lỗ).
+    \item \textbf{Giải thuật A* (A-Star):} Là phiên bản nâng cấp của Dijkstra, sử dụng thêm hàm ước lượng (heuristics) để hướng việc tìm kiếm về phía đích đến nhanh hơn. Đây là thuật toán tiêu chuẩn trong phát triển game và bản đồ số.
+    \item \textbf{Thuật toán Floyd-Warshall:} Được sử dụng để giải quyết bài toán đường đi ngắn nhất cho mọi cặp đỉnh.
+    \item \textbf{Thuật toán Johnson:} Tương tự Floyd-Warshall nhưng hoạt động hiệu quả và nhanh hơn đáng kể trên các "đồ thị thưa" (đồ thị có ít cạnh liên kết).
+\end{itemize}
+
+\subsection*{3. Tầm quan trọng và Ứng dụng thực tiễn}
+Tuy xuất phát từ toán học lý thuyết, Bài toán tìm đường đi ngắn nhất là "trái tim" của vô số công nghệ cốt lõi trong thời đại số hóa ngày nay.
+
+\begin{enumerate}
+    \item \textbf{Định tuyến Mạng và Internet (Telecommunications \& Networking):} Trong viễn thông, bài toán này thường được hiểu là "bài toán đường đi có độ trễ nhỏ nhất". Các giao thức định tuyến nền tảng của Internet như OSPF (Open Shortest Path First) hay IS-IS đều sử dụng thuật toán Dijkstra để tìm ra đường truyền gói tin nhanh nhất giữa các bộ định tuyến (router) trên toàn cầu.
+    \item \textbf{Hệ thống dẫn đường \& Bản đồ (GPS Navigation):} Google Maps, Apple Maps, hay Grab đều giải quyết bài toán này mỗi khi bạn yêu cầu chỉ đường. Các mạng lưới đường phố chính là đồ thị, các giao lộ là đỉnh, khoảng cách hoặc thời gian di chuyển dự kiến là trọng số.
+    \item \textbf{Trí tuệ nhân tạo và Video Game (Pathfinding):} Khi một nhân vật máy (NPC) trong game di chuyển để đuổi theo bạn trong một bản đồ đầy chướng ngại vật, trò chơi đang chạy thuật toán A* nhiều lần mỗi giây để liên tục tìm đường đi ngắn nhất mà không bị kẹt vào tường.
+    \item \textbf{Logistics và Tối ưu chuỗi cung ứng:} Giúp các công ty giao hàng lập kế hoạch lộ trình cho đội xe sao cho tiết kiệm xăng nhất và giao được nhiều hàng nhất (thường được mở rộng thành Bài toán người bán hàng - Traveling Salesman Problem, một bài toán NP-đầy đủ rất phức tạp).
+    \item \textbf{Mạng xã hội:} Tìm hiểu khoảng cách kết nối giữa hai người trên mạng lưới hàng tỷ người dùng (Ví dụ: Bạn cách Elon Musk bao nhiêu lượt kết nối bạn bè chung).
+\end{enumerate}
 \section{Tổng quan về mô phỏng đồ họa thời gian thực}
-Việc học tập và kiểm thử thuật toán trên cửa sổ dòng lệnh (Console) thuần túy thường khô khan và khó phát hiện sai sót logic nội tại. Đồ họa máy tính đóng vai trò thiết yếu trong việc giải quyết vấn đề này. Bằng cách thiết lập một không gian mô phỏng tương tác thời gian thực, toàn bộ cơ chế loang nhãn ẩn sâu bên trong bộ nhớ máy tính sẽ được phơi bày ra màn hình. Người dùng có thể quan sát trực tiếp dòng chảy của thuật toán, sự thay đổi trạng thái của từng phần tử bộ nhớ qua màu sắc đồ họa, từ đó đánh giá chính xác tính hiệu quả của giải thuật.
+\subsection*{1. Tổng quan về Mô phỏng đồ họa thời gian thực là gì?}
+Trong lĩnh vực khoa học máy tính, Mô phỏng đồ họa thời gian thực (Real-time graphics simulation) là quá trình máy tính tính toán và xuất ra các hình ảnh liên tục ở tốc độ cao (thường từ 30 đến 60 khung hình/giây trở lên) để phản hồi ngay lập tức với các thay đổi của dữ liệu hoặc tương tác từ người dùng. Khi áp dụng vào thuật toán, thay vì chỉ in ra các dòng chữ, log hoặc con số tĩnh trên màn hình Console (Terminal) truyền thống, mô phỏng đồ họa sẽ "vẽ" lại toàn bộ trạng thái của cấu trúc dữ liệu, bộ nhớ hoặc logic cốt lõi tại thời điểm đó dưới dạng hình học, màu sắc và chuyển động.
+
+\subsection*{2. Tại sao nên dùng đồ họa thay thế Console khô khan?}
+Việc chuyển đổi từ giao diện dòng lệnh (CLI) sang mô phỏng trực quan mang lại những lợi ích đột phá trong việc hiểu và phân tích thuật toán:
+
+\begin{itemize}
+    \item \textbf{Trực quan hóa luồng dữ liệu:} Con người tiếp thu hình ảnh nhanh hơn văn bản. Nhìn các cột cao thấp hoán đổi vị trí cho nhau dễ hiểu và ghi nhớ hơn rất nhiều so với việc đọc hàng trăm dòng mảng số nguyên in ra từ Terminal.
+    \item \textbf{Kiểm soát và Tương tác (Interactivity):} Người dùng có thể tua chậm (slow-motion), tạm dừng (pause), hoặc chạy từng bước (step-by-step) quá trình thuật toán thực thi để quan sát sự thay đổi trạng thái—điều rất khó làm mượt mà trên Terminal.
+    \item \textbf{Phát hiện lỗi trực giác (Visual Debugging):} Khi thuật toán có lỗi logic (ví dụ: vòng lặp vô hạn, hoặc mảng trỏ sai vùng nhớ), biểu hiện trên đồ họa thường là các chuyển động sai lệch hoặc biến dạng hình ảnh, giúp lập trình viên khoanh vùng lỗi ngay lập tức.
+    \item \textbf{Tăng cảm hứng học tập:} Biến những lý thuyết toán học, các vòng lặp for/while khô khan thành các chuyển động bắt mắt, tạo sự hứng thú đặc biệt cho cả người mới học lập trình lẫn kỹ sư lâu năm.
+\end{itemize}
+
+\subsection*{3. Các thuật toán thường được mô phỏng đồ họa}
+Bất kỳ thuật toán nào cũng có thể hình ảnh hóa, nhưng mang lại hiệu ứng thị giác và giá trị học thuật cao nhất thường là:
+
+\begin{itemize}
+    \item \textbf{Thuật toán Sắp xếp (Sorting Algorithms):} Quick Sort, Merge Sort, hay Bubble Sort thường được mô phỏng bằng các cột hoặc thanh ngang có chiều cao khác nhau. Đồ họa giúp thấy rõ cách mỗi thuật toán "chia để trị" hoặc làm "nổi bọt" phần tử lớn nhất.
+    \item \textbf{Thuật toán Tìm đường (Pathfinding):} Các thuật toán như Dijkstra, A* hay BFS thường được thể hiện qua dạng lưới (Grid), với các khối màu sắc lan tỏa dần như nước chảy để minh họa không gian tìm kiếm và đường đi ngắn nhất.
+    \item \textbf{Duyệt Cây và Đồ thị (Tree \& Graph Traversals):} Mô phỏng bằng các nút mạng (node) nối với nhau. Các mảng màu nhấp nháy chuyển từ đỉnh này sang đỉnh khác, vẽ ra nhánh đi của cấu trúc dữ liệu.
+    \item \textbf{Hình học máy tính (Computational Geometry):} Thuật toán tìm bao lồi (Convex Hull), phân mảnh không gian (Quadtree) hoặc phát hiện va chạm (Collision Detection) dựa hoàn toàn vào hệ tọa độ 2D/3D.
+\end{itemize}
+
+\subsection*{4. Công cụ và Công nghệ phổ biến}
+Để xây dựng các ứng dụng mô phỏng này, các nhà phát triển thường sử dụng các thư viện hỗ trợ vẽ đồ họa phần cứng hoặc phần mềm:
+
+\begin{itemize}
+    \item \textbf{Nền tảng Web (Chạy trên trình duyệt):} HTML5 Canvas, p5.js, WebGL, Three.js (dành cho 3D). Đây là cách phổ biến nhất hiện nay vì tính chia sẻ cao, người dùng không cần cài đặt phần mềm.
+    \item \textbf{Môi trường Python:} Pygame, Matplotlib, hoặc Manim (thư viện chuyên dụng tạo animation toán học cực kỳ nổi tiếng).
+    \item \textbf{C/C++ \& Hiệu năng cao:} OpenGL, \textbf{Raylib (đây là thư viện nhóm chúng em đã sử dụng để phát triển đồ án này)}, SFML, hoặc ứng dụng thẳng vào các Game Engine như Unity, Unreal Engine, Godot để tận dụng sức mạnh GPU.
+\end{itemize}
+
+\subsection*{5. Tầm quan trọng và Ứng dụng thực tiễn}
+\begin{enumerate}
+    \item \textbf{Công nghệ Giáo dục (EdTech):} Các nền tảng học thuật như LeetCode, HackerRank hoặc các trường đại học đang ngày càng tích hợp nhiều công cụ mô phỏng để sinh viên dễ dàng nắm bắt các khái niệm trừu tượng như con trỏ (pointers), đệ quy (recursion).
+    \item \textbf{Hỗ trợ Nghiên cứu Khoa học:} Các mô phỏng về dịch tễ học (sự lây lan mầm bệnh), mô phỏng hạt (Particle systems), hay Cellular Automata (như Game of Life) đều cần đồ họa để các nhà nghiên cứu "nhìn thấy" kết quả hình mẫu từ các phương trình phức tạp.
+    \item \textbf{Phát triển Trò chơi (Game Development):} Trực quan hóa các thuật toán vật lý (mô phỏng trọng lực, chất lỏng, ánh sáng) và AI để tinh chỉnh logic trước khi đưa vào sản phẩm thực tế.
+    \item \textbf{Thuyết trình và Trình diễn Kỹ thuật:} Một video hoặc ứng dụng tương tác trực tiếp luôn có sức thuyết phục và giúp truyền đạt ý tưởng nhanh hơn hàng chục trang tài liệu mô tả mã nguồn thuần túy.
+\end{enumerate}
+\section{Mục đích thực hiện đề tài}
+Trong kỷ nguyên công nghệ số và sự phát triển mạnh mẽ của các hệ thống mạng lưới, bài toán tối ưu hóa đường đi trên đồ thị đóng vai trò cốt lõi trong nhiều lĩnh vực thực tiễn. Phần mềm hỗ trợ trực quan hóa giúp công việc thiết kế, phân tích và học tập trở nên tối ưu và thân thiện hơn. Đề tài này được thực hiện nhằm mục đích giúp nhóm sinh viên rèn luyện tư duy thiết kế giải thuật hợp lý, hiện thực hóa các kiến thức cốt lõi đã học trong học phần Toán rời rạc, Kỹ thuật lập trình và Cấu trúc dữ liệu để giải quyết một bài toán thực tiễn phức tạp. 
+
+\section{Mục tiêu đề tài}
+Mục tiêu trung tâm của đồ án là phân tích chuyên sâu, thiết kế và thực thi ứng dụng tìm đường đi ngắn nhất giữa hai điểm bất kỳ trên đồ thị có hướng có trọng số. Các mục tiêu cụ thể bao gồm:
+\begin{itemize}
+    \item \textbf{Xử lý dữ liệu linh hoạt:} Thiết lập module tự động đọc và phân tích cấu trúc ma trận kề từ tệp tin văn bản định dạng tĩnh.
+    \item \textbf{Cài đặt thuật toán chính xác:} Áp dụng và tối ưu hóa giải thuật Dijkstra để tính toán nhãn đường đi tối ưu, đồng thời lưu vết phục vụ truy xuất lộ trình logic.
+    \item \textbf{Mô phỏng đồ họa trực quan:} Tích hợp thư viện đồ họa Raylib để thiết kế không gian tương tác động, biểu diễn quá trình loang duyệt đỉnh một cách sinh động nhất.
+\end{itemize}
+
+\section{Phạm vi và đối tượng nghiên cứu}
+\begin{itemize}
+    \item \textbf{Đối tượng nghiên cứu:} Cơ sở toán học của đồ thị có hướng, thuật toán tối ưu hóa nhãn Dijkstra, cấu trúc dữ liệu ma trận kề, phương trình hình học tọa độ vector và nguyên lý máy trạng thái (State Machine).
+    \item \textbf{Phạm vi nghiên cứu:} Vận dụng tổng hợp ngôn ngữ lập trình C/C++ thuần túy kết hợp thư viện Raylib. Giới hạn trên mô hình đồ thị có trọng số cạnh không âm (điều kiện hội tụ của thuật toán Dijkstra).
+\end{itemize}
+
+\section{Phương pháp nghiên cứu}
+Đồ án vận dụng phương pháp nghiên cứu lý thuyết kết hợp thực nghiệm. Nhóm đã tiến hành khảo sát các giáo trình Toán rời rạc chuyên ngành, nghiên cứu tài liệu lập trình đồ họa tương tác. Từ đó, xây dựng thuật toán, tiến hành code thực nghiệm, đánh giá kết quả chạy trên các tập dữ liệu giả lập và tinh chỉnh logic hiển thị để đạt được trải nghiệm quan sát tốt nhất.
 
 % ==================== CHƯƠNG 2 ====================
 \chapter{CƠ SỞ LÝ THUYẾT}
@@ -192,8 +262,9 @@ Trước khi tìm hiểu về thuật toán, để hiểu quả điều đầu t
 \subsubsection{Định nghĩa và phân loại}
 Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập các đỉnh và $E$ là tập các cạnh, được biểu biểu diễn bởi cặp đỉnh. tính chất của các mối liên kết (cạnh) giữa các đối tượng (đỉnh) trong bài toán mà đồ thị được phân loại thành: 
 \begin{itemize}
-    \item \textbf{Có hướng hoặc vô hướng:} 
-    \item \textbf{Có trọng số hoặc không có trọng số:} 
+    \item \textbf{Có hướng hoặc vô hướng:} Xác định tính chất một chiều (digraph) hoặc hai chiều
+của các liên kết giữa các cặp nút.
+    \item \textbf{Có trọng số hoặc không có trọng số:} Mỗi cạnh $(u, v)$ có thể mang trọng số $w(u, v)$ đại diện cho các thực thể vật lý như chi phí di chuyển, khoảng cách vật lý hoặc độ trễ thời gian. 
 \end{itemize}
 \subsection{Lý thuyết đồ thị có hướng (Directed Graph)}
 Đồ thị có hướng được biểu diễn toán học dưới dạng một hệ vô hướng $G = (V, E)$, trong đó:
@@ -203,7 +274,34 @@ Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập 
     \item Hàm trọng số $W: E \to \mathbb{R}^+$ gán cho mỗi cung $(u, v)$ một giá trị $W(u, v)$ đại diện cho khoảng cách hoặc chi phí.
 \end{itemize}
 Đồ thị được mã hóa thành "Ma trận kề"  $A_{n \times n}$. Nếu có cung nối từ $i$ đến $j$, phần tử $A[i][j] = W(i, j)$, ngược lại $A[i][j] = 0$.
+\subsection{Nguyên lí nới lỏng cạnh (Relaxation)}
+Kỹ thuật nới lỏng cạnh (Edge Relaxation) là một thao tác cơ sở và cốt lõi trong việc thiết kế và triển khai các thuật toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số. Về mặt bản chất, quá trình này liên tục đánh giá và cập nhật lại chi phí (khoảng cách ước lượng) từ đỉnh nguồn đến các đỉnh lân cận cho đến khi hệ thống đạt được trạng thái tối ưu toàn cục.
 
+\subsubsection{Ý nghĩa hoạt động}
+Giả sử trên một đồ thị tồn tại một cạnh nối từ đỉnh $u$ đến đỉnh $v$. Thao tác nới lỏng kiểm tra xem việc di chuyển từ đỉnh nguồn đến $v$ thông qua đỉnh trung gian $u$ có mang lại tổng chi phí thấp hơn so với đường đi hiện tại đã được ghi nhận hay không. Nếu điều kiện tối ưu này thỏa mãn, hệ thống sẽ loại bỏ chi phí cũ và cập nhật lại giá trị mới tối ưu hơn.
+
+\subsubsection{Cơ sở toán học và Cấu trúc logic}
+Xét đồ thị có trọng số $G = (V, E)$, với $V$ là tập đỉnh và $E$ là tập cạnh.
+\begin{itemize}
+    \item Gọi $d(u)$ và $d(v)$ lần lượt là khoảng cách ngắn nhất ước lượng hiện tại từ đỉnh nguồn đến đỉnh $u$ và đỉnh $v$.
+    \item Gọi $w(u, v)$ là trọng số (chi phí) của cạnh có hướng $(u, v) \in E$.
+\end{itemize}
+
+Thao tác nới lỏng cạnh $(u, v)$ được thực thi thông qua hệ thức điều kiện sau:
+
+Nếu $d(u) + w(u, v) < d(v)$, tiến hành cập nhật:
+\begin{equation*}
+    d(v) = d(u) + w(u, v)
+\end{equation*}
+
+Đồng thời với việc cập nhật khoảng cách, hệ thống sẽ lưu vết lại cấu trúc đường đi bằng cách gán đỉnh liền trước (predecessor) của $v$ là $u$. Việc lưu trữ này phục vụ trực tiếp cho quá trình truy xuất lại lộ trình chi tiết từ nguồn đến đích sau khi thuật toán kết thúc quá trình duyệt.
+
+\subsubsection{Ứng dụng trong các thuật toán nền tảng}
+Kỹ thuật nới lỏng là tư tưởng chủ đạo để xây dựng nên các giải thuật đồ thị quan trọng:
+\begin{itemize}
+    \item \textbf{Thuật toán Dijkstra:} Giải quyết bài toán đường đi ngắn nhất nguồn đơn trên đồ thị có trọng số không âm ($w(u, v) \ge 0, \forall (u, v) \in E$). Thuật toán áp dụng chiến lược tham lam (Greedy), thực hiện nới lỏng một cách có chọn lọc từ các đỉnh đã được xác nhận khoảng cách tối ưu.
+    \item \textbf{Thuật toán Bellman-Ford:} Xử lý được các đồ thị có chứa cạnh trọng số âm. Thuật toán này áp dụng phương pháp quy hoạch động, tiến hành nới lỏng toàn bộ tập cạnh $E$ lặp lại $|V| - 1$ lần để đảm bảo mọi đường đi tối ưu đều được bao phủ, đồng thời hỗ trợ phát hiện chu trình âm (negative cycle) trong đồ thị.
+\end{itemize}
 \subsection{Lý thuyết đồ họa và tính toán tọa độ vector}
 Để hiện thực hóa ứng dụng mô phỏng, hệ thống yêu cầu sự can thiệp của hình học tính toán. 
 Để các đỉnh không đè lên nhau, đồ án áp dụng phương trình tham số đường tròn, dàn đều $n$ đỉnh quanh một tâm $I(x_0, y_0)$ với bán kính $R$:
@@ -211,7 +309,6 @@ Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập 
     x_i &= x_0 + R \cdot \cos\left((i - 1) \frac{2\pi}{n}\right) \\
     y_i &= y_0 + R \cdot \sin\left((i - 1) \frac{2\pi}{n}\right)
 \end{align}
-Để vẽ mũi tên hướng mà phần nhọn không bị lọt vào tâm đỉnh đích $V$, chương trình sử dụng hàm \texttt{atan2f} để xác định góc dốc $\theta$. Điểm dừng của mũi tên được tịnh tiến lùi lại một đoạn chính bằng bán kính nút tròn.
 
 % ==================== CHƯƠNG 3 ====================
 \chapter{TỔ CHỨC CẤU TRÚC DỮ LIỆU VÀ THUẬT TOÁN}
@@ -223,11 +320,37 @@ Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập 
 \end{itemize}
 
 \section{Cấu trúc dữ liệu}
-Hệ thống đóng gói toàn bộ trạng thái lý thuyết vào một \texttt{struct Graph} tĩnh, sử dụng hệ thống mảng một chiều tối ưu bộ nhớ cache để xử lý tốc độ cao:
+\subsubsection{Các thư viện sử dụng trong chương trình}
+\begin{table}[htbp]
+\centering
+\label{tab:libraries}
+\vspace{0.5em}
+\begin{tabular}{|c|l|p{9cm}|}
+\hline
+\textbf{STT} & \textbf{Tên thư viện} & \textbf{Vai trò và chức năng trong chương trình} \\ \hline
+1 & \texttt{<stdio.h>} & Hỗ trợ luồng nhập xuất chuẩn, phục vụ đọc ma trận kề và các tham số cấu hình từ tệp tin văn bản (\texttt{.dat}). \\ \hline
+2 & \texttt{<stdlib.h>} & Cung cấp các hàm tiện ích hệ thống bao gồm lệnh xóa màn hình Console và quản lý thực thi kiểm soát bộ nhớ. \\ \hline
+3 & \texttt{<string.h>} & Xử lý và định dạng các chuỗi văn bản, sao chép nhật ký toán học phục vụ bảng hiển thị Log thời gian thực. \\ \hline
+4 & \texttt{<math.h>} & Cung cấp các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để tính tọa độ đỉnh vòng tròn và xác định góc quay của mũi tên hướng cạnh. \\ \hline
+5 & \texttt{<time.h>} & Quản lý bộ đếm nhịp xung vật lý, làm cơ sở xây dựng hàm tạo độ trễ (\texttt{delay}) làm chậm tiến trình loang của thuật toán. \\ \hline
+6 & \texttt{<raylib.h>} & Thư viện đồ họa cốt lõi; quản lý cửa sổ tương tác, duy trì vòng lặp 60-FPS và thực hiện vẽ các thực thể hình học (đỉnh, cung, nhãn). \\ \hline
+\end{tabular}
+\end{table}
 
-\begin{lstlisting}[style=UserCStyle, caption={Định nghĩa cấu trúc đồ thị tĩnh}]
+\subsubsection{Cấu trúc dữ liệu tự xây dựng}
+Hệ thống đóng gói toàn bộ trạng thái lý thuyết vào một \texttt{struct Graph} tĩnh, sử dụng hệ thống mảng một chiều nhằm tối ưu hóa bộ nhớ cache để xử lý tốc độ cao. Đồng thời, thuật toán được thiết kế lại dưới dạng Máy trạng thái (State Machine) thông qua \texttt{enum AlgoState} để tương thích với giao diện đồ họa.
+
+Dưới đây là mã nguồn cài đặt cấu trúc dữ liệu cốt lõi của chương trình:
+
+\begin{lstlisting}[style=UserCstyle,caption={Định nghĩa cấu trúc đồ thị tĩnh và máy trạng thái}, label={lst:datastruct}]
 #define N 105
 #define INF 1000000000
+
+typedef enum { 
+    STATE_FIND_MIN, 
+    STATE_RELAX_EDGES, 
+    STATE_FINISHED 
+} AlgoState;
 
 struct Graph {
     int n;               // So luong dinh
@@ -235,17 +358,63 @@ struct Graph {
     Vector2 toado[N];    // Toa do truc quan cua dinh tren UI
     int L[N];            // Mang khoang cach ngan nhat (Nhan tam thoi)
     int T[N];            // Trang thai tap hop T (1: Chua co dinh, 0: Da co dinh)
-    int par[N];          // Mang luu vet cha truy xuan lo trinh
+    int par[N];          // Mang luu vet cha truy xuat lo trinh
 };
 \end{lstlisting}
 
-\section{Thuật toán}
-Thuật toán Dijkstra được sử dụng làm lõi xử lý. Tuy nhiên, để tương thích với giao diện đồ họa, thuật toán được thiết kế lại dưới dạng Máy trạng thái (State Machine) điều khiển bởi biến \texttt{AlgoState}:
+\vspace{0.5em}
+\noindent\textbf{Chi tiết các thành phần:}
+
 \begin{itemize}
-    \item \texttt{STATE\_FIND\_MIN}: Trạng thái quét tìm đỉnh trong đồ thị có $L[i]$ nhỏ nhất. Đỉnh này được chọn làm tâm loang.
-    \item \texttt{STATE\_RELAX\_EDGES}: Chuyển sang trạng thái cập nhật nhãn (Relaxation). Xét mọi đỉnh $v$ kề liền sau $u$. Nếu $L[u] + W(u, v) < L[v]$, tiến hành tối ưu hóa khoảng cách và lưu vết đỉnh cha.
-    \item \texttt{STATE\_FINISHED}: Kích hoạt khi tìm thấy đích. Truy ngược mảng \texttt{par} để xuất lộ trình cuối cùng.
+    \item \textbf{Hằng số giới hạn:} Hệ thống sử dụng \texttt{N = 105} để giới hạn kích thước mảng tĩnh, ngăn chặn lỗi tràn bộ nhớ. Giá trị \texttt{INF = 1000000000} đại diện cho vô cực, dùng để khởi tạo nhãn khoảng cách ban đầu.
+    
+    \item \textbf{\texttt{AlgoState}:} Biến liệt kê quản lý 3 trạng thái của đồ họa: 
+    \begin{itemize}
+        \item \texttt{STATE\_FIND\_MIN}: Quét tìm đỉnh trong đồ thị có nhãn khoảng cách nhỏ nhất để chọn làm tâm loang.
+        \item \texttt{STATE\_RELAX\_EDGES}: Chuyển sang trạng thái nới lỏng cạnh, kiểm tra và tối ưu hóa khoảng cách cho các đỉnh kề.
+        \item \texttt{STATE\_FINISHED}: Kích hoạt khi tìm thấy đích hoặc đã duyệt xong toàn bộ đồ thị.
+    \end{itemize}
+    
+    \item \textbf{\texttt{struct Graph}:} 
+    \begin{itemize}
+        \item \texttt{n} và \texttt{A[N][N]}: Lưu trữ số lượng đỉnh thực tế và ma trận trọng số của đồ thị.
+        \item \texttt{toado[N]}: Kiểu dữ liệu \texttt{Vector2} (kế thừa từ thư viện Raylib) lưu trữ tọa độ $(x,y)$ thực tế trên màn hình để render các đỉnh.
+        \item \texttt{L[N]} và \texttt{T[N]}: Hai mảng cốt lõi của thuật toán. \texttt{L} lưu chi phí đường đi, \texttt{T} đánh dấu trạng thái đỉnh ($1$: chưa cố định, $0$: đã tối ưu hoàn toàn).
+        \item \texttt{par[N]}: Mảng lưu vết đỉnh cha liền trước, hỗ trợ truy xuất ngược từ đỉnh đích về đỉnh nguồn sau khi thuật toán kết thúc.
+    \end{itemize}
 \end{itemize}
+\section{Thuật toán}
+\subsection{Thuật toán Dijkstra}
+\subsubsection{Giới thiệu}
+Thuật toán Dijkstra, được đề xuất bởi nhà khoa học máy tính Edsger W. Dijkstra vào năm 1956, là một trong những giải thuật kinh điển và nền tảng nhất để giải quyết bài toán đường đi ngắn nhất nguồn đơn (single-source shortest path) trên đồ thị. Thuật toán này có thể áp dụng trên cả đồ thị có hướng và vô hướng, với điều kiện tiên quyết bắt buộc là trọng số của tất cả các cạnh trong hệ thống phải là các giá trị không âm ($w(u,v) \ge 0$). Trong khuôn khổ của đồ án này, Dijkstra được chọn làm nhân xử lý cốt lõi và được thiết kế lại dưới dạng Máy trạng thái (State Machine) nhằm đồng bộ hóa với hệ thống mô phỏng đồ họa Raylib.
+
+\subsubsection{Nguyên lí}
+Thuật toán Dijkstra hoạt động dựa trên chiến lược Tham lam (Greedy Algorithm) kết hợp chặt chẽ với nguyên lý Nới lỏng cạnh (Edge Relaxation). Tại mỗi bước tiến hành, thuật toán luôn tin tưởng và chọn ra đỉnh có khoảng cách ước lượng từ nguồn đến nó là nhỏ nhất trong tập hợp các đỉnh chưa được xét. Khi một đỉnh được lựa chọn, thuật toán coi khoảng cách đến đỉnh đó đã đạt trạng thái tối ưu tuyệt đối, sau đó sử dụng đỉnh này làm tâm loang để thực hiện "nới lỏng" (đánh giá và cập nhật lại khoảng cách ngắn hơn) cho tất cả các đỉnh lân cận kề với nó.
+
+\subsubsection{Các bước thực hiện}
+Dựa trên cấu trúc mảng trạng thái tĩnh đã được thiết lập, quy trình thực thi của thuật toán được chia thành các bước cơ bản sau:
+\begin{enumerate}
+    \item \textbf{Khởi tạo:} Gán nhãn khoảng cách của đỉnh xuất phát $L[u\_{start}] = 0$ và khởi tạo nhãn của tất cả các đỉnh còn lại là vô cực ($L[v] = \infty$). Đánh dấu toàn bộ các đỉnh trong đồ thị ở trạng thái chưa được cố định ($T[v] = 1$).
+    \item \textbf{Tìm đỉnh có nhãn nhỏ nhất (\texttt{STATE\_FIND\_MIN}):} Quét qua các đỉnh đang có trạng thái $T[i] == 1$ để tìm ra đỉnh $u$ có nhãn khoảng cách $L[u]$ đạt giá trị nhỏ nhất. Nếu không còn đỉnh nào để xét, hoặc đỉnh nhỏ nhất được tìm thấy chính là đỉnh đích cần đến, thuật toán kết thúc quá trình loang.
+    \item \textbf{Nới lỏng cạnh (\texttt{STATE\_RELAX\_EDGES}):} Đánh dấu đỉnh $u$ là đã xét xong ($T[u] = 0$). Xét mọi đỉnh $v$ kề trực tiếp với $u$, nếu phát hiện đường đi qua $u$ ngắn hơn đường đi hiện tại ($L[u] + W(u, v) < L[v]$), tiến hành cập nhật lại $L[v]$ và ghi nhận đỉnh liền trước $par[v] = u$ để phục vụ truy vết.
+    \item \textbf{Lặp lại:} Quay trở lại Bước 2 để tiếp tục chọn đỉnh nhỏ nhất tiếp theo cho đến khi toàn bộ đồ thị được tối ưu hoặc tìm được đích đến.
+\end{enumerate}
+
+\subsubsection{Phân tích độ phức tạp thời gian}
+Trong phạm vi thực nghiệm của đồ án, để đảm bảo tính đơn giản và tránh rò rỉ vùng nhớ, thuật toán được cài đặt trực tiếp trên các cấu trúc mảng một chiều và dùng thao tác tìm kiếm tuyến tính:
+\begin{itemize}
+    \item \textbf{Thao tác tìm đỉnh Min:} Yêu cầu duyệt qua mảng chứa $V$ đỉnh (với $V$ là số đỉnh của đồ thị), tiêu tốn $O(V)$ thời gian cho mỗi bước. Quá trình này lặp lại $V$ lần, do đó tổng thời gian là $O(V^2)$.
+    \item \textbf{Thao tác nới lỏng:} Cần duyệt qua ma trận kề $A[N][N]$ để tìm các đỉnh kề. Trong trường hợp xấu nhất, tổng số vòng lặp xét cạnh cho toàn bộ thuật toán tương đương số lượng cạnh tối đa trong đồ thị đầy đủ là $O(V^2)$.
+\end{itemize}
+\textbf{Kết luận:} Độ phức tạp thời gian tổng thể của cách cài đặt này là $\mathbf{O(V^2)}$. Đây là mức xử lý rất tốt và ổn định đối với các đồ thị vừa và nhỏ, tuy nhiên sẽ trở thành một hạn chế lớn nếu phải xử lý các đồ thị có hệ thống hàng chục ngàn đỉnh.
+
+\subsubsection{Phân tích bộ nhớ}
+Đồ án áp dụng chiến lược cấp phát bộ nhớ tĩnh, giới hạn cấu trúc đồ thị ở mức $N = 105$ đỉnh thông qua các biến toàn cục để triệt tiêu hoàn toàn lỗi tràn RAM (\textit{Memory Leak}).
+\begin{itemize}
+    \item \textbf{Lưu trữ liên kết:} Ma trận kề \texttt{A[N][N]} dùng để lưu trữ trọng số đồ thị chiếm không gian lớn nhất, tương đương $\mathbf{O(V^2)}$.
+    \item \textbf{Lưu trữ trạng thái:} Hệ thống sử dụng 4 mảng một chiều độc lập bao gồm \texttt{L[N]} (lưu khoảng cách), \texttt{T[N]} (lưu trạng thái xét), \texttt{par[N]} (lưu vết lộ trình cha) và \texttt{toado[N]} (lưu vector không gian UI). Các mảng này chỉ tiêu tốn $\mathbf{O(V)}$ vùng nhớ.
+\end{itemize}
+\textbf{Kết luận:} Độ phức tạp không gian (bộ nhớ) của hệ thống thuật toán này là $\mathbf{O(V^2)}$. Cấu trúc này tối ưu hóa tối đa hiệu năng của CPU Cache do dữ liệu mảng được xếp liên tục trong RAM, đáp ứng xuất sắc yêu cầu về tốc độ xuất 60 khung hình/giây của bộ thư viện mô phỏng Raylib.
 
 % ==================== CHƯƠNG 4 ====================
 \chapter{CHƯƠNG TRÌNH VÀ KẾT QUẢ}
@@ -269,13 +438,13 @@ Màn hình khởi tạo (Console) đảm nhận vai trò hiển thị thông tin
 \begin{figure}[H]
     \centering
     % XÓA DẤU % Ở DÒNG DƯỚI NẾU ĐÃ CÓ ẢNH VÀ MUỐN HIỂN THỊ
-    % \includegraphics[width=0.8\textwidth]{Picture/hinh1_giao_dien_console.png}
-    \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH GIAO DIỆN CONSOLE - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
+    \includegraphics[width=0.8\textwidth]{Picture/hinh1_giao_dien_console.png}
+    % \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH GIAO DIỆN CONSOLE - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
     \caption{Giao diện chính giới thiệu thông tin đồ án trên màn hình Console}
     \label{fig:giao_dien_console}
 \end{figure}
 
-Sau khi nạp tệp thành công, hệ thống đồ họa Raylib sẽ khởi chạy với sân khấu phân bố các nút đỉnh đều theo cấu trúc elip tự động, đảm bảo thẩm mỹ thị giác.
+Sau khi đọc dữ liệu thành công, chương trình sẽ khởi chạy với sân khấu phân bố các nút đỉnh đều theo cấu trúc elip tự động.
 
 \begin{figure}[H]
     \centering
@@ -286,7 +455,7 @@ Sau khi nạp tệp thành công, hệ thống đồ họa Raylib sẽ khởi ch
 \end{figure}
 
 \subsection{Kết quả thực thi của chương trình}
-Trong suốt quá trình phần mềm thực thi, nhãn thông tin khoảng cách $L$ cập nhật liên tục dưới chân từng nút tròn. Sắc xanh lá đại diện cho đỉnh đã tối ưu hoàn toàn, sắc vàng biểu thị đỉnh đang đóng vai trò tâm loang xét duyệt hiện tại. Bất kỳ sự thay đổi nào cũng được ghi nhận vào bảng Log bên phải.
+Trong suốt quá trình thuật toán được thực thi, nhãn thông tin khoảng cách $L$ cập nhật liên tục dưới chân từng nút tròn. Sắc xanh lá đại diện cho đỉnh đã tối ưu hoàn toàn, sắc vàng biểu thị đỉnh đang đóng vai trò tâm loang xét duyệt hiện tại. Bất kỳ sự thay đổi nào cũng được ghi nhận vào bảng Log bên phải.
 
 \begin{figure}[H]
     \centering
@@ -334,16 +503,12 @@ Qua quá trình nỗ lực nghiên cứu và hoàn thiện đồ án PBL1, nhóm
 \addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
 \begin{thebibliography}{9}
 \bibitem{ref1} 
-Nguyễn Đức Nghĩa, \textit{Giáo trình Toán rời rạc}, Nhà xuất bản Bách Khoa Hà Nội.
-\bibitem{ref2} 
 Phan Thanh Tao, \textit{Giáo trình Toán rời rạc}, Trường Đại học Bách Khoa – Đại học Đà Nẵng.
-\bibitem{ref3} 
-Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, \textit{Introduction to Algorithms}, MIT Press.
-\bibitem{ref4} 
+\bibitem{ref2} 
 Raylib Graph Graphics Development Documentation, \url{https://www.raylib.com/}.
-\bibitem{ref5}
+\bibitem{ref3}
 Nguyễn Văn Hiệu, \textit{Bài toán đường đi ngắn nhất trên đồ thị}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
-\bibitem{ref6}
+\bibitem{ref4}
 Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
 \end{thebibliography}
 
@@ -406,18 +571,5 @@ else if (state == STATE_RELAX_EDGES) {
 }
 \end{lstlisting}
 
-\subsection*{2. Hàm tính toán vector dựng mũi tên:}
-\begin{lstlisting}[style=UserCStyle]
-void drawArrow(Vector2 start, Vector2 end, float rDinh, Color mau, int trongSo) {
-    float angle = atan2f(end.y - start.y, end.x - start.x);
-    Vector2 tip = { end.x - (rDinh + 5) * cosf(angle), end.y - (rDinh + 5) * sinf(angle) };
-    DrawLineEx(start, tip, 2.0f, mau);
-    
-    float arrowSize = 14.0f;
-    Vector2 p1 = { tip.x + arrowSize * cosf(angle + PI - 0.45f), tip.y + arrowSize * sinf(angle + PI - 0.45f) };
-    Vector2 p2 = { tip.x + arrowSize * cosf(angle + PI + 0.45f), tip.y + arrowSize * sinf(angle + PI + 0.45f) };
-    DrawTriangle(tip, p2, p1, mau); 
-}
-\end{lstlisting}
 
 \end{document}
