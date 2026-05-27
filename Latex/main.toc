@@ -11,7 +11,7 @@
 \contentsline {section}{\numberline {1.6}Phương pháp nghiên cứu}{7}{section.1.6}%
 \contentsline {chapter}{\numberline {2}CƠ SỞ LÝ THUYẾT}{8}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Ý tưởng}{8}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Cơ sở lý thuyết}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Các khái niệm nền tảng}{8}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Tổng quan về lý thuyết đồ thị (Graph Theory)}{8}{subsection.2.2.1}%
 \contentsline {subsubsection}{Định nghĩa và phân loại}{8}{subsubsection*.4}%
 \contentsline {subsection}{\numberline {2.2.2}Lý thuyết đồ thị có hướng (Directed Graph)}{8}{subsection.2.2.2}%
@@ -26,21 +26,20 @@
 \contentsline {subsubsection}{Các thư viện sử dụng trong chương trình}{11}{subsubsection*.8}%
 \contentsline {subsubsection}{Cấu trúc dữ liệu tự xây dựng}{11}{subsubsection*.9}%
 \contentsline {section}{\numberline {3.3}Thuật toán}{13}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Thuật toán Dijkstra}{13}{subsection.3.3.1}%
-\contentsline {subsubsection}{Giới thiệu}{13}{subsubsection*.10}%
-\contentsline {subsubsection}{Nguyên lí}{13}{subsubsection*.11}%
-\contentsline {subsubsection}{Các bước thực hiện}{13}{subsubsection*.12}%
-\contentsline {subsubsection}{Phân tích độ phức tạp thời gian}{14}{subsubsection*.13}%
-\contentsline {subsubsection}{Phân tích bộ nhớ}{14}{subsubsection*.14}%
+\contentsline {subsection}{\numberline {3.3.1}Giới thiệu}{13}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Nguyên lí}{13}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Các bước thực hiện}{13}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Phân tích độ phức tạp thời gian}{14}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Phân tích bộ nhớ}{14}{subsection.3.3.5}%
 \contentsline {chapter}{\numberline {4}CHƯƠNG TRÌNH VÀ KẾT QUẢ}{16}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Tổ chức chương trình}{16}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Ngôn ngữ cài đặt}{16}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Kết quả}{16}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Giao diện chính của chương trình}{16}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Kết quả thực thi của chương trình}{17}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Nhận xét đánh giá}{18}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kết luận}{19}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Hướng phát triển}{19}{section.5.2}%
-\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{20}{section.5.2}%
-\contentsline {chapter}{PHỤ LỤC}{21}{chapter*.16}%
+\contentsline {subsection}{\numberline {4.3.2}Kết quả thực thi của chương trình}{18}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Nhận xét đánh giá}{19}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kết luận}{21}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Hướng phát triển}{21}{section.5.2}%
+\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{22}{section.5.2}%
+\contentsline {chapter}{PHỤ LỤC}{23}{chapter*.11}%

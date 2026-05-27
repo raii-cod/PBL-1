@@ -129,7 +129,7 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
     char stepLogs[300][128];
     int logCount = 0;
 
-    InitWindow(1400, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
+    InitWindow(1500, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
     
     Vector2 center = { 430, 400 }; 
     float radius = 280.0f;
@@ -225,7 +225,7 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        DrawRectangle(900, 0, 500, 900, Fade(LIGHTGRAY, 0.3f));
+        DrawRectangle(900, 0, 600, 900, Fade(LIGHTGRAY, 0.3f));
         DrawLineEx((Vector2){900, 0}, (Vector2){900, 900}, 2.0f, DARKGRAY);
         DrawText("NHAT KY THUAT TOAN", 940, 30, 24, DARKBLUE);
         

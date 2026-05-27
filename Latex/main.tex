@@ -145,6 +145,11 @@
 \pagenumbering{arabic}
 \chapter*{MỞ ĐẦU}
 \addcontentsline{toc}{chapter}{MỞ ĐẦU}
+Sự phát triển mạnh mẽ của lý thuyết đồ thị đã đặt nền móng vững chắc cho nhiều bước tiến đột phá trong khoa học máy tính, tối ưu hóa hệ thống và quy hoạch mạng lưới giao thông. Trong số các bài toán kinh điển, bài toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số nổi lên như một thách thức trọng tâm với vô vàn ứng dụng thực tiễn—từ việc định tuyến trong mạng Internet, tối ưu hóa lộ trình trong các ứng dụng bản đồ số, đến việc lập lịch trình vận tải và logistics. Việc xác định lộ trình tối ưu không chỉ đơn thuần là tìm kiếm khoảng cách vật lý nhỏ nhất, mà còn liên quan trực tiếp đến việc tối ưu hóa thời gian, chi phí và tài nguyên trong các môi trường mạng lưới có tính chất phân cấp phức tạp.
+
+Đề tài \textbf{"Xây dựng chương trình tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số”} theo phương pháp Dijkstra được thực hiện nhằm hiện thực hóa các cơ sở lý thuyết vào thực tiễn lập trình. Mục tiêu trọng tâm của đề tài là nghiên cứu chuyên sâu về nguyên lý hoạt động, các bất biến toán học của thuật toán Dijkstra, từ đó thiết kế và cài đặt một chương trình ứng dụng hoàn chỉnh, có khả năng xử lý chính xác và tối ưu các dữ liệu trên đồ thị có hướng.
+
+Nghiên cứu này tập trung phân tích cấu trúc của đồ thị có hướng có trọng số dương, cấu trúc dữ liệu tối ưu cho thuật toán, và quy trình từng bước cập nhật khoảng cách. Để đảm bảo tính khách quan và hiệu quả vận hành, chương trình được triển khai thực nghiệm trên các bộ dữ liệu mô phỏng khác nhau, kết hợp các kỹ thuật trực quan hóa kết quả để người dùng dễ dàng theo dõi tiến trình của thuật toán. Cấu trúc đề tài được tổ chức tuyến tính từ cơ sở lý thuyết, phân tích thiết kế thuật toán, cài đặt chương trình, đến kiểm chứng thực nghiệm, rút ra kết luận và hướng phát triển.
 
 Do thời gian hạn hẹp và trình độ chuyên môn còn hạn chế, chúng em nhận thức rằng đồ án không tránh khỏi những thiếu sót. Chúng em xin chân thành cảm ơn sự hướng dẫn tận tâm của cô ThS. Trần Hồ Thuỷ Tiên trong suốt quá trình thực hiện đề tài. Nhóm chúng em rất mong nhận được những ý kiến đóng góp quý báu từ quý thầy cô để hoàn thiện hơn nữa đề tài này.
 
@@ -247,7 +252,7 @@ Mục tiêu trung tâm của đồ án là phân tích chuyên sâu, thiết k�
 \end{itemize}
 
 \section{Phương pháp nghiên cứu}
-Đồ án vận dụng phương pháp nghiên cứu lý thuyết kết hợp thực nghiệm. Nhóm đã tiến hành khảo sát các giáo trình Toán rời rạc chuyên ngành, nghiên cứu tài liệu lập trình đồ họa tương tác. Từ đó, xây dựng thuật toán, tiến hành code thực nghiệm, đánh giá kết quả chạy trên các tập dữ liệu giả lập và tinh chỉnh logic hiển thị để đạt được trải nghiệm quan sát tốt nhất.
+Đồ án vận dụng phương pháp nghiên cứu lý thuyết kết hợp thực nghiệm. Nhóm đã tiến hành khảo sát các giáo trình Toán rời rạc, nghiên cứu tài liệu lập trình đồ họa tương tác. Từ đó, xây dựng thuật toán, tiến hành code thực nghiệm, đánh giá kết quả chạy trên các tập dữ liệu giả lập và tinh chỉnh logic hiển thị để đạt được trải nghiệm quan sát tốt nhất.
 
 % ==================== CHƯƠNG 2 ====================
 \chapter{CƠ SỞ LÝ THUYẾT}
@@ -255,12 +260,12 @@ Mục tiêu trung tâm của đồ án là phân tích chuyên sâu, thiết k�
 \section{Ý tưởng}
 Ý tưởng cốt lõi của ứng dụng là xây dựng một hệ thống tách biệt luồng xử lý dữ liệu và luồng hiển thị. Chương trình sẽ đọc ma trận đồ thị từ file, sau đó khởi tạo một hệ thống Máy trạng thái (State Machine) để làm chậm quá trình thực thi của thuật toán Dijkstra. Kết hợp với việc quy hoạch tọa độ hình học, mỗi bước tính toán của thuật toán sẽ được đồng bộ hóa với một khung hình đồ họa (frame), tạo ra hiệu ứng chuyển động và đổi màu trực quan.
 
-\section{Cơ sở lý thuyết}
+\section{Các khái niệm nền tảng}
 
 \subsection{Tổng quan về lý thuyết đồ thị (Graph Theory)}
-Trước khi tìm hiểu về thuật toán, để hiểu quả điều đầu tiên là nắm vững kiến thức về lý thuyết đồ thị.
+Trước khi tìm hiểu về thuật toán, để hiệu quả điều đầu tiên là nắm vững kiến thức về lý thuyết đồ thị.
 \subsubsection{Định nghĩa và phân loại}
-Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập các đỉnh và $E$ là tập các cạnh, được biểu biểu diễn bởi cặp đỉnh. tính chất của các mối liên kết (cạnh) giữa các đối tượng (đỉnh) trong bài toán mà đồ thị được phân loại thành: 
+Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập các đỉnh và $E$ là tập các cạnh, được biểu diễn bởi cặp đỉnh. Tính chất của các mối liên kết (cạnh) giữa các đối tượng (đỉnh) trong bài toán mà đồ thị được phân loại thành: 
 \begin{itemize}
     \item \textbf{Có hướng hoặc vô hướng:} Xác định tính chất một chiều (digraph) hoặc hai chiều
 của các liên kết giữa các cặp nút.
@@ -384,14 +389,15 @@ struct Graph {
     \end{itemize}
 \end{itemize}
 \section{Thuật toán}
-\subsection{Thuật toán Dijkstra}
-\subsubsection{Giới thiệu}
+Đồ án sử dụng thuật toán Dijkstra làm cốt lõi tìm đường đi ngắn nhất trong đồ thị có hướng có trọng số.
+% \subsection{Thuật toán Dijkstra}
+\subsection{Giới thiệu}
 Thuật toán Dijkstra, được đề xuất bởi nhà khoa học máy tính Edsger W. Dijkstra vào năm 1956, là một trong những giải thuật kinh điển và nền tảng nhất để giải quyết bài toán đường đi ngắn nhất nguồn đơn (single-source shortest path) trên đồ thị. Thuật toán này có thể áp dụng trên cả đồ thị có hướng và vô hướng, với điều kiện tiên quyết bắt buộc là trọng số của tất cả các cạnh trong hệ thống phải là các giá trị không âm ($w(u,v) \ge 0$). Trong khuôn khổ của đồ án này, Dijkstra được chọn làm nhân xử lý cốt lõi và được thiết kế lại dưới dạng Máy trạng thái (State Machine) nhằm đồng bộ hóa với hệ thống mô phỏng đồ họa Raylib.
 
-\subsubsection{Nguyên lí}
+\subsection{Nguyên lí}
 Thuật toán Dijkstra hoạt động dựa trên chiến lược Tham lam (Greedy Algorithm) kết hợp chặt chẽ với nguyên lý Nới lỏng cạnh (Edge Relaxation). Tại mỗi bước tiến hành, thuật toán luôn tin tưởng và chọn ra đỉnh có khoảng cách ước lượng từ nguồn đến nó là nhỏ nhất trong tập hợp các đỉnh chưa được xét. Khi một đỉnh được lựa chọn, thuật toán coi khoảng cách đến đỉnh đó đã đạt trạng thái tối ưu tuyệt đối, sau đó sử dụng đỉnh này làm tâm loang để thực hiện "nới lỏng" (đánh giá và cập nhật lại khoảng cách ngắn hơn) cho tất cả các đỉnh lân cận kề với nó.
 
-\subsubsection{Các bước thực hiện}
+\subsection{Các bước thực hiện}
 Dựa trên cấu trúc mảng trạng thái tĩnh đã được thiết lập, quy trình thực thi của thuật toán được chia thành các bước cơ bản sau:
 \begin{enumerate}
     \item \textbf{Khởi tạo:} Gán nhãn khoảng cách của đỉnh xuất phát $L[u\_{start}] = 0$ và khởi tạo nhãn của tất cả các đỉnh còn lại là vô cực ($L[v] = \infty$). Đánh dấu toàn bộ các đỉnh trong đồ thị ở trạng thái chưa được cố định ($T[v] = 1$).
@@ -400,7 +406,7 @@ Dựa trên cấu trúc mảng trạng thái tĩnh đã được thiết lập, 
     \item \textbf{Lặp lại:} Quay trở lại Bước 2 để tiếp tục chọn đỉnh nhỏ nhất tiếp theo cho đến khi toàn bộ đồ thị được tối ưu hoặc tìm được đích đến.
 \end{enumerate}
 
-\subsubsection{Phân tích độ phức tạp thời gian}
+\subsection{Phân tích độ phức tạp thời gian}
 Trong phạm vi thực nghiệm của đồ án, để đảm bảo tính đơn giản và tránh rò rỉ vùng nhớ, thuật toán được cài đặt trực tiếp trên các cấu trúc mảng một chiều và dùng thao tác tìm kiếm tuyến tính:
 \begin{itemize}
     \item \textbf{Thao tác tìm đỉnh Min:} Yêu cầu duyệt qua mảng chứa $V$ đỉnh (với $V$ là số đỉnh của đồ thị), tiêu tốn $O(V)$ thời gian cho mỗi bước. Quá trình này lặp lại $V$ lần, do đó tổng thời gian là $O(V^2)$.
@@ -408,7 +414,7 @@ Trong phạm vi thực nghiệm của đồ án, để đảm bảo tính đơn 
 \end{itemize}
 \textbf{Kết luận:} Độ phức tạp thời gian tổng thể của cách cài đặt này là $\mathbf{O(V^2)}$. Đây là mức xử lý rất tốt và ổn định đối với các đồ thị vừa và nhỏ, tuy nhiên sẽ trở thành một hạn chế lớn nếu phải xử lý các đồ thị có hệ thống hàng chục ngàn đỉnh.
 
-\subsubsection{Phân tích bộ nhớ}
+\subsection{Phân tích bộ nhớ}
 Đồ án áp dụng chiến lược cấp phát bộ nhớ tĩnh, giới hạn cấu trúc đồ thị ở mức $N = 105$ đỉnh thông qua các biến toàn cục để triệt tiêu hoàn toàn lỗi tràn RAM (\textit{Memory Leak}).
 \begin{itemize}
     \item \textbf{Lưu trữ liên kết:} Ma trận kề \texttt{A[N][N]} dùng để lưu trữ trọng số đồ thị chiếm không gian lớn nhất, tương đương $\mathbf{O(V^2)}$.
@@ -448,8 +454,8 @@ Sau khi đọc dữ liệu thành công, chương trình sẽ khởi chạy vớ
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.9\textwidth]{Picture/hinh2_do_thi_quy_dao.png}
-    \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH GIAO DIỆN ĐỒ THỊ - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
+    \includegraphics[width=0.7\textwidth]{Picture/hinh2_do_thi_quy_dao.png}
+    % \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH GIAO DIỆN ĐỒ THỊ - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
     \caption{Giao diện đồ họa phân bố hệ thống các đỉnh theo quỹ đạo đồng tâm}
     \label{fig:do_thi_quy_dao}
 \end{figure}
@@ -459,43 +465,55 @@ Trong suốt quá trình thuật toán được thực thi, nhãn thông tin kho
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.9\textwidth]{Picture/hinh3_nhat_ky_thuat_toan.png}
-    \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH NHẬT KÝ - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
+    \includegraphics[width=0.9\textwidth]{Picture/hinh3_nhat_ky_thuat_toan.png}
+    % \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH NHẬT KÝ - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
     \caption{Bảng điều khiển nhật ký hoạt động cập nhật trạng thái loang nhãn từng bước}
     \label{fig:nhat_ky_thuat_toan}
 \end{figure}
 
-Khi tìm thấy đích, toàn bộ các cạnh và đỉnh cấu thành đường đi ngắn nhất tự động chuyển đổi sắc màu hiển thị sang màu đỏ rực rỡ với độ dày nét vẽ vượt trội nhằm cô lập lộ trình trực quan cho người sử dụng.
+Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành đường đi ngắn nhất tự động chuyển đổi màu sắc hiển thị sang màu đỏ với độ dày lớn hơn nhằm làm rõ lộ trình trực quan hơn, dễ quan sát hơn.
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.9\textwidth]{Picture/hinh4_ket_qua_lo_trinh.png}
-    \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH KẾT QUẢ - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
+    \includegraphics[width=0.9\textwidth]{Picture/hinh4_ket_qua_lo_trinh.png}
+    % \fbox{\begin{minipage}{0.8\textwidth}\centering\vspace{2cm}\textbf{[CHƯA TẢI ẢNH KẾT QUẢ - BỎ COMMENT ĐỂ HIỂN THỊ]}\vspace{2cm}\end{minipage}}
     \caption{Biểu diễn lộ trình ngắn nhất bằng hiệu ứng đổi màu cung liên kết sang sắc đỏ}
     \label{fig:ket_qua_lo_trinh}
 \end{figure}
 
 \subsection{Nhận xét đánh giá}
-\textbf{Ưu điểm:} Ứng dụng giải quyết triệt để bài toán tìm kiếm tối ưu trên mô hình đồ thị có hướng phức tạp. Thiết kế giao diện đồ họa có tính tương tác cao, cơ chế máy trạng thái phân rã logic vận hành trơn tru và trực quan hóa sâu sắc dữ liệu từng bước chạy. Không xảy ra rò rỉ bộ nhớ (Memory Leak) nhờ sử dụng hạ tầng mảng cấp phát tĩnh.
-
-\textbf{Hạn chế tồn tại:} 
+\textbf{Ưu điểm:} 
 \begin{itemize}
-    \item Chương trình hiện tại yêu cầu dữ liệu tệp tin văn bản đầu vào phải tuân thủ nghiêm ngặt cấu trúc định dạng chuẩn hóa sẵn, chưa có cơ chế kiểm lỗi ngoại lệ mạnh mẽ.
-    \item Thao tác tìm kiếm đỉnh Min hiện tại đang dùng cấu trúc duyệt tuyến tính $O(V)$ cho mỗi bước. Do đó tổng độ phức tạp thuật toán đang ở ngưỡng $O(V^2)$. Đây là điểm yếu nếu đồ thị có hàng chục ngàn đỉnh.
+    \item Chương trình chạy ổn định, giải quyết đúng yêu cầu bài toán tìm đường đi ngắn nhất mà đề tài đặt ra.
+    \item Giao diện đồ họa sinh động, dễ nhìn. Thay vì phải đọc những mảng số khô khan in ra từ màn hình Console, người dùng có thể quan sát thuật toán loang từng bước một, rất phù hợp để làm công cụ hỗ trợ ôn tập môn Toán rời rạc.
+    \item Nhóm chúng em sử dụng mảng tĩnh (cấp phát bộ nhớ sẵn) nên chương trình rất nhẹ, dễ kiểm soát lỗi và không bị tình trạng tràn bộ nhớ (Memory Leak).
 \end{itemize}
 
+\textbf{Nhược điểm:} 
+\begin{itemize}
+    \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi.
+    \begin{itemize}
+        \item[$\rightarrow$] \textit{Hướng cải tiến:} Bổ sung thêm các đoạn code kiểm tra điều kiện đầu vào (bắt lỗi file rỗng, lỗi nhập chữ thay vì số) để hiện thông báo nhắc nhở người dùng thay vì thoát phần mềm đột ngột.
+    \end{itemize}
+    \item \textbf{Thuật toán có thể bị chậm nếu đồ thị quá lớn:} Vì kiến thức còn hạn chế, tụi em đang dùng vòng lặp \texttt{for} bình thường để quét tìm đỉnh nhỏ nhất, làm cho độ phức tạp của thuật toán là $O(V^2)$.
+    \begin{itemize}
+        \item[$\rightarrow$] \textit{Hướng cải tiến:} Ở các môn học sau, khi làm quen với cấu trúc dữ liệu nâng cao hơn, tụi em sẽ thay thế vòng lặp này bằng Hàng đợi ưu tiên (Min-Heap) để giảm độ phức tạp xuống $O(E \log V)$, giúp phần mềm chạy mượt mà kể cả khi bản đồ có hàng ngàn đỉnh.
+    \end{itemize}
+\end{itemize}
+\textbf{Hướng cải tiến:}
 % ==================== CHƯƠNG 5 ====================
 \chapter{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}
 
 \section{Kết luận}
-Qua quá trình nỗ lực nghiên cứu và hoàn thiện đồ án PBL1, nhóm sinh viên đã củng cố thành công nền tảng cấu trúc dữ liệu tĩnh và làm chủ giải thuật cốt lõi Dijkstra. Việc áp dụng thành công kỹ thuật hình học lượng giác và thư viện Raylib vào kiến trúc Máy trạng thái phân mảnh đã giúp chương trình vận hành chính xác, minh họa trực quan sinh động tiến trình loang nhãn phức tạp của hệ thống đồ thị.
+Qua quá trình nỗ lực nghiên cứu và hoàn thiện đồ án PBL1, nhóm chúng em đã củng cố thành công nền tảng cấu trúc dữ liệu tĩnh và làm chủ giải thuật cốt lõi Dijkstra. Việc áp dụng thành công kỹ thuật hình học lượng giác và thư viện Raylib vào kiến trúc Máy trạng thái phân mảnh đã giúp chương trình vận hành chính xác, minh họa trực quan sinh động tiến trình loang nhãn phức tạp của hệ thống đồ thị.
 
 \section{Hướng phát triển}
+Dựa trên những ưu điểm về mặt đồ họa đã làm được, nhóm chúng em dự định sẽ tiếp tục nâng cấp đồ án theo các hướng sau nếu có thêm thời gian:
+
 \begin{itemize}
-    \item Khắc phục độ phức tạp $O(V^2)$ bằng cách nâng cấp cấu trúc mảng duyệt tuần tự thành Hàng đợi ưu tiên (Min-Heap), giúp giảm độ phức tạp thời gian về ngưỡng $O(E \log V)$.
-    \item Phát triển Module kéo thả tương tác chuột trên màn hình, cho phép người dùng tự do vẽ đỉnh, nối cung đồ thị bằng thao tác Click thay vì phải nhập liệu tệp văn bản.
-    \item Tối ưu hoá hình vẽ đồ thị cho dữ liệu lớn, minh hoạ rõ ràng, trực quan hơn.
-    \item Tích hợp song song giải thuật Bellman-Ford để so sánh trực quan thời gian chạy và khả năng xử lý đồ thị chứa trọng số âm.
+    \item \textbf{Thêm chức năng vẽ bằng chuột:} Thay vì phải gõ từng con số vào file văn bản, tụi em muốn nâng cấp để người dùng có thể dùng chuột click lên màn hình để tạo đỉnh, sau đó kéo thả để nối các đường đi và nhập trọng số trực tiếp.
+    \item \textbf{Tích hợp thêm thuật toán khác:} Bổ sung thêm thuật toán Bellman-Ford hoặc A* (A-Star) vào chương trình. Khi đó, phần mềm sẽ cho phép người dùng chọn xem thuật toán nào, hoặc chia đôi màn hình để xem hai thuật toán "chạy đua" tìm đường cùng một lúc.
+    \item \textbf{Cải thiện giao diện người dùng (UI):} Thiết kế thêm các nút bấm (Button) trên màn hình để Play, Pause hoặc Tua nhanh thuật toán, thay vì phải ghi nhớ và bấm các phím tắt trên bàn phím như hiện tại.
 \end{itemize}
 
 % ==================== TÀI LIỆU THAM KHẢO ====================

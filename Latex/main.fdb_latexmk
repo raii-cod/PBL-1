@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1779823418.29353 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1779823424.02898 0
+["pdflatex"] 1779894498.9525 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1779894501.82931 0
   "C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1779817243 88371 b965f57369ed322039596060d18f4416 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1779065606 14064 318fd82ca32a8752618f02c160d0e2f9 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1779065523 13332035 cb4ac74bf02d92c1e07bd8e20bf2fc70 ""
@@ -215,13 +215,16 @@
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/vntex/t5enc.dfu" 1368738347 13949 387dd4fa58aea5f873839c93430fffed ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "Picture/hinh1_giao_dien_console.png" 1779068007 36904 9f9f27af796d617c521227072ee88083 ""
+  "Picture/hinh2_do_thi_quy_dao.png" 1779680494 8122 e32d47166a680652a75c2158af51ce4b ""
+  "Picture/hinh3_nhat_ky_thuat_toan.png" 1779679529 18418 a8e5740ee04818112e6a6364ce767144 ""
+  "Picture/hinh4_ket_qua_lo_trinh.png" 1779679550 22203 9c669a8ffbabe65527ef1ec337170485 ""
   "Picture/itf.jpg" 1778985734 50575 28df0be127ff810070dd6ad57ddd65e6 ""
-  "d:/PBL-1/Latex/main.tex" 1779823415 47019 219f55d8e46b2cd5fe06f398b9e3ba21 ""
-  "main.aux" 1779823422 8530 d9878520d19c5f018e0a6eba4581cdf1 "pdflatex"
-  "main.lof" 1779823422 810 967172892a244f82a45df0b7efcab316 "pdflatex"
-  "main.out" 1779823422 6552 d8aed72bbfa43294611b331d1c940358 "pdflatex"
-  "main.tex" 1779823415 47019 219f55d8e46b2cd5fe06f398b9e3ba21 ""
-  "main.toc" 1779823422 4057 866141f347e0138da3faddec5889c9e5 "pdflatex"
+  "d:/PBL-1/Latex/main.tex" 1779894498 50944 aed4ada13916f55ef4460723549a8825 ""
+  "main.aux" 1779894501 8480 6ea16947e677e603a8b61d61ecd19441 "pdflatex"
+  "main.lof" 1779894501 810 5ad4cc55e50cee0af088cd820cd255bc "pdflatex"
+  "main.out" 1779894501 7256 c98ea1bdd781ae92be35bc6b8f756e97 "pdflatex"
+  "main.tex" 1779894498 50944 aed4ada13916f55ef4460723549a8825 ""
+  "main.toc" 1779894501 4048 ce5bb873f0f6c23a0544176b024e479b "pdflatex"
   (generated)
   "main.aux"
   "main.lof"
