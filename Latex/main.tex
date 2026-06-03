@@ -263,7 +263,7 @@ Mục tiêu trung tâm của đồ án là phân tích chuyên sâu, thiết k�
 \section{Các khái niệm nền tảng}
 
 \subsection{Tổng quan về lý thuyết đồ thị (Graph Theory)}
-Trước khi tìm hiểu về thuật toán, để hiệu quả điều đầu tiên là nắm vững kiến thức về lý thuyết đồ thị.
+Trước khi tìm hiểu về thuật toán, điều đầu tiên là cần nắm vững các kiến thức cơ sở về lý thuyết đồ thị.
 \subsubsection{Định nghĩa và phân loại}
 Một đồ thị là một cặp các tập $(V, E)$, trong đó $V$ là tập các đỉnh và $E$ là tập các cạnh, được biểu diễn bởi cặp đỉnh. Tính chất của các mối liên kết (cạnh) giữa các đối tượng (đỉnh) trong bài toán mà đồ thị được phân loại thành: 
 \begin{itemize}
@@ -278,8 +278,8 @@ của các liên kết giữa các cặp nút.
     \item $E \subseteq V \times V$ là tập hợp các cung (cạnh có hướng). Mỗi cung là một cặp có thứ tự $(u, v)$ thể hiện liên kết một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$.
     \item Hàm trọng số $W: E \to \mathbb{R}^+$ gán cho mỗi cung $(u, v)$ một giá trị $W(u, v)$ đại diện cho khoảng cách hoặc chi phí.
 \end{itemize}
-Đồ thị được mã hóa thành "Ma trận kề"  $A_{n \times n}$. Nếu có cung nối từ $i$ đến $j$, phần tử $A[i][j] = W(i, j)$, ngược lại $A[i][j] = 0$.
-\subsection{Nguyên lí nới lỏng cạnh (Relaxation)}
+Đồ thị được mã hóa thành "Ma trận kề"  $A_{n \times n}$ trong tập tin văn bản đầu vào. Nếu có cung nối từ $i$ đến $j$, phần tử $A[i][j] = W(i, j)$, ngược lại (không có cung) $A[i][j] = 0$. Khi nạp vào chương trình, giá trị 0 sẽ được chuyển thành $-1$ để biểu diễn trạng thái không có cạnh nối.
+\subsection{Nguyên lý nới lỏng cạnh (Relaxation)}
 Kỹ thuật nới lỏng cạnh (Edge Relaxation) là một thao tác cơ sở và cốt lõi trong việc thiết kế và triển khai các thuật toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số. Về mặt bản chất, quá trình này liên tục đánh giá và cập nhật lại chi phí (khoảng cách ước lượng) từ đỉnh nguồn đến các đỉnh lân cận cho đến khi hệ thống đạt được trạng thái tối ưu toàn cục.
 
 \subsubsection{Ý nghĩa hoạt động}
@@ -334,7 +334,7 @@ Kỹ thuật nới lỏng là tư tưởng chủ đạo để xây dựng nên c
 \hline
 \textbf{STT} & \textbf{Tên thư viện} & \textbf{Vai trò và chức năng trong chương trình} \\ \hline
 1 & \texttt{<stdio.h>} & Hỗ trợ luồng nhập xuất chuẩn, phục vụ đọc ma trận kề và các tham số cấu hình từ tệp tin văn bản (\texttt{.dat}). \\ \hline
-2 & \texttt{<stdlib.h>} & Cung cấp các hàm tiện ích hệ thống bao gồm lệnh xóa màn hình Console và quản lý thực thi kiểm soát bộ nhớ. \\ \hline
+2 & \texttt{<stdlib.h>} & Cung cấp các hàm tiện ích hệ thống, trong chương trình này được sử dụng chủ yếu để gọi lệnh xóa màn hình Console (\texttt{system("cls")}). \\ \hline
 3 & \texttt{<string.h>} & Xử lý và định dạng các chuỗi văn bản, sao chép nhật ký toán học phục vụ bảng hiển thị Log thời gian thực. \\ \hline
 4 & \texttt{<math.h>} & Cung cấp các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để tính tọa độ đỉnh vòng tròn và xác định góc quay của mũi tên hướng cạnh. \\ \hline
 5 & \texttt{<time.h>} & Quản lý bộ đếm nhịp xung vật lý, làm cơ sở xây dựng hàm tạo độ trễ (\texttt{delay}) làm chậm tiến trình loang của thuật toán. \\ \hline
@@ -347,7 +347,7 @@ Hệ thống đóng gói toàn bộ trạng thái lý thuyết vào một \textt
 
 Dưới đây là mã nguồn cài đặt cấu trúc dữ liệu cốt lõi của chương trình:
 
-\begin{lstlisting}[style=UserCstyle,caption={Định nghĩa cấu trúc đồ thị tĩnh và máy trạng thái}, label={lst:datastruct}]
+\begin{lstlisting}[style=UserCStyle,caption={Định nghĩa cấu trúc đồ thị tĩnh và máy trạng thái}, label={lst:datastruct}]
 #define N 105
 #define INF 1000000000
 
@@ -394,7 +394,7 @@ struct Graph {
 \subsection{Giới thiệu}
 Thuật toán Dijkstra, được đề xuất bởi nhà khoa học máy tính Edsger W. Dijkstra vào năm 1956, là một trong những giải thuật kinh điển và nền tảng nhất để giải quyết bài toán đường đi ngắn nhất nguồn đơn (single-source shortest path) trên đồ thị. Thuật toán này có thể áp dụng trên cả đồ thị có hướng và vô hướng, với điều kiện tiên quyết bắt buộc là trọng số của tất cả các cạnh trong hệ thống phải là các giá trị không âm ($w(u,v) \ge 0$). Trong khuôn khổ của đồ án này, Dijkstra được chọn làm nhân xử lý cốt lõi và được thiết kế lại dưới dạng Máy trạng thái (State Machine) nhằm đồng bộ hóa với hệ thống mô phỏng đồ họa Raylib.
 
-\subsection{Nguyên lí}
+\subsection{Nguyên lý}
 Thuật toán Dijkstra hoạt động dựa trên chiến lược Tham lam (Greedy Algorithm) kết hợp chặt chẽ với nguyên lý Nới lỏng cạnh (Edge Relaxation). Tại mỗi bước tiến hành, thuật toán luôn tin tưởng và chọn ra đỉnh có khoảng cách ước lượng từ nguồn đến nó là nhỏ nhất trong tập hợp các đỉnh chưa được xét. Khi một đỉnh được lựa chọn, thuật toán coi khoảng cách đến đỉnh đó đã đạt trạng thái tối ưu tuyệt đối, sau đó sử dụng đỉnh này làm tâm loang để thực hiện "nới lỏng" (đánh giá và cập nhật lại khoảng cách ngắn hơn) cho tất cả các đỉnh lân cận kề với nó.
 
 \subsection{Các bước thực hiện}
