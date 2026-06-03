@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  27 MAY 2026 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  4 JUN 2026 02:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1156,8 +1156,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.500         \item[$\rightarrow$]
-                                   \textit{Hướng cải tiến:} Ở các ... <./Picture/hinh4_ket_qua_lo_trinh.png>]
+l.501 \chapter
+              {KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN} <./Picture/hinh4_ket_qua_lo_trinh.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1210,18 +1210,18 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C98EA1BDD781AE92BE35BC6B8F756E97;7256.
+(rerunfilecheck)             Checksum: 502448D30EB73803D04D104E1789E4B0;7256.
  ) 
 Here is how much of TeX's memory you used:
- 30307 strings out of 467871
- 602207 string characters out of 5419828
- 1485144 words of memory out of 5000000
- 58543 multiletter control sequences out of 15000+600000
+ 30308 strings out of 467871
+ 602225 string characters out of 5419828
+ 1485143 words of memory out of 5000000
+ 58544 multiletter control sequences out of 15000+600000
  645981 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,13n,116p,1001b,2063s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbxti10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnitt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr6.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnti12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on main.pdf (28 pages, 479666 bytes).
+Output written on main.pdf (28 pages, 479658 bytes).
 PDF statistics:
  585 PDF objects out of 1000 (max. 8388607)
  150 named destinations out of 1000 (max. 500000)

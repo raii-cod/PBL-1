@@ -492,15 +492,11 @@ Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành 
 \textbf{Nhược điểm:} 
 \begin{itemize}
     \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi.
-    \begin{itemize}
-        \item[$\rightarrow$] \textit{Hướng cải tiến:} Bổ sung thêm các đoạn code kiểm tra điều kiện đầu vào (bắt lỗi file rỗng, lỗi nhập chữ thay vì số) để hiện thông báo nhắc nhở người dùng thay vì thoát phần mềm đột ngột.
-    \end{itemize}
     \item \textbf{Thuật toán có thể bị chậm nếu đồ thị quá lớn:} Vì kiến thức còn hạn chế, tụi em đang dùng vòng lặp \texttt{for} bình thường để quét tìm đỉnh nhỏ nhất, làm cho độ phức tạp của thuật toán là $O(V^2)$.
-    \begin{itemize}
-        \item[$\rightarrow$] \textit{Hướng cải tiến:} Ở các môn học sau, khi làm quen với cấu trúc dữ liệu nâng cao hơn, tụi em sẽ thay thế vòng lặp này bằng Hàng đợi ưu tiên (Min-Heap) để giảm độ phức tạp xuống $O(E \log V)$, giúp phần mềm chạy mượt mà kể cả khi bản đồ có hàng ngàn đỉnh.
-    \end{itemize}
 \end{itemize}
 \textbf{Hướng cải tiến:}
+Bổ sung thêm các đoạn code kiểm tra điều kiện đầu vào (bắt lỗi file rỗng, lỗi nhập chữ thay vì số) để hiện thông báo nhắc nhở người dùng thay vì thoát phần mềm đột ngột. 
+Ở các môn học sau, khi làm quen với cấu trúc dữ liệu nâng cao hơn, tụi em sẽ thay thế vòng lặp này bằng Hàng đợi ưu tiên (Min-Heap) để giảm độ phức tạp xuống $O(E \log V)$, giúp phần mềm chạy mượt mà kể cả khi bản đồ có hàng ngàn đỉnh.
 % ==================== CHƯƠNG 5 ====================
 \chapter{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}
 

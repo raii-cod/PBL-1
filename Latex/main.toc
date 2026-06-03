@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {2.2.1}Tổng quan về lý thuyết đồ thị (Graph Theory)}{8}{subsection.2.2.1}%
 \contentsline {subsubsection}{Định nghĩa và phân loại}{8}{subsubsection*.4}%
 \contentsline {subsection}{\numberline {2.2.2}Lý thuyết đồ thị có hướng (Directed Graph)}{8}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Nguyên lí nới lỏng cạnh (Relaxation)}{9}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.3}Nguyên lý nới lỏng cạnh (Relaxation)}{9}{subsection.2.2.3}%
 \contentsline {subsubsection}{Ý nghĩa hoạt động}{9}{subsubsection*.5}%
 \contentsline {subsubsection}{Cơ sở toán học và Cấu trúc logic}{9}{subsubsection*.6}%
 \contentsline {subsubsection}{Ứng dụng trong các thuật toán nền tảng}{10}{subsubsection*.7}%
@@ -27,7 +27,7 @@
 \contentsline {subsubsection}{Cấu trúc dữ liệu tự xây dựng}{11}{subsubsection*.9}%
 \contentsline {section}{\numberline {3.3}Thuật toán}{13}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Giới thiệu}{13}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Nguyên lí}{13}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Nguyên lý}{13}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Các bước thực hiện}{13}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Phân tích độ phức tạp thời gian}{14}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}Phân tích bộ nhớ}{14}{subsection.3.3.5}%
