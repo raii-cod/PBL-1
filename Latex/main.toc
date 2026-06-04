@@ -23,14 +23,12 @@
 \contentsline {subsection}{\numberline {2.3.1}Giới thiệu}{10}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Nguyên lý}{10}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Các bước thực hiện}{10}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Phân tích độ phức tạp thời gian}{11}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Phân tích bộ nhớ}{11}{subsection.2.3.5}%
-\contentsline {section}{\numberline {2.4}Lý thuyết đồ họa và tính toán tọa độ vector}{12}{section.2.4}%
-\contentsline {chapter}{\numberline {3}Tổ chức cấu trúc dữ liệu và thuật toán}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Phát biểu bài toán}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Cấu trúc dữ liệu}{13}{section.3.2}%
-\contentsline {subsubsection}{Cấu trúc dữ liệu}{13}{subsubsection*.10}%
-\contentsline {section}{\numberline {3.3}Thuật toán}{14}{section.3.3}%
+\contentsline {section}{\numberline {2.4}Lý thuyết đồ họa và tính toán tọa độ vector}{11}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Tổ chức cấu trúc dữ liệu và thuật toán}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Phát biểu bài toán}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Cấu trúc dữ liệu}{12}{section.3.2}%
+\contentsline {subsubsection}{Cấu trúc dữ liệu}{12}{subsubsection*.10}%
+\contentsline {section}{\numberline {3.3}Thuật toán}{13}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Chương trình và kết quả}{16}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Tổ chức chương trình}{16}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Ngôn ngữ và thư viện cài đặt}{17}{section.4.2}%

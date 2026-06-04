@@ -29,18 +29,18 @@
 % --- CẤU HÌNH ĐẦU TRANG VÀ CHÂN TRANG ---
 \pagestyle{fancy}
 \fancyhf{} 
-\fancyhead[L]{\small TRƯỜNG ĐẠI HỌC BÁCH KHOA} 
+\fancyhead[L]{\small KHOA CNTT - ĐHBK} 
 \fancyhead[R]{\small ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN}
-\fancyfoot[L]{\textit{Trần Văn Trường Vũ -- Trần Ngọc Bảo Quyên}} 
+\fancyfoot[L]{\textit{Trần Văn Trường Vũ -- Trần Ngọc Bảo Quyên - 25Nh.11A}} 
 \fancyfoot[R]{\textbf{\thepage}} 
 \renewcommand{\headrulewidth}{0.6pt} 
 \renewcommand{\footrulewidth}{0.6pt} 
 
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyhead[L]{\small TRƯỜNG ĐẠI HỌC BÁCH KHOA} 
+    \fancyhead[L]{\small KHOA CNTT - ĐHBK} 
     \fancyhead[R]{\small ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN}
-    \fancyfoot[L]{\textit{Trần Văn Trường Vũ -- Trần Ngọc Bảo Quyên}}
+    \fancyfoot[L]{\textit{Trần Văn Trường Vũ -- Trần Ngọc Bảo Quyên - 25Nh.11A}}
     \fancyfoot[R]{\textbf{\thepage}}
     \renewcommand{\headrulewidth}{0.6pt}
     \renewcommand{\footrulewidth}{0.6pt}
@@ -329,20 +329,7 @@ Quy trình thực thi của thuật toán được chia thành các bước cơ 
     \item \textbf{Lặp lại:} Quay trở lại Bước 2 để tiếp tục chọn đỉnh nhỏ nhất tiếp theo cho đến khi toàn bộ đồ thị được tối ưu hoặc tìm được đích đến.
 \end{enumerate}
 
-\subsection{Phân tích độ phức tạp thời gian}
-Trong phạm vi thực nghiệm của đồ án, thuật toán được cài đặt trực tiếp trên các cấu trúc mảng một chiều và dùng thao tác tìm kiếm tuyến tính:
-\begin{itemize}
-    \item \textbf{Thao tác tìm đỉnh Min:} Yêu cầu duyệt qua mảng chứa $V$ đỉnh (với $V$ là số đỉnh của đồ thị), tiêu tốn $O(V)$ thời gian cho mỗi bước. Quá trình này lặp lại $V$ lần, do đó tổng thời gian là $O(V^2)$.
-    \item \textbf{Thao tác nới lỏng:} Cần duyệt qua ma trận kề $A[N][N]$ để tìm các đỉnh kề. Trong trường hợp xấu nhất, tổng số vòng lặp xét cạnh cho toàn bộ thuật toán tương đương số lượng cạnh tối đa trong đồ thị đầy đủ là $O(V^2)$.
-\end{itemize}
-\textbf{Kết luận:} Độ phức tạp thời gian tổng thể của cách cài đặt này là $\mathbf{O(V^2)}$.
 
-\subsection{Phân tích bộ nhớ}
-\begin{itemize}
-    \item \textbf{Lưu trữ liên kết:} Ma trận kề \texttt{A[N][N]} dùng để lưu trữ trọng số đồ thị chiếm không gian lớn nhất, tương đương $\mathbf{O(V^2)}$.
-    \item \textbf{Lưu trữ trạng thái:} Hệ thống sử dụng các mảng một chiều độc lập bao gồm \texttt{L[N]}, \texttt{T[N]}, \texttt{par[N]}. Các mảng này chỉ tiêu tốn $\mathbf{O(V)}$ vùng nhớ.
-\end{itemize}
-\textbf{Kết luận:} Độ phức tạp không gian (bộ nhớ) của hệ thống thuật toán này là $\mathbf{O(V^2)}$.
 
 \section{Lý thuyết đồ họa và tính toán tọa độ vector}
 Để hiện thực hóa ứng dụng mô phỏng, hệ thống yêu cầu sự can thiệp của hình học tính toán. 
@@ -367,7 +354,7 @@ Hệ thống đóng gói toàn bộ trạng thái lý thuyết vào một \textt
 
 Dưới đây là mã nguồn cài đặt cấu trúc dữ liệu cốt lõi của chương trình:
 
-\begin{lstlisting}[style=UserCStyle,caption={Định nghĩa cấu trúc đồ thị tĩnh và máy trạng thái}, label={lst:datastruct}]
+\begin{lstlisting}[style=UserCStyle,title={Định nghĩa cấu trúc đồ thị tĩnh và máy trạng thái}, label={lst:datastruct}]
 #define N 105
 #define INF 1000000000
 
@@ -432,6 +419,23 @@ Quy trình thực thi thực tế trong file \texttt{src/main.cpp} diễn ra nh�
     \item \textbf{Trạng thái kết thúc (\texttt{STATE\_FINISHED}):}
     Hệ thống dừng quét, tiến hành truy xuất ngược mảng \texttt{g.par} từ đỉnh đích về nguồn để nối lại lộ trình, đánh dấu mảng \texttt{onPath} thành \texttt{true} để hiển thị màu đỏ trên giao diện đồ họa.
 \end{itemize}
+
+\subsection*{Đánh giá độ phức tạp thuật toán}
+Dựa trên cách cài đặt bằng mảng tĩnh và máy trạng thái đã trình bày ở trên, độ phức tạp của chương trình được phân tích cụ thể như sau:
+
+\textbf{1. Độ phức tạp thời gian:}
+\begin{itemize}
+    \item \textbf{Thao tác tìm đỉnh Min (\texttt{STATE\_FIND\_MIN}):} Quá trình tìm kiếm tuyến tính yêu cầu duyệt qua mảng \texttt{g.T} chứa $V$ đỉnh, tiêu tốn $O(V)$ thời gian cho mỗi bước. Quá trình này lặp lại tối đa $V$ lần, do đó tổng thời gian là $O(V^2)$.
+    \item \textbf{Thao tác nới lỏng (\texttt{STATE\_RELAX\_EDGES}):} Chương trình cần duyệt qua một hàng của ma trận kề \texttt{A[N][N]} để tìm đỉnh kề. Trong trường hợp xấu nhất, tổng số thao tác xét cạnh cho toàn bộ thuật toán tương đương với $O(V^2)$.
+\end{itemize}
+$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp thời gian tổng thể của hệ thống là $\mathbf{O(V^2)}$. Dù chưa đạt mức tối ưu nhất như khi dùng cấu trúc Hàng đợi ưu tiên (Min-Heap) với $O(E \log V)$, nhưng với giới hạn $N=105$, tốc độ xử lý vẫn đảm bảo đáp ứng cực kỳ mượt mà cho việc hiển thị đồ họa 60-FPS.
+
+\textbf{2. Độ phức tạp không gian (Bộ nhớ):}
+\begin{itemize}
+    \item \textbf{Lưu trữ đồ thị:} Cấu trúc ma trận kề \texttt{A[N][N]} chiếm phần lớn không gian bộ nhớ, tương đương $\mathbf{O(V^2)}$.
+    \item \textbf{Lưu trữ trạng thái và tọa độ:} Hệ thống sử dụng các mảng một chiều \texttt{L[N]}, \texttt{T[N]}, \texttt{par[N]} và mảng tọa độ \texttt{toado[N]}. Tất cả chỉ tiêu tốn $\mathbf{O(V)}$ vùng nhớ.
+\end{itemize}
+$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật toán là $\mathbf{O(V^2)}$, hoàn toàn phù hợp và an toàn trong giới hạn bộ nhớ của môi trường C/C++.
 
 % ==================== CHƯƠNG 4 ====================
 \chapter{Chương trình và kết quả}
