@@ -316,6 +316,8 @@ INPUT .\Picture\itf.jpg
 INPUT .\Picture\itf.jpg
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr17.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnbx12.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr17.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnbx12.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
@@ -352,6 +354,11 @@ INPUT main.lof
 OUTPUT main.lof
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1200.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnbxti10.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr8.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr6.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
+INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex\latex\vntex\t5cmtt.fd
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex\latex\vntex\t5cmtt.fd
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex\latex\vntex\t5cmtt.fd
@@ -367,12 +374,7 @@ INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr10.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vntt10.tfm
-INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr6.tfm
 INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnitt10.tfm
-INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\vntex\vnr\vnr8.tfm
-INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
-INPUT C:\Users\Hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
 INPUT .\Picture\hinh1_giao_dien_console.png
 INPUT .\Picture\hinh1_giao_dien_console.png
 INPUT .\Picture\hinh1_giao_dien_console.png

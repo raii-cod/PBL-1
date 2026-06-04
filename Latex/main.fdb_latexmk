@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1780514245.02813 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1780514247.81365 0
+["pdflatex"] 1780547809.62744 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1780547811.9902 0
   "C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1779817243 88371 b965f57369ed322039596060d18f4416 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1779065606 14064 318fd82ca32a8752618f02c160d0e2f9 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1779065523 13332035 cb4ac74bf02d92c1e07bd8e20bf2fc70 ""
@@ -219,12 +219,12 @@
   "Picture/hinh3_nhat_ky_thuat_toan.png" 1779679529 18418 a8e5740ee04818112e6a6364ce767144 ""
   "Picture/hinh4_ket_qua_lo_trinh.png" 1779679550 22203 9c669a8ffbabe65527ef1ec337170485 ""
   "Picture/itf.jpg" 1778985734 50575 28df0be127ff810070dd6ad57ddd65e6 ""
-  "d:/PBL-1/Latex/main.tex" 1780514244 50982 4ea5a15938d83931f12ed0bfca62e7f6 ""
-  "main.aux" 1780514247 8480 41f774a7b07b8e3eb9754ff0efe63786 "pdflatex"
-  "main.lof" 1780514247 810 5ad4cc55e50cee0af088cd820cd255bc "pdflatex"
-  "main.out" 1780514247 7256 502448d30eb73803d04d104e1789e4b0 "pdflatex"
-  "main.tex" 1780514244 50982 4ea5a15938d83931f12ed0bfca62e7f6 ""
-  "main.toc" 1780514247 4048 ee7c027ce2b5263291783ff18f5e6a51 "pdflatex"
+  "d:/PBL-1/Latex/main.tex" 1780547806 54508 e28f583f0b207c5895b777182d66d0d2 ""
+  "main.aux" 1780547811 8497 bfa17a57122ea1caeee1c0ed481b7a0e "pdflatex"
+  "main.lof" 1780547811 810 effa597d69c65e43ede4559489b1669f "pdflatex"
+  "main.out" 1780547811 7489 abde6ee044e8936d958b7ea8008a6326 "pdflatex"
+  "main.tex" 1780547806 54508 e28f583f0b207c5895b777182d66d0d2 ""
+  "main.toc" 1780547811 4009 c6233855721940c23cbd74fb783e6a30 "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

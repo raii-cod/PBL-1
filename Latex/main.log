@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  4 JUN 2026 02:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  4 JUN 2026 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -846,14 +846,14 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(85.35826pt, 455.24411pt, 56.9055pt)
+* h-part:(L,W,R)=(99.58464pt, 441.01773pt, 56.9055pt)
 * v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=455.24411pt
+* \textwidth=441.01773pt
 * \textheight=702.78308pt
-* \oddsidemargin=13.08827pt
-* \evensidemargin=13.08827pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=27.31465pt
 * \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -878,16 +878,16 @@ Package hyperref Info: Link coloring OFF on input line 82.
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-<Picture/itf.jpg, id=193, 963.6pt x 963.6pt>
+<Picture/itf.jpg, id=197, 963.6pt x 963.6pt>
 File: Picture/itf.jpg Graphic file (type jpg)
 <use Picture/itf.jpg>
-Package pdftex.def Info: Picture/itf.jpg  used on input line 107.
-(pdftex.def)             Requested size: 113.81102pt x 113.80379pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 119.
+Package pdftex.def Info: Picture/itf.jpg  used on input line 106.
+(pdftex.def)             Requested size: 44.10446pt x 44.09529pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 118.
  (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 119.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 118.
  (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
@@ -940,8 +940,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.159 \chapter
-              {TỔNG QUAN ĐỀ TÀI} [1
+l.165 \chapter
+              {Tổng quan đề tài} [1
 
 ]
 Ch\uhorn \ohorn ng 1.
@@ -1022,9 +1022,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [10]
-Ch\uhorn \ohorn ng 3.
-LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 336.
-(C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 342.
+ (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 
@@ -1034,21 +1033,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[11
-
-] (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2025/11/14 1.11b listings language file
-) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2025/11/14 1.11b listings language file
-) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
-File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 350.
-LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 351.
-LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 376.
-
+[11]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1057,6 +1042,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [12]
+Ch\uhorn \ohorn ng 3.
+(C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 370.
+LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 371.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1064,7 +1061,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[13]
+[13
+
+]
+LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 396.
+
+Overfull \hbox (10.71722pt too wide) in paragraph at lines 416--418
+\T5/cmtt/m/n/12 INF\T5/cmr/m/n/12 , ri�ng ^^_�nh ngu�n \T5/cmtt/m/n/12 g.L[u_start] = 0\T5/cmr/m/n/12 . Tr�ng th�i ^^_��c ^^_�t v� \T5/cmtt/m/n/12 STATE_FIND_MIN\T5/cmr/m/n/12 . 
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1082,11 +1088,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [15]
 Ch\uhorn \ohorn ng 4.
-<Picture/hinh1_giao_dien_console.png, id=384, 584.68437pt x 374.90062pt>
-File: Picture/hinh1_giao_dien_console.png Graphic file (type png)
-<use Picture/hinh1_giao_dien_console.png>
-Package pdftex.def Info: Picture/hinh1_giao_dien_console.png  used on input line 447.
-(pdftex.def)             Requested size: 364.19667pt x 233.5286pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1097,11 +1098,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [16
 
 ]
-<Picture/hinh2_do_thi_quy_dao.png, id=390, 448.67625pt x 452.18938pt>
-File: Picture/hinh2_do_thi_quy_dao.png Graphic file (type png)
-<use Picture/hinh2_do_thi_quy_dao.png>
-Package pdftex.def Info: Picture/hinh2_do_thi_quy_dao.png  used on input line 457.
-(pdftex.def)             Requested size: 318.66948pt x 321.174pt.
+<Picture/hinh1_giao_dien_console.png, id=394, 584.68437pt x 374.90062pt>
+File: Picture/hinh1_giao_dien_console.png Graphic file (type png)
+<use Picture/hinh1_giao_dien_console.png>
+Package pdftex.def Info: Picture/hinh1_giao_dien_console.png  used on input line 479.
+(pdftex.def)             Requested size: 352.81552pt x 226.23494pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1111,26 +1112,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [17
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.465 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.465 
-       <./Picture/hinh1_giao_dien_console.png> <./Picture/hinh2_do_thi_quy_dao.png>]
-<Picture/hinh3_nhat_ky_thuat_toan.png, id=397, 699.11188pt x 450.68375pt>
-File: Picture/hinh3_nhat_ky_thuat_toan.png Graphic file (type png)
-<use Picture/hinh3_nhat_ky_thuat_toan.png>
-Package pdftex.def Info: Picture/hinh3_nhat_ky_thuat_toan.png  used on input line 468.
-(pdftex.def)             Requested size: 409.71692pt x 264.12686pt.
-<Picture/hinh4_ket_qua_lo_trinh.png, id=398, 700.6175pt x 451.6875pt>
-File: Picture/hinh4_ket_qua_lo_trinh.png Graphic file (type png)
-<use Picture/hinh4_ket_qua_lo_trinh.png>
-Package pdftex.def Info: Picture/hinh4_ket_qua_lo_trinh.png  used on input line 478.
-(pdftex.def)             Requested size: 409.71692pt x 264.14996pt.
+l.484 
+      ]
+<Picture/hinh2_do_thi_quy_dao.png, id=401, 448.67625pt x 452.18938pt>
+File: Picture/hinh2_do_thi_quy_dao.png Graphic file (type png)
+<use Picture/hinh2_do_thi_quy_dao.png>
+Package pdftex.def Info: Picture/hinh2_do_thi_quy_dao.png  used on input line 489.
+(pdftex.def)             Requested size: 308.71106pt x 311.13472pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1140,11 +1131,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [18
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.483 
-       <./Picture/hinh3_nhat_ky_thuat_toan.png>]
+l.497 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.497 
+       <./Picture/hinh1_giao_dien_console.png> <./Picture/hinh2_do_thi_quy_dao.png>]
+<Picture/hinh3_nhat_ky_thuat_toan.png, id=408, 699.11188pt x 450.68375pt>
+File: Picture/hinh3_nhat_ky_thuat_toan.png Graphic file (type png)
+<use Picture/hinh3_nhat_ky_thuat_toan.png>
+Package pdftex.def Info: Picture/hinh3_nhat_ky_thuat_toan.png  used on input line 500.
+(pdftex.def)             Requested size: 396.91325pt x 255.87462pt.
+<Picture/hinh4_ket_qua_lo_trinh.png, id=409, 700.6175pt x 451.6875pt>
+File: Picture/hinh4_ket_qua_lo_trinh.png Graphic file (type png)
+<use Picture/hinh4_ket_qua_lo_trinh.png>
+Package pdftex.def Info: Picture/hinh4_ket_qua_lo_trinh.png  used on input line 510.
+(pdftex.def)             Requested size: 396.91325pt x 255.89313pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1153,11 +1160,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [19
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.515 
+       <./Picture/hinh3_nhat_ky_thuat_toan.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 16.50983pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.50983pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
+
+[20
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.501 \chapter
-              {KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN} <./Picture/hinh4_ket_qua_lo_trinh.png>]
+l.533 \chapter
+              {Kết luận và hướng phát triển} <./Picture/hinh4_ket_qua_lo_trinh.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1165,18 +1185,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[20]
+[21]
 Ch\uhorn \ohorn ng 5.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.50983pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.50983pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
-
-[21
-
-]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1204,26 +1214,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[24] (main.aux)
+[24
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 16.50983pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.50983pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
+
+[25] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 502448D30EB73803D04D104E1789E4B0;7256.
+(rerunfilecheck)             Checksum: ABDE6EE044E8936D958B7EA8008A6326;7489.
  ) 
 Here is how much of TeX's memory you used:
- 30308 strings out of 467871
- 602225 string characters out of 5419828
- 1485143 words of memory out of 5000000
- 58544 multiletter control sequences out of 15000+600000
- 645981 words of font info for 77 fonts, out of 8000000 for 9000
+ 30320 strings out of 467871
+ 602353 string characters out of 5419828
+ 1478910 words of memory out of 5000000
+ 58552 multiletter control sequences out of 15000+600000
+ 647936 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,13n,116p,1001b,2063s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,109p,1001b,2063s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbxti10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnitt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr6.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnti12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on main.pdf (28 pages, 479658 bytes).
+Output written on main.pdf (29 pages, 481401 bytes).
 PDF statistics:
- 585 PDF objects out of 1000 (max. 8388607)
- 150 named destinations out of 1000 (max. 500000)
- 486 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 597 PDF objects out of 1000 (max. 8388607)
+ 154 named destinations out of 1000 (max. 500000)
+ 494 words of extra memory for PDF output out of 10000 (max. 10000000)
 
