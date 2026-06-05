@@ -441,6 +441,17 @@ $\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật
 \chapter{Chương trình và kết quả}
 
 \section{Tổ chức chương trình}
+\subsection{Cấu trúc thư mục dự án}
+Để đảm bảo tính khoa học và dễ bảo trì, dự án được tổ chức thành các thư mục riêng biệt với từng vai trò cụ thể như sau:
+\begin{itemize}
+    \item \textbf{\texttt{src/}:} Chứa mã nguồn C/C++ cốt lõi của chương trình (file \texttt{main.cpp}).
+    \item \textbf{\texttt{DATA/}:} Thư mục lưu trữ các tệp văn bản đầu vào (ví dụ: \texttt{input.dat}) chứa kích thước đỉnh, ma trận kề của đồ thị và đỉnh bắt đầu/kết thúc.
+    \item \textbf{\texttt{lib/} và \texttt{obj/}:} Thư mục hệ thống chứa các thư viện đồ họa Raylib và các file đối tượng sinh ra trong quá trình biên dịch.
+    \item \textbf{\texttt{Latex/} và \texttt{Picture/}:} Chứa toàn bộ mã nguồn báo cáo đồ án được viết bằng LaTeX và các tệp hình ảnh minh họa đi kèm.
+    \item \textbf{\texttt{Makefile}:} Tập lệnh được cấu hình sẵn để tự động hóa quá trình biên dịch toàn bộ dự án từ mã nguồn thành file thực thi (\texttt{main.exe}).
+\end{itemize}
+
+\subsection{Chi tiết các hàm xử lý trong mã nguồn}
 Chương trình được phân rã chức năng mạch lạc thành các module tuyến tính trong tệp tin duy nhất \texttt{src/main.cpp}. Cấu trúc này giúp dễ dàng kiểm soát vòng đời của chương trình từ lúc đọc file đến lúc vẽ hình. Dưới đây là chi tiết các hàm đã được cài đặt:
 
 \begin{itemize}
