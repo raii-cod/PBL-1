@@ -29,6 +29,15 @@ struct Graph {
     int par[N];  
 };
 
+struct Node {
+    int id;
+    int dist;
+};
+struct piority_queue {
+    Node A[N];
+    int heap_size;
+};
+
 // --- CAC HAM TRO GIUP ---
 
 void MyDelay(float seconds) {
@@ -123,18 +132,64 @@ void drawArrow(Vector2 start, Vector2 end, float rDinh, Color mau, int trongSo, 
     }
 }
 
-// Ham tra ve 1: Chon file moi, tra ve 0: Thoat
+int parent(int i) {
+    return i/2;
+}
+int Left(int i) {
+    return i*2;
+}
+int Right(int i) {
+    return i*2+1;
+}
+void swap(Node *a,Node *b) {
+    Node tmp=*a;
+    *a=*b;
+    *b=tmp;
+}
+void min_heap(Node A[N],int i,int heap_size) {
+    int l=Left(i);
+    int r=Right(i);
+    int smallest=i;
+    if (l<=heap_size && A[l].dist<A[i].dist)
+        smallest=l;
+    if (r<=heap_size && A[r].dist<A[smallest].dist)
+        smallest=r;
+    if (smallest!=i) {
+        swap(&A[i],&A[smallest]);
+        min_heap(A,smallest,heap_size);
+    }
+}
+void insert_min_heap(Node A[N],int *heap_size,Node key) {
+    (*heap_size)++;
+    A[*heap_size]=key;
+    int i=*heap_size;
+    while (i>1 && A[parent(i)].dist > A[i].dist) {
+        swap(&A[i], &A[parent(i)]);
+        i=parent(i);
+    }
+}
+Node pop_min_heap(Node A[N],int *heap_size) {
+    Node min_e=A[1];
+    A[1]=A[*heap_size];
+    (*heap_size)--;
+    min_heap(A,1,*heap_size);    
+    return min_e;
+}  
 int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
     SetTraceLogLevel(LOG_NONE);
     char stepLogs[300][128];
     int logCount = 0;
 
     InitWindow(1500, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
-    
+    piority_queue q;
+    q.heap_size=0;
+    Node tmp;
+    tmp.id=u_start;
+    tmp.dist=0;
+    insert_min_heap(q.A,&q.heap_size,tmp);
     Vector2 center = { 430, 400 }; 
     float radius = 280.0f;
     
-    // Ham reset thong so thuat toan
     auto ResetAlgo = [&]() {
         for (int i = 1; i <= g.n; i++) {
             float angle = (i - 1) * 2 * PI / g.n;
@@ -154,18 +209,16 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
     bool isStarted = false;
 
     SetTargetFPS(60);
-    while (!WindowShouldClose()) {
-        
-        // --- XU LY MENU SAU KHI KET THUC ---
+    while (!WindowShouldClose()) {        
         if (state == STATE_FINISHED) {
-            if (IsKeyPressed(KEY_R)) { // Chay lai voi file hien tai
+            if (IsKeyPressed(KEY_R)) { 
                 ResetAlgo();
                 state = STATE_FIND_MIN;
                 memset(onPath, false, sizeof(onPath));
                 isStarted = false;
                 timer = 0;
             }
-            if (IsKeyPressed(KEY_N)) { // Chon file moi
+            if (IsKeyPressed(KEY_N)) { 
                 CloseWindow();
                 return 1; 
             }
@@ -181,9 +234,18 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
             if (timer >= speed && state != STATE_FINISHED) {
                 timer = 0;
                 if (state == STATE_FIND_MIN) {
-                    int min_d = INF; currentV = -1;
-                    for (int i = 1; i <= g.n; i++)
-                        if (g.T[i] && g.L[i] < min_d) { min_d = g.L[i]; currentV = i; }
+                    int min_d=INF; currentV = -1;
+                    while (q.heap_size>0) {
+                        Node top=pop_min_heap(q.A,&q.heap_size);
+                        if (g.T[top.id]) {
+                            min_d=top.dist;
+                            currentV=top.id;
+                            break;
+                        }
+                    }
+                    
+                    // for (int i = 1; i <= g.n; i++)
+                        // if (g.T[i] && g.L[i] < min_d) { min_d = g.L[i]; currentV = i; }
 
                     if (currentV == -1 || currentV == v_target) {
                         state = STATE_FINISHED;
@@ -211,6 +273,10 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
                             if (newD < g.L[neighborIdx]) {
                                 g.L[neighborIdx] = newD;
                                 g.par[neighborIdx] = currentV;
+                                Node P;
+                                P.id=neighborIdx;
+                                P.dist=g.L[neighborIdx];
+                                insert_min_heap(q.A,&q.heap_size,P);
                                 AddLog(TextFormat("  + Toi uu L[%d] = %d", neighborIdx, newD), stepLogs, &logCount);
                             } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, neighborIdx), stepLogs, &logCount);
                             neighborIdx++; found = true; break;
