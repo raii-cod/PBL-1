@@ -38,8 +38,16 @@ Thư viện đồ họa: **Raylib**
 
 **Cách biên dịch và chạy chương trình:**
 
-Mở Terminal/Command Prompt tại thư mục dự án và chạy lệnh sau:
+Mở Terminal/Command Prompt tại thư mục dự án và chạy lệnh sau để biên dịch:
 
 ```bash
-mingw32-make
+mingw32-make 
+# Hoặc:
+# make
+```
+
+Sau khi biên dịch xong, khởi chạy chương trình bằng lệnh:
+
+```bash
+./game
 ```
