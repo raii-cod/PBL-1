@@ -354,7 +354,7 @@ Hệ thống đóng gói toàn bộ trạng thái lý thuyết vào một \textt
 
 Dưới đây là mã nguồn cài đặt cấu trúc dữ liệu cốt lõi của chương trình:
 
-\begin{lstlisting}[style=UserCStyle,title={Định nghĩa cấu trúc đồ thị tĩnh và máy trạng thái}, label={lst:datastruct}]
+\begin{lstlisting}[style=UserCStyle,title={Định nghĩa cấu trúc đồ thị, hàng đợi ưu tiên và máy trạng thái}, label={lst:datastruct}]
 #define N 105
 #define INF 1000000000
 
@@ -371,6 +371,16 @@ struct Graph {
     int L[N];            // Mang khoang cach ngan nhat (Nhan tam thoi)
     int T[N];            // Trang thai tap hop T (1: Chua co dinh, 0: Da co dinh)
     int par[N];          // Mang luu vet cha truy xuat lo trinh
+};
+
+struct Node {
+    int id;              // ID cua dinh
+    int dist;            // Khoang cach tai thoi diem them vao heap
+};
+
+struct piority_queue {
+    Node A[1000];        // Mang chua cac phan tu cua heap
+    int heap_size;       // Kich thuoc hien tai cua heap
 };
 \end{lstlisting}
 
@@ -394,6 +404,8 @@ struct Graph {
         \item \texttt{L[N]} và \texttt{T[N]}: Hai mảng cốt lõi của thuật toán. \texttt{L} lưu chi phí đường đi, \texttt{T} đánh dấu trạng thái đỉnh ($1$: chưa cố định, $0$: đã tối ưu hoàn toàn).
         \item \texttt{par[N]}: Mảng lưu vết đỉnh cha liền trước, hỗ trợ truy xuất ngược từ đỉnh đích về đỉnh nguồn sau khi thuật toán kết thúc.
     \end{itemize}
+    
+    \item \textbf{\texttt{struct Node} và \texttt{piority\_queue}:} Cấu trúc Hàng đợi ưu tiên (Min-Heap) lưu trữ đỉnh kèm theo khoảng cách tại thời điểm được chèn. Việc đóng gói này giúp duy trì cấu trúc Heap ổn định không bị phá vỡ khi khoảng cách toàn cục thay đổi.
 \end{itemize}
 \section{Thuật toán}
 Dựa trên thuật toán Dijkstra nguyên thủy, nhóm đã tái cấu trúc quy trình loang nhãn thành một Máy trạng thái (State Machine) thông qua \texttt{enum AlgoState}. Việc xé nhỏ thuật toán thành từng "trạng thái rời rạc" giúp chương trình có thể tạm dừng hoặc làm chậm tiến trình (delay) để đồng bộ với khung hình đồ họa 60-FPS của Raylib.
@@ -405,14 +417,15 @@ Quy trình thực thi thực tế trong file \texttt{src/main.cpp} diễn ra nh�
     
     \item \textbf{Trạng thái tìm đỉnh Min (\texttt{STATE\_FIND\_MIN}):}
     \begin{itemize}
-        \item Hệ thống sẽ quét qua mảng \texttt{g.T} và \texttt{g.L} để tìm đỉnh \texttt{currentV} có khoảng cách nhỏ nhất và chưa được xét.
-        \item Nếu tìm thấy đỉnh đích (\texttt{currentV == v\_target}) hoặc không còn đỉnh nào, trạng thái chuyển sang \texttt{STATE\_FINISHED}. Ngược lại, đỉnh \texttt{currentV} được chốt (\texttt{g.T[currentV] = 0}) và máy chuyển sang trạng thái nới lỏng \texttt{STATE\_RELAX\_EDGES}.
+        \item Hệ thống sẽ liên tục lấy (pop) đỉnh \texttt{top} có khoảng cách nhỏ nhất từ Hàng đợi ưu tiên (Min-Heap). Nếu đỉnh này đã được thăm trước đó (đỉnh rác), hệ thống sẽ bỏ qua.
+        \item Ngược lại, nếu là đỉnh hợp lệ, hệ thống sẽ chốt đỉnh đó (\texttt{g.T[currentV] = 0}) và chuyển sang trạng thái nới lỏng \texttt{STATE\_RELAX\_EDGES}.
+        \item Nếu tìm thấy đỉnh đích (\texttt{currentV == v\_target}) hoặc Hàng đợi ưu tiên rỗng, trạng thái chuyển sang \texttt{STATE\_FINISHED}.
     \end{itemize}
     
     \item \textbf{Trạng thái nới lỏng (\texttt{STATE\_RELAX\_EDGES}):}
     \begin{itemize}
         \item Chương trình không dùng vòng lặp \texttt{for} chạy một mạch, mà duyệt từng đỉnh kề \texttt{neighborIdx} qua mỗi khung hình (frame). 
-        \item Nếu phát hiện đường đi qua \texttt{currentV} ngắn hơn, hệ thống cập nhật lại khoảng cách mới \texttt{g.L[neighborIdx]} và ghi nhận đỉnh cha \texttt{g.par}. Quá trình nới lỏng này cũng sẽ ghi thông báo (Log) lên màn hình đồ họa.
+        \item Nếu phát hiện đường đi qua \texttt{currentV} ngắn hơn, hệ thống cập nhật lại khoảng cách mới \texttt{g.L[neighborIdx]}, ghi nhận đỉnh cha \texttt{g.par}, đồng thời \textbf{chèn (insert) một bản sao mới} của đỉnh này vào Min-Heap.
         \item Khi duyệt xong toàn bộ đỉnh kề của \texttt{currentV}, máy trạng thái tự động trả về \texttt{STATE\_FIND\_MIN} để tiếp tục vòng lặp tìm đỉnh tiếp theo.
     \end{itemize}
 
@@ -421,19 +434,19 @@ Quy trình thực thi thực tế trong file \texttt{src/main.cpp} diễn ra nh�
 \end{itemize}
 
 \subsection*{Đánh giá độ phức tạp thuật toán}
-Dựa trên cách cài đặt bằng mảng tĩnh và máy trạng thái đã trình bày ở trên, độ phức tạp của chương trình được phân tích cụ thể như sau:
+Dựa trên cách cài đặt bằng ma trận kề kết hợp với Hàng đợi ưu tiên (Min-Heap) theo kỹ thuật Lazy Deletion, độ phức tạp của chương trình được phân tích cụ thể như sau:
 
 \textbf{1. Độ phức tạp thời gian:}
 \begin{itemize}
-    \item \textbf{Thao tác tìm đỉnh Min (\texttt{STATE\_FIND\_MIN}):} Quá trình tìm kiếm tuyến tính yêu cầu duyệt qua mảng \texttt{g.T} chứa $V$ đỉnh, tiêu tốn $O(V)$ thời gian cho mỗi bước. Quá trình này lặp lại tối đa $V$ lần, do đó tổng thời gian là $O(V^2)$.
-    \item \textbf{Thao tác nới lỏng (\texttt{STATE\_RELAX\_EDGES}):} Chương trình cần duyệt qua một hàng của ma trận kề \texttt{A[N][N]} để tìm đỉnh kề. Trong trường hợp xấu nhất, tổng số thao tác xét cạnh cho toàn bộ thuật toán tương đương với $O(V^2)$.
+    \item \textbf{Thao tác với Min-Heap:} Trong trường hợp xấu nhất, mỗi cạnh đều tạo ra một lần chèn vào Heap. Việc lấy đỉnh và chèn đỉnh tiêu tốn $O(E \log V)$ thời gian.
+    \item \textbf{Thao tác nới lỏng (\texttt{STATE\_RELAX\_EDGES}):} Chương trình cần duyệt qua một hàng của ma trận kề \texttt{A[N][N]} để tìm đỉnh kề. Đối với toàn bộ quá trình, quét ma trận kề tiêu tốn $O(V^2)$ thời gian.
 \end{itemize}
-$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp thời gian tổng thể của hệ thống là $\mathbf{O(V^2)}$. Dù chưa đạt mức tối ưu nhất như khi dùng cấu trúc Hàng đợi ưu tiên (Min-Heap) với $O(E \log V)$, nhưng với giới hạn $N=105$, tốc độ xử lý vẫn đảm bảo đáp ứng cực kỳ mượt mà cho việc hiển thị đồ họa 60-FPS.
+$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp thời gian tổng thể của hệ thống là $\mathbf{O(V^2 + E \log V)}$. Dù không hoàn toàn đạt $O(E \log V)$ do vẫn bị ràng buộc bởi ma trận kề, việc tích hợp Min-Heap giúp tăng tốc đáng kể các bước chọn đỉnh Min so với thuật toán cơ bản.
 
 \textbf{2. Độ phức tạp không gian (Bộ nhớ):}
 \begin{itemize}
     \item \textbf{Lưu trữ đồ thị:} Cấu trúc ma trận kề \texttt{A[N][N]} chiếm phần lớn không gian bộ nhớ, tương đương $\mathbf{O(V^2)}$.
-    \item \textbf{Lưu trữ trạng thái và tọa độ:} Hệ thống sử dụng các mảng một chiều \texttt{L[N]}, \texttt{T[N]}, \texttt{par[N]} và mảng tọa độ \texttt{toado[N]}. Tất cả chỉ tiêu tốn $\mathbf{O(V)}$ vùng nhớ.
+    \item \textbf{Lưu trữ Heap và trạng thái:} Hàng đợi ưu tiên có thể chứa tối đa $E$ đỉnh tương đương $\mathbf{O(E)}$. Các mảng một chiều \texttt{L[N]}, \texttt{T[N]}, \texttt{par[N]} chiếm $\mathbf{O(V)}$.
 \end{itemize}
 $\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật toán là $\mathbf{O(V^2)}$, hoàn toàn phù hợp và an toàn trong giới hạn bộ nhớ của môi trường C/C++.
 
