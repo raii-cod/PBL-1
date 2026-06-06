@@ -551,11 +551,11 @@ Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành 
 \textbf{Nhược điểm:} 
 \begin{itemize}
     \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi.
-    \item \textbf{Thuật toán có thể bị chậm nếu đồ thị quá lớn:} Vì kiến thức còn hạn chế, tụi em đang dùng vòng lặp \texttt{for} bình thường để quét tìm đỉnh nhỏ nhất, làm cho độ phức tạp của thuật toán là $O(V^2)$.
+    \item \textbf{Chưa tối ưu hóa hoàn toàn về Cấu trúc dữ liệu liên kết:} Mặc dù đã tích hợp thành công Hàng đợi ưu tiên (Min-Heap) để chọn đỉnh với tốc độ $O(\log V)$, thuật toán vẫn còn sử dụng Ma trận kề làm hệ thống lưu trữ gốc, khiến bước nới lỏng cạnh vẫn phải quét mảng với chi phí tổng cộng $O(V^2)$.
 \end{itemize}
 \textbf{Hướng cải tiến:}
 Bổ sung thêm các đoạn code kiểm tra điều kiện đầu vào (bắt lỗi file rỗng, lỗi nhập chữ thay vì số) để hiện thông báo nhắc nhở người dùng thay vì thoát phần mềm đột ngột. 
-Ở các môn học sau, khi làm quen với cấu trúc dữ liệu nâng cao hơn, tụi em sẽ thay thế vòng lặp này bằng Hàng đợi ưu tiên (Min-Heap) để giảm độ phức tạp xuống $O(E \log V)$, giúp phần mềm chạy mượt mà kể cả khi bản đồ có hàng ngàn đỉnh.
+Ở các môn học sau, nhóm sẽ thay thế hoàn toàn Ma trận kề bằng Danh sách kề (Adjacency List) kết hợp với Min-Heap hiện tại để giảm triệt để độ phức tạp của toàn bộ hệ thống xuống mức lý tưởng $O((V+E) \log V)$, giúp phần mềm chạy mượt mà kể cả khi bản đồ có hàng vạn đỉnh.
 % ==================== CHƯƠNG 5 ====================
 \chapter{Kết luận và hướng phát triển}
 
@@ -614,8 +614,14 @@ Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường �
 \begin{lstlisting}[style=UserCStyle]
 if (state == STATE_FIND_MIN) {
     int min_d = INF; currentV = -1;
-    for (int i = 1; i <= g.n; i++)
-        if (g.T[i] && g.L[i] < min_d) { min_d = g.L[i]; currentV = i; }
+    while (q.heap_size > 0) {
+        Node top = pop_min_heap(q.A, &q.heap_size);
+        if (g.T[top.id]) {
+            min_d = top.dist;
+            currentV = top.id;
+            break;
+        }
+    }
 
     if (currentV == -1 || currentV == v_target) {
         state = STATE_FINISHED;
@@ -637,6 +643,8 @@ else if (state == STATE_RELAX_EDGES) {
             if (newD < g.L[neighborIdx]) {
                 g.L[neighborIdx] = newD;
                 g.par[neighborIdx] = currentV;
+                Node P; P.id = neighborIdx; P.dist = newD;
+                insert_min_heap(q.A, &q.heap_size, P);
             }
             neighborIdx++; found = true; break;
         }
