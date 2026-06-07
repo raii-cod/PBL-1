@@ -20,9 +20,17 @@
 
 typedef enum { STATE_FIND_MIN, STATE_RELAX_EDGES, STATE_FINISHED } AlgoState;
 
+struct Edge {
+    int v;
+    int weight;
+    Edge* next;
+};
+
 struct Graph {
     int n;
     int A[N][N];
+    Edge* adj[N];
+    bool useAdjList;
     Vector2 toado[N];
     int L[N];
     int T[N];    
@@ -101,6 +109,7 @@ void inputdata(struct Graph *g, int *u, int *v, const char *path) {
         return; 
     }
     fscanf(f, "%d", &g->n);
+    for (int i = 1; i <= g->n; i++) g->adj[i] = NULL;
     for (int i = 1; i <= g->n; i++)
         for (int j = 1; j <= g->n; j++)
             fscanf(f, "%d", &g->A[i][j]);
@@ -109,6 +118,36 @@ void inputdata(struct Graph *g, int *u, int *v, const char *path) {
             if (g->A[i][j]==0)
                 g->A[i][j]=-1;
 
+    fscanf(f, "%d", u);
+    fscanf(f, "%d", v);
+    fclose(f);
+}
+
+void inputdata_adjlist(struct Graph *g, int *u, int *v, const char *path) {
+    FILE *f = fopen(path, "r");
+    if (!f) { 
+        printf("\n%s[!] Loi: Khong tim thay file tai: %s%s\n", C_RED, path, RESET);
+        MyDelay(2.0f);
+        return; 
+    }
+    int m;
+    fscanf(f, "%d %d", &g->n, &m);
+    
+    for (int i = 1; i <= g->n; i++) {
+        g->adj[i] = NULL;
+        for (int j = 1; j <= g->n; j++) g->A[i][j] = -1;
+    }
+
+    for (int i = 0; i < m; i++) {
+        int v1, v2, w;
+        fscanf(f, "%d %d %d", &v1, &v2, &w);
+        g->A[v1][v2] = w;
+        Edge* e = new Edge;
+        e->v = v2;
+        e->weight = w;
+        e->next = g->adj[v1];
+        g->adj[v1] = e;
+    }
     fscanf(f, "%d", u);
     fscanf(f, "%d", v);
     fclose(f);
@@ -203,6 +242,7 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
     ResetAlgo();
     AlgoState state = STATE_FIND_MIN;
     int currentV = -1, neighborIdx = 1;
+    Edge* currentEdge = NULL;
     float timer = 0.0f, speed = 1.2f; 
     char pathResult[512] = "";
     bool onPath[N] = { false };
@@ -261,27 +301,50 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
                         } else sprintf(pathResult, "KHONG TIM THAY DUONG DI");
                         AddLog(">>> KET THUC: Da xac dinh lo trinh.", stepLogs, &logCount);
                     } else {
-                        g.T[currentV] = 0; neighborIdx = 1; state = STATE_RELAX_EDGES;
+                        g.T[currentV] = 0; 
+                        if (g.useAdjList) currentEdge = g.adj[currentV];
+                        else neighborIdx = 1; 
+                        state = STATE_RELAX_EDGES;
                         AddLog(TextFormat("Chon dinh %d (L=%d) nho nhat", currentV, g.L[currentV]), stepLogs, &logCount);
                     }
                 } 
                 else if (state == STATE_RELAX_EDGES) {
                     bool found = false;
-                    while (neighborIdx <= g.n) {
-                        if (g.A[currentV][neighborIdx] != -1 && g.T[neighborIdx]) {
-                            int newD = g.L[currentV] + g.A[currentV][neighborIdx];
-                            if (newD < g.L[neighborIdx]) {
-                                g.L[neighborIdx] = newD;
-                                g.par[neighborIdx] = currentV;
-                                Node P;
-                                P.id=neighborIdx;
-                                P.dist=g.L[neighborIdx];
-                                insert_min_heap(q.A,&q.heap_size,P);
-                                AddLog(TextFormat("  + Toi uu L[%d] = %d", neighborIdx, newD), stepLogs, &logCount);
-                            } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, neighborIdx), stepLogs, &logCount);
-                            neighborIdx++; found = true; break;
+                    if (g.useAdjList) {
+                        while (currentEdge != NULL) {
+                            int v_adj = currentEdge->v;
+                            int w_adj = currentEdge->weight;
+                            if (g.T[v_adj]) {
+                                int newD = g.L[currentV] + w_adj;
+                                if (newD < g.L[v_adj]) {
+                                    g.L[v_adj] = newD;
+                                    g.par[v_adj] = currentV;
+                                    Node P; P.id = v_adj; P.dist = newD;
+                                    insert_min_heap(q.A, &q.heap_size, P);
+                                    AddLog(TextFormat("  + Toi uu L[%d] = %d", v_adj, newD), stepLogs, &logCount);
+                                } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, v_adj), stepLogs, &logCount);
+                                currentEdge = currentEdge->next; 
+                                found = true; break;
+                            }
+                            currentEdge = currentEdge->next;
                         }
-                        neighborIdx++;
+                    } else {
+                        while (neighborIdx <= g.n) {
+                            if (g.A[currentV][neighborIdx] != -1 && g.T[neighborIdx]) {
+                                int newD = g.L[currentV] + g.A[currentV][neighborIdx];
+                                if (newD < g.L[neighborIdx]) {
+                                    g.L[neighborIdx] = newD;
+                                    g.par[neighborIdx] = currentV;
+                                    Node P;
+                                    P.id=neighborIdx;
+                                    P.dist=g.L[neighborIdx];
+                                    insert_min_heap(q.A,&q.heap_size,P);
+                                    AddLog(TextFormat("  + Toi uu L[%d] = %d", neighborIdx, newD), stepLogs, &logCount);
+                                } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, neighborIdx), stepLogs, &logCount);
+                                neighborIdx++; found = true; break;
+                            }
+                            neighborIdx++;
+                        }
                     }
                     if (!found) state = STATE_FIND_MIN;
                 }
@@ -347,9 +410,24 @@ int main() {
         UIConsole();
         struct Graph g; 
         int u, v; 
+        
+        printf("\n%sChon dinh dang file du lieu:%s\n", C_CYAN, RESET);
+        printf("1. Nhap bang Ma tran ke (Adjacency Matrix)\n");
+        printf("2. Nhap bang Danh sach ke (Adjacency List)\n");
+        printf("Lua chon cua ban (1 hoac 2): ");
+        int choice;
+        scanf("%d", &choice);
+        
         char path[256], file[128];
         filename(file, path);
-        inputdata(&g, &u, &v, path);
+        
+        if (choice == 2) {
+            g.useAdjList = true;
+            inputdata_adjlist(&g, &u, &v, path);
+        } else {
+            g.useAdjList = false;
+            inputdata(&g, &u, &v, path);
+        }
 
         FILE* check = fopen(path, "r");
         if (!check) continue;
