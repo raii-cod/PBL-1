@@ -356,6 +356,7 @@ Dưới đây là mã nguồn cài đặt cấu trúc dữ liệu cốt lõi c�
 
 \begin{lstlisting}[style=UserCStyle,title={Định nghĩa cấu trúc đồ thị, hàng đợi ưu tiên và máy trạng thái}, label={lst:datastruct}]
 #define N 105
+#define MAX_EDGES 100005
 #define INF 1000000000
 
 typedef enum { 
@@ -364,9 +365,17 @@ typedef enum {
     STATE_FINISHED 
 } AlgoState;
 
+struct Edge {
+    int v;
+    int weight;
+    Edge* next;
+};
+
 struct Graph {
     int n;               // So luong dinh
-    int A[N][N];         // Ma tran ke trong so
+    int A[N][N];         // Ma tran ke
+    Edge* adj[N];        // Danh sach ke
+    bool useAdjList;     // Co luu tru tuy chon
     Vector2 toado[N];    // Toa do truc quan cua dinh tren UI
     int L[N];            // Mang khoang cach ngan nhat (Nhan tam thoi)
     int T[N];            // Trang thai tap hop T (1: Chua co dinh, 0: Da co dinh)
@@ -379,7 +388,7 @@ struct Node {
 };
 
 struct piority_queue {
-    Node A[1000];        // Mang chua cac phan tu cua heap
+    Node A[MAX_EDGES];   // Mang chua cac phan tu cua heap
     int heap_size;       // Kich thuoc hien tai cua heap
 };
 \end{lstlisting}
@@ -399,7 +408,7 @@ struct piority_queue {
     
     \item \textbf{\texttt{struct Graph}:} 
     \begin{itemize}
-        \item \texttt{n} và \texttt{A[N][N]}: Lưu trữ số lượng đỉnh thực tế và ma trận trọng số của đồ thị.
+        \item \texttt{n}, \texttt{A[N][N]} và \texttt{adj[N]}: Lưu trữ số lượng đỉnh và hệ thống liên kết theo hai phương pháp (Ma trận kề và Danh sách kề). Biến \texttt{useAdjList} được dùng để lưu lựa chọn cấu trúc của người dùng.
         \item \texttt{toado[N]}: Kiểu dữ liệu \texttt{Vector2} (kế thừa từ thư viện Raylib) lưu trữ tọa độ $(x,y)$ thực tế trên màn hình để render các đỉnh.
         \item \texttt{L[N]} và \texttt{T[N]}: Hai mảng cốt lõi của thuật toán. \texttt{L} lưu chi phí đường đi, \texttt{T} đánh dấu trạng thái đỉnh ($1$: chưa cố định, $0$: đã tối ưu hoàn toàn).
         \item \texttt{par[N]}: Mảng lưu vết đỉnh cha liền trước, hỗ trợ truy xuất ngược từ đỉnh đích về đỉnh nguồn sau khi thuật toán kết thúc.
@@ -424,8 +433,8 @@ Quy trình thực thi thực tế trong file \texttt{src/main.cpp} diễn ra nh�
     
     \item \textbf{Trạng thái nới lỏng (\texttt{STATE\_RELAX\_EDGES}):}
     \begin{itemize}
-        \item Chương trình không dùng vòng lặp \texttt{for} chạy một mạch, mà duyệt từng đỉnh kề \texttt{neighborIdx} qua mỗi khung hình (frame). 
-        \item Nếu phát hiện đường đi qua \texttt{currentV} ngắn hơn, hệ thống cập nhật lại khoảng cách mới \texttt{g.L[neighborIdx]}, ghi nhận đỉnh cha \texttt{g.par}, đồng thời \textbf{chèn (insert) một bản sao mới} của đỉnh này vào Min-Heap.
+        \item Chương trình không dùng vòng lặp \texttt{for} chạy một mạch, mà duyệt từng đỉnh kề \texttt{neighborIdx} (nếu dùng Ma trận) hoặc truy xuất trực tiếp \texttt{currentEdge} (nếu dùng Danh sách kề) qua mỗi khung hình (frame). 
+        \item Nếu phát hiện đường đi qua \texttt{currentV} ngắn hơn, hệ thống cập nhật lại khoảng cách mới, ghi nhận đỉnh cha \texttt{g.par}, đồng thời \textbf{chèn (insert) một bản sao mới} của đỉnh này vào Min-Heap.
         \item Khi duyệt xong toàn bộ đỉnh kề của \texttt{currentV}, máy trạng thái tự động trả về \texttt{STATE\_FIND\_MIN} để tiếp tục vòng lặp tìm đỉnh tiếp theo.
     \end{itemize}
 
@@ -434,12 +443,17 @@ Quy trình thực thi thực tế trong file \texttt{src/main.cpp} diễn ra nh�
 \end{itemize}
 
 \subsection*{Đánh giá độ phức tạp thuật toán}
-Dựa trên kiến trúc mở cho phép tùy chọn Ma trận kề hoặc Danh sách kề kết hợp với Hàng đợi ưu tiên (Min-Heap) theo kỹ thuật Lazy Deletion, độ phức tạp của chương trình được phân tích cụ thể như sau:
+Dựa trên cách cài đặt linh hoạt cho phép tùy chọn Ma trận kề hoặc Danh sách kề kết hợp với Hàng đợi ưu tiên (Min-Heap) theo kỹ thuật Lazy Deletion, độ phức tạp của chương trình được phân tích cụ thể như sau:
 
 \textbf{1. Độ phức tạp thời gian:}
 \begin{itemize}
-    \item \textbf{Thao tác với Min-Heap:} Trong trường hợp xấu nhất, mỗi cạnh đều tạo ra một lần chèn vào Heap. Việc lấy đỉnh và chèn đỉnh tiêu tốn $O(E \log V)$ thời gian.
-    \item \textbf{Thao tác nới lỏng (\texttt{STATE\_RELAX\_EDGES}):} Nếu người dùng chọn dùng \textbf{Ma trận kề}, chương trình duyệt qua toàn bộ $V$ đỉnh kề, tiêu tốn $O(V^2)$. Tuy nhiên, nếu chọn dùng \textbf{Danh sách kề}, chương trình chỉ duyệt qua các đỉnh kề có thực thông qua danh sách liên kết, tối ưu triệt để quá trình nới lỏng cạnh.
+    \item \textbf{Khởi tạo:} $O(V)$ để đặt khoảng cách ban đầu.
+    \item \textbf{Tìm đỉnh nhỏ nhất (\texttt{STATE\_FIND\_MIN}):} Lấy đỉnh từ Min-Heap tiêu tốn $O(\log V)$. Mỗi đỉnh được lấy ra tối đa một lần để xử lý chính, và có thể lấy thêm các bản sao cũ (bị bỏ qua do Lazy Deletion). Tổng thời gian cho toàn bộ các lần rút đỉnh là $O(E \log V)$.
+    \item \textbf{Thao tác nới lỏng (\texttt{STATE\_RELAX\_EDGES}):} 
+    \begin{itemize}
+        \item Nếu người dùng chọn dùng \textbf{Ma trận kề}, chương trình duyệt qua toàn bộ $V$ đỉnh kề, tiêu tốn $O(V^2)$ cho toàn quá trình.
+        \item Nếu chọn dùng \textbf{Danh sách kề}, chương trình chỉ duyệt qua các đỉnh kề có thực, tiêu tốn đúng $O(E)$ phép toán. Việc cập nhật và đẩy vào Min-Heap tiêu tốn $O(E \log V)$.
+    \end{itemize}
 \end{itemize}
 $\Rightarrow$ \textbf{Kết luận:} Khi chạy chế độ Ma trận kề, hệ thống có độ phức tạp $\mathbf{O(V^2 + E \log V)}$. Đặc biệt, khi chuyển sang \textbf{Danh sách kề}, chương trình đã đạt hiệu suất tối ưu lý tưởng $\mathbf{O((V + E) \log V)}$, xử lý vô cùng mượt mà và vượt trội ngay cả với các đồ thị rất thưa hoặc đồ thị lớn có hàng nghìn đỉnh.
 
@@ -448,7 +462,7 @@ $\Rightarrow$ \textbf{Kết luận:} Khi chạy chế độ Ma trận kề, hệ
     \item \textbf{Lưu trữ đồ thị:} Nếu dùng Ma trận kề sẽ chiếm không gian $\mathbf{O(V^2)}$. Trong khi đó, tính năng Danh sách kề chỉ tiêu tốn $\mathbf{O(V+E)}$, giải quyết dứt điểm rào cản bộ nhớ.
     \item \textbf{Lưu trữ Heap và trạng thái:} Hàng đợi ưu tiên có thể chứa tối đa $E$ đỉnh tương đương $\mathbf{O(E)}$. Các mảng một chiều \texttt{L[N]}, \texttt{T[N]}, \texttt{par[N]} chiếm $\mathbf{O(V)}$.
 \end{itemize}
-$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật toán là $\mathbf{O(V^2)}$, hoàn toàn phù hợp và an toàn trong giới hạn bộ nhớ của môi trường C/C++.
+$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật toán là $\mathbf{O(V^2)}$, phù hợp trong giới hạn bộ nhớ của môi trường C/C++.
 
 % ==================== CHƯƠNG 4 ====================
 \chapter{Chương trình và kết quả}
