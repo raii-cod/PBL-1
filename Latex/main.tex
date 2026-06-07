@@ -284,7 +284,7 @@ của các liên kết giữa các cặp nút.
     \item $E \subseteq V \times V$ là tập hợp các cung (cạnh có hướng). Mỗi cung là một cặp có thứ tự $(u, v)$ thể hiện liên kết một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$.
     \item Hàm trọng số $W: E \to \mathbb{R}^+$ gán cho mỗi cung $(u, v)$ một giá trị $W(u, v)$ đại diện cho khoảng cách hoặc chi phí.
 \end{itemize}
-Đồ thị được mã hóa dưới dạng "Ma trận kề" hoặc "Danh sách kề" trong tập tin văn bản đầu vào. Khi nạp vào chương trình bằng Ma trận kề $A_{n \times n}$, phần tử $A[i][j] = W(i, j)$, ngược lại nếu không có cung nối $A[i][j] = 0$. Giá trị 0 sau đó sẽ tự động được chuyển đổi thành $-1$ để biểu diễn trạng thái vô cực nhằm tương thích với logic nội bộ. Nếu sử dụng Danh sách kề, thuật toán sẽ tự động phân bổ qua danh sách liên kết để tăng tốc độ truy xuất.
+Đồ thị được mã hóa dưới dạng "Ma trận kề" hoặc "Danh sách kề" trong tập tin văn bản đầu vào. Khi nạp vào chương trình bằng Ma trận kề $A_{n \times n}$, phần tử $A[i][j] = W(i, j)$, ngược lại nếu không có cung nối $A[i][j] = 0$. Nếu sử dụng Danh sách kề, thuật toán sẽ tự động phân bổ qua danh sách liên kết để tăng tốc độ truy xuất.
 \subsection{Nguyên lý nới lỏng cạnh (Relaxation)}
 Kỹ thuật nới lỏng cạnh (Edge Relaxation) là một thao tác cơ sở và cốt lõi trong việc thiết kế và triển khai các thuật toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số. Về mặt bản chất, quá trình này liên tục đánh giá và cập nhật lại chi phí (khoảng cách ước lượng) từ đỉnh nguồn đến các đỉnh lân cận cho đến khi hệ thống đạt được trạng thái tối ưu toàn cục.
 
@@ -349,10 +349,10 @@ Quy trình thực thi của thuật toán được chia thành các bước cơ 
 \end{itemize}
 
 \section{Cấu trúc dữ liệu}
-\subsubsection{Cấu trúc dữ liệu}    
-Hệ thống đóng gói toàn bộ trạng thái lý thuyết vào một \texttt{struct Graph} tĩnh, sử dụng hệ thống mảng một chiều nhằm tối ưu hóa bộ nhớ cache để xử lý tốc độ cao. Đồng thời, thuật toán được thiết kế lại dưới dạng Máy trạng thái (State Machine) thông qua \texttt{enum AlgoState} để tương thích với giao diện đồ họa.
 
-Dưới đây là mã nguồn cài đặt cấu trúc dữ liệu cốt lõi của chương trình:
+Để chương trình tính toán nhanh và đồng bộ được với giao diện đồ họa, cấu trúc dữ liệu được tổ chức thành các thành phần chính sau: \texttt{struct Graph} dùng để lưu trữ toàn bộ thông tin đồ thị bằng mảng tĩnh giúp truy xuất nhanh; Hàng đợi ưu tiên (\texttt{piority\_queue}) được tự cài đặt để tăng tốc quá trình tìm đỉnh ngắn nhất cho thuật toán Dijkstra; và Máy trạng thái (\texttt{enum AlgoState}) giúp chia nhỏ thuật toán thành từng bước để mô phỏng lên màn hình một cách mượt mà.
+
+Dưới đây là mã nguồn cài đặt các cấu trúc dữ liệu cốt lõi của chương trình:
 
 \begin{lstlisting}[style=UserCStyle,title={Định nghĩa cấu trúc đồ thị, hàng đợi ưu tiên và máy trạng thái}, label={lst:datastruct}]
 #define N 105
@@ -417,7 +417,7 @@ struct piority_queue {
     \item \textbf{\texttt{struct Node} và \texttt{piority\_queue}:} Cấu trúc Hàng đợi ưu tiên (Min-Heap) lưu trữ đỉnh kèm theo khoảng cách tại thời điểm được chèn. Việc đóng gói này giúp duy trì cấu trúc Heap ổn định không bị phá vỡ khi khoảng cách toàn cục thay đổi.
 \end{itemize}
 \section{Thuật toán}
-Dựa trên thuật toán Dijkstra nguyên thủy, nhóm đã tái cấu trúc quy trình loang nhãn thành một Máy trạng thái (State Machine) thông qua \texttt{enum AlgoState}. Việc xé nhỏ thuật toán thành từng "trạng thái rời rạc" giúp chương trình có thể tạm dừng hoặc làm chậm tiến trình (delay) để đồng bộ với khung hình đồ họa 60-FPS của Raylib.
+Dựa trên thuật toán Dijkstra, nhóm đã tái cấu trúc quy trình loang nhãn thành một Máy trạng thái (State Machine) thông qua \texttt{enum AlgoState}. Việc xé nhỏ thuật toán thành từng "trạng thái rời rạc" giúp chương trình có thể tạm dừng hoặc làm chậm tiến trình (delay).
 
 Quy trình thực thi thực tế trong file \texttt{src/main.cpp} diễn ra như sau:
 \begin{itemize}
@@ -484,6 +484,7 @@ Chương trình được phân rã chức năng mạch lạc thành các module 
     \item \textbf{\texttt{main()}:} Điểm khởi đầu của chương trình, chứa vòng lặp vô tận (game loop cơ bản) để quản lý luồng thực thi: in giao diện Console, đọc đường dẫn file, kiểm tra tính hợp lệ của file và kích hoạt hàm mô phỏng Raylib đồ họa.
     \item \textbf{\texttt{UIConsole()} \& \textbf{\texttt{PrintCentered()}}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng thẩm mỹ.
     \item \textbf{\texttt{filename()} \& \textbf{\texttt{inputdata()}}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hiện hỗ trợ phân luồng đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} sẽ được thiết lập tự động sau khi đọc.
+    \item \textbf{Nhóm hàm Hàng đợi ưu tiên:} Bao gồm các thao tác trực tiếp trên Min-Heap như \texttt{insert\_min\_heap}, \texttt{pop\_min\_heap}, \texttt{min\_heap}, \texttt{swap}, \texttt{parent}, \texttt{Left}, \texttt{Right} để hỗ trợ tìm đỉnh tối ưu nhanh chóng.
     \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Trái tim của ứng dụng đồ họa. Hàm này khởi tạo cửa sổ Raylib 60-FPS, trực tiếp chạy Máy trạng thái (State Machine) thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình elip/tròn và vẽ toàn bộ trạng thái lên màn hình.
     \item \textbf{\texttt{drawArrow()}:} Hàm hình học nâng cao xử lý toán học lượng giác (\texttt{sin}, \texttt{cos}, \texttt{atan2}) để vẽ chính xác mũi tên chỉ hướng giữa hai tọa độ vector, đồng thời đính kèm trọng số của cạnh hiển thị ngay chính giữa mũi tên.
     \item \textbf{\texttt{AddLog()}:} Tiện ích hỗ trợ sao chép chuỗi kí tự thông báo tiến trình toán học đẩy vào mảng chuỗi \texttt{stepLogs} để vẽ lên màn hình đồ họa bên phải.
@@ -566,8 +567,8 @@ Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành 
 \begin{itemize}
     \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề hoặc danh sách kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi định dạng luồng nhập.
 \end{itemize}
-\textbf{Thành tựu và Hướng cải tiến:}
-Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã xuất sắc hoàn thành việc tích hợp \textbf{Hàng đợi ưu tiên (Min-Heap)} kết hợp với \textbf{Danh sách kề (Adjacency List)} tự chọn. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
+\textbf{Hướng cải tiến:}
+Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã hoàn thành  ược việc tích hợp \textbf{Hàng đợi ưu tiên (Priority Queue)} kết hợp với \textbf{Danh sách kề (Adjacency List)} tự chọn. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
 
 Trong thời gian tới, nhóm dự kiến phát triển một giao diện cho phép người dùng dùng chuột vẽ đỉnh, nối cạnh trực tiếp trên cửa sổ Raylib thay vì phải tạo file tĩnh. Đồng thời bổ sung các hệ thống bắt lỗi (try-catch) để đảm bảo phần mềm hoạt động bền bỉ nhất.
 % ==================== CHƯƠNG 5 ====================
@@ -577,7 +578,7 @@ Trong thời gian tới, nhóm dự kiến phát triển một giao diện cho p
 Qua quá trình nỗ lực nghiên cứu và hoàn thiện đồ án PBL1, nhóm chúng em đã củng cố thành công nền tảng cấu trúc dữ liệu tĩnh và làm chủ giải thuật cốt lõi Dijkstra. Việc áp dụng thành công kỹ thuật hình học lượng giác và thư viện Raylib vào kiến trúc Máy trạng thái phân mảnh đã giúp chương trình vận hành chính xác, minh họa trực quan sinh động tiến trình loang nhãn phức tạp của hệ thống đồ thị.
 
 \section{Hướng phát triển}
-Dựa trên những ưu điểm về mặt đồ họa đã làm được, nhóm chúng em dự định sẽ tiếp tục nâng cấp đồ án theo các hướng sau nếu có thêm thời gian:
+Dựa trên những ưu điểm về mặt thuật toán và đồ họa đã làm được, nhóm chúng em dự định sẽ tiếp tục nâng cấp đồ án theo các hướng sau nếu có thêm thời gian:
 
 \begin{itemize}
     \item \textbf{Thêm chức năng vẽ bằng chuột:} Thay vì phải gõ từng con số vào file văn bản, tụi em muốn nâng cấp để người dùng có thể dùng chuột click lên màn hình để tạo đỉnh, sau đó kéo thả để nối các đường đi và nhập trọng số trực tiếp.
@@ -597,6 +598,8 @@ Raylib Graph Graphics Development Documentation, \url{https://www.raylib.com/}.
 Nguyễn Văn Hiệu, \textit{Bài toán đường đi ngắn nhất trên đồ thị}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
 \bibitem{ref4}
 Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
+\bibitem{ref5}
+Dang Thien Binh, \textit{Introduction to Algorithms}, Da Nang University of Science and Technology. 
 \end{thebibliography}
 
 % ==================== PHỤ LỤC MÃ NGUỒN CỐT LÕI ====================
@@ -624,47 +627,196 @@ Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường �
 
 \section*{Trích đoạn các hàm xử lý cốt lõi của ứng dụng}
 
-\subsection*{1. Động cơ phân mảnh Máy trạng thái Dijkstra:}
+\subsection*{Thuật toán Dijkstra}
 \begin{lstlisting}[style=UserCStyle]
-if (state == STATE_FIND_MIN) {
-    int min_d = INF; currentV = -1;
-    while (q.heap_size > 0) {
-        Node top = pop_min_heap(q.A, &q.heap_size);
-        if (g.T[top.id]) {
-            min_d = top.dist;
-            currentV = top.id;
-            break;
-        }
-    }
+int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
+    SetTraceLogLevel(LOG_NONE);
+    char stepLogs[300][128];
+    int logCount = 0;
 
-    if (currentV == -1 || currentV == v_target) {
-        state = STATE_FINISHED;
-        if (g.L[v_target] != INF) {
-            int t = v_target;
-            int temp[N], count = 0;
-            while (t != -1) { onPath[t] = true; temp[count++] = t; t = g.par[t]; }
+    InitWindow(1500, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
+    piority_queue q;
+    q.heap_size=0;
+    Node tmp;
+    tmp.id=u_start;
+    tmp.dist=0;
+    insert_min_heap(q.A,&q.heap_size,tmp);
+    Vector2 center = { 430, 400 }; 
+    float radius = 280.0f;
+    
+    auto ResetAlgo = [&]() {
+        for (int i = 1; i <= g.n; i++) {
+            float angle = (i - 1) * 2 * PI / g.n;
+            g.toado[i] = (Vector2){ center.x + radius * cosf(angle), center.y + radius * sinf(angle) };
+            g.L[i] = INF; g.T[i] = 1; g.par[i] = -1;
         }
-        AddLog(">>> KET THUC: Da xac dinh lo trinh.", stepLogs, &logCount);
-    } else {
-        g.T[currentV] = 0; neighborIdx = 1; state = STATE_RELAX_EDGES;
-    }
-} 
-else if (state == STATE_RELAX_EDGES) {
-    bool found = false;
-    while (neighborIdx <= g.n) {
-        if (g.A[currentV][neighborIdx] != -1 && g.T[neighborIdx]) {
-            int newD = g.L[currentV] + g.A[currentV][neighborIdx];
-            if (newD < g.L[neighborIdx]) {
-                g.L[neighborIdx] = newD;
-                g.par[neighborIdx] = currentV;
-                Node P; P.id = neighborIdx; P.dist = newD;
-                insert_min_heap(q.A, &q.heap_size, P);
+        g.L[u_start] = 0;
+        logCount = 0;
+    };
+    
+    ResetAlgo();
+    AlgoState state = STATE_FIND_MIN;
+    int currentV = -1, neighborIdx = 1;
+    Edge* currentEdge = NULL;
+    float timer = 0.0f, speed = 1.2f; 
+    char pathResult[512] = "";
+    bool onPath[N] = { false };
+    bool isStarted = false;
+
+    SetTargetFPS(60);
+    while (!WindowShouldClose()) {        
+        if (state == STATE_FINISHED) {
+            if (IsKeyPressed(KEY_R)) { 
+                ResetAlgo();
+                state = STATE_FIND_MIN;
+                memset(onPath, false, sizeof(onPath));
+                isStarted = false;
+                timer = 0;
             }
-            neighborIdx++; found = true; break;
+            if (IsKeyPressed(KEY_N)) { 
+                CloseWindow();
+                return 1; 
+            }
         }
-        neighborIdx++;
+
+        if (!isStarted) {
+            if (IsKeyPressed(KEY_SPACE)) {
+                isStarted = true;
+                AddLog("BAT DAU: Khoi tao L[nguon]=0, cac dinh khac = INF", stepLogs, &logCount);
+            }
+        } else {
+            timer += GetFrameTime();
+            if (timer >= speed && state != STATE_FINISHED) {
+                timer = 0;
+                if (state == STATE_FIND_MIN) {
+                    int min_d=INF; currentV = -1;
+                    while (q.heap_size>0) {
+                        Node top=pop_min_heap(q.A,&q.heap_size);
+                        if (g.T[top.id]) {
+                            min_d=top.dist;
+                            currentV=top.id;
+                            break;
+                        }
+                    }
+                    
+                    // for (int i = 1; i <= g.n; i++)
+                        // if (g.T[i] && g.L[i] < min_d) { min_d = g.L[i]; currentV = i; }
+
+                    if (currentV == -1 || currentV == v_target) {
+                        state = STATE_FINISHED;
+                        if (g.L[v_target] != INF) {
+                            int t = v_target;
+                            int temp[N], count = 0;
+                            while (t != -1) { onPath[t] = true; temp[count++] = t; t = g.par[t]; }
+                            sprintf(pathResult, "LO TRINH: ");
+                            for (int i = count - 1; i >= 0; i--) {
+                                char b[15]; sprintf(b, "%d%s", temp[i], (i == 0 ? "" : " -> "));
+                                strcat(pathResult, b);
+                            }
+                        } else sprintf(pathResult, "KHONG TIM THAY DUONG DI");
+                        AddLog(">>> KET THUC: Da xac dinh lo trinh.", stepLogs, &logCount);
+                    } else {
+                        g.T[currentV] = 0; 
+                        if (g.useAdjList) currentEdge = g.adj[currentV];
+                        else neighborIdx = 1; 
+                        state = STATE_RELAX_EDGES;
+                        AddLog(TextFormat("Chon dinh %d (L=%d) nho nhat", currentV, g.L[currentV]), stepLogs, &logCount);
+                    }
+                } 
+                else if (state == STATE_RELAX_EDGES) {
+                    bool found = false;
+                    if (g.useAdjList) {
+                        while (currentEdge != NULL) {
+                            int v_adj = currentEdge->v;
+                            int w_adj = currentEdge->weight;
+                            if (g.T[v_adj]) {
+                                int newD = g.L[currentV] + w_adj;
+                                if (newD < g.L[v_adj]) {
+                                    g.L[v_adj] = newD;
+                                    g.par[v_adj] = currentV;
+                                    Node P; P.id = v_adj; P.dist = newD;
+                                    insert_min_heap(q.A, &q.heap_size, P);
+                                    AddLog(TextFormat("  + Toi uu L[%d] = %d", v_adj, newD), stepLogs, &logCount);
+                                } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, v_adj), stepLogs, &logCount);
+                                currentEdge = currentEdge->next; 
+                                found = true; break;
+                            }
+                            currentEdge = currentEdge->next;
+                        }
+                    } else {
+                        while (neighborIdx <= g.n) {
+                            if (g.A[currentV][neighborIdx] != -1 && g.T[neighborIdx]) {
+                                int newD = g.L[currentV] + g.A[currentV][neighborIdx];
+                                if (newD < g.L[neighborIdx]) {
+                                    g.L[neighborIdx] = newD;
+                                    g.par[neighborIdx] = currentV;
+                                    Node P;
+                                    P.id=neighborIdx;
+                                    P.dist=g.L[neighborIdx];
+                                    insert_min_heap(q.A,&q.heap_size,P);
+                                    AddLog(TextFormat("  + Toi uu L[%d] = %d", neighborIdx, newD), stepLogs, &logCount);
+                                } else AddLog(TextFormat("  - Canh %d->%d khong toi uu", currentV, neighborIdx), stepLogs, &logCount);
+                                neighborIdx++; found = true; break;
+                            }
+                            neighborIdx++;
+                        }
+                    }
+                    if (!found) state = STATE_FIND_MIN;
+                }
+            }
+        }
+
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        DrawRectangle(900, 0, 600, 900, Fade(LIGHTGRAY, 0.3f));
+        DrawLineEx((Vector2){900, 0}, (Vector2){900, 900}, 2.0f, DARKGRAY);
+        DrawText("NHAT KY THUAT TOAN", 940, 30, 24, DARKBLUE);
+        
+        if (!isStarted) DrawText("NHAN [SPACE] DE BAT DAU MO PHONG", 925, 80, 20, MAROON);
+
+        for (int i = 0; i < logCount; i++) {
+            if (i >= logCount - MAX_LOG_DISPLAY) {
+                int pos = i - (logCount > MAX_LOG_DISPLAY ? logCount - MAX_LOG_DISPLAY : 0);
+                DrawText(stepLogs[i], 925, 80 + pos * 35, 20, DARKGREEN);
+            }
+        }
+
+        for (int i = 1; i <= g.n; i++)
+            for (int j = 1; j <= g.n; j++)
+                if (g.A[i][j] != -1) {
+                    Color c = LIGHTGRAY; float thick = 1.5f;
+                    if (state == STATE_FINISHED && onPath[i] && onPath[j] && g.par[j] == i) { c = RED; thick = 5.0f; }
+                    else if (g.par[j] == i) { c = DARKBLUE; thick = 2.5f; }
+                    drawArrow(g.toado[i], g.toado[j], 32.0f, c, g.A[i][j], thick);
+                }
+
+        for (int i = 1; i <= g.n; i++) {
+            Color c = SKYBLUE;
+            if (state == STATE_FINISHED && onPath[i]) c = RED;
+            else if (i == u_start) c = ORANGE;
+            else if (i == currentV) c = YELLOW;
+            else if (g.T[i] == 0) c = LIME;
+            DrawCircleV(g.toado[i], 32, c);
+            DrawCircleLinesV(g.toado[i], 32, BLACK);
+            DrawText(TextFormat("%d", i), g.toado[i].x - 10, g.toado[i].y - 12, 26, (onPath[i] && state==STATE_FINISHED)? WHITE : BLACK);
+            if (g.L[i] < INF) DrawText(TextFormat("L=%d", g.L[i]), g.toado[i].x - 25, g.toado[i].y + 38, 18, MAROON);
+        }
+
+        if (state == STATE_FINISHED) {
+            DrawRectangle(40, 680, 820, 200, Fade(GOLD, 0.9f));
+            DrawRectangleLines(40, 680, 820, 200, ORANGE);
+            DrawText("KET QUA CUOI CUNG:", 60, 695, 26, DARKBLUE);
+            DrawText(pathResult, 60, 730, 22, BLACK);
+            if (g.L[v_target] != INF) DrawText(TextFormat("TONG TRONG SO: %d", g.L[v_target]), 60, 765, 26, RED);
+            
+            DrawText("[R] CHAY LAI   [N] CHON FILE MOI   [ESC] THOAT", 60, 830, 24, DARKBLUE);
+        }
+
+        EndDrawing();
     }
-    if (!found) state = STATE_FIND_MIN;
+    CloseWindow();
+    return 0;
 }
 \end{lstlisting}
 

@@ -27,17 +27,18 @@
 \contentsline {chapter}{\numberline {3}Tổ chức cấu trúc dữ liệu và thuật toán}{12}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Phát biểu bài toán}{12}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Cấu trúc dữ liệu}{12}{section.3.2}%
-\contentsline {subsubsection}{Cấu trúc dữ liệu}{12}{subsubsection*.10}%
-\contentsline {section}{\numberline {3.3}Thuật toán}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Thuật toán}{14}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Chương trình và kết quả}{16}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Tổ chức chương trình}{16}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Cấu trúc thư mục dự án}{16}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Chi tiết các hàm xử lý trong mã nguồn}{16}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}Ngôn ngữ và thư viện cài đặt}{17}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Kết quả}{17}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Giao diện chính của chương trình}{17}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Kết quả thực thi của chương trình}{19}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Nhận xét đánh giá}{20}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Kết luận và hướng phát triển}{22}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kết luận}{22}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Hướng phát triển}{22}{section.5.2}%
-\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{23}{section.5.2}%
-\contentsline {chapter}{PHỤ LỤC}{24}{chapter*.12}%
+\contentsline {section}{\numberline {4.3}Kết quả}{18}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Giao diện chính của chương trình}{18}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Kết quả thực thi của chương trình}{20}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Nhận xét đánh giá}{21}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}Kết luận và hướng phát triển}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kết luận}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Hướng phát triển}{23}{section.5.2}%
+\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{24}{section.5.2}%
+\contentsline {chapter}{PHỤ LỤC}{25}{chapter*.11}%
