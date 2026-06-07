@@ -7,6 +7,7 @@
 
 #define INF 1000000000
 #define N  105
+#define MAX_EDGES 100005
 #define MAX_LOG_DISPLAY 20
 
 // --- DINH NGHIA MAU CONSOLE ---
@@ -42,7 +43,7 @@ struct Node {
     int dist;
 };
 struct piority_queue {
-    Node A[N];
+    Node A[MAX_EDGES];
     int heap_size;
 };
 
@@ -185,7 +186,7 @@ void swap(Node *a,Node *b) {
     *a=*b;
     *b=tmp;
 }
-void min_heap(Node A[N],int i,int heap_size) {
+void min_heap(Node A[],int i,int heap_size) {
     int l=Left(i);
     int r=Right(i);
     int smallest=i;
@@ -198,7 +199,7 @@ void min_heap(Node A[N],int i,int heap_size) {
         min_heap(A,smallest,heap_size);
     }
 }
-void insert_min_heap(Node A[N],int *heap_size,Node key) {
+void insert_min_heap(Node A[],int *heap_size,Node key) {
     (*heap_size)++;
     A[*heap_size]=key;
     int i=*heap_size;
@@ -207,7 +208,7 @@ void insert_min_heap(Node A[N],int *heap_size,Node key) {
         i=parent(i);
     }
 }
-Node pop_min_heap(Node A[N],int *heap_size) {
+Node pop_min_heap(Node A[],int *heap_size) {
     Node min_e=A[1];
     A[1]=A[*heap_size];
     (*heap_size)--;
