@@ -278,7 +278,7 @@ của các liên kết giữa các cặp nút.
     \item \textbf{Có trọng số hoặc không có trọng số:} Mỗi cạnh $(u, v)$ có thể mang trọng số $w(u, v)$ đại diện cho các thực thể vật lý như chi phí di chuyển, khoảng cách vật lý hoặc độ trễ thời gian. 
 \end{itemize}
 \subsection{Lý thuyết đồ thị có hướng (Directed Graph)}
-Đồ thị có hướng được biểu diễn toán học dưới dạng một hệ vô hướng $G = (V, E)$, trong đó:
+Đồ thị có hướng được biểu diễn toán học dưới dạng một hệ có hướng $G = (V, E)$, trong đó:
 \begin{itemize}
     \item $V = \{v_1, v_2, ..., v_n\}$ là tập hợp hữu hạn các đỉnh của đồ thị.
     \item $E \subseteq V \times V$ là tập hợp các cung (cạnh có hướng). Mỗi cung là một cặp có thứ tự $(u, v)$ thể hiện liên kết một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$.
@@ -350,7 +350,7 @@ Quy trình thực thi của thuật toán được chia thành các bước cơ 
 
 \section{Cấu trúc dữ liệu}
 
-Để chương trình tính toán nhanh và đồng bộ được với giao diện đồ họa, cấu trúc dữ liệu được tổ chức thành các thành phần chính sau: \texttt{struct Graph} dùng để lưu trữ toàn bộ thông tin đồ thị bằng mảng tĩnh giúp truy xuất nhanh; Hàng đợi ưu tiên (\texttt{piority\_queue}) được tự cài đặt để tăng tốc quá trình tìm đỉnh ngắn nhất cho thuật toán Dijkstra; và Máy trạng thái (\texttt{enum AlgoState}) giúp chia nhỏ thuật toán thành từng bước để mô phỏng lên màn hình một cách mượt mà.
+Để chương trình tính toán nhanh và đồng bộ được với giao diện đồ họa, cấu trúc dữ liệu được tổ chức thành các thành phần chính sau: \texttt{struct Graph} dùng để lưu trữ toàn bộ thông tin đồ thị bằng mảng tĩnh giúp truy xuất nhanh; Hàng đợi ưu tiên (\texttt{priority\_queue}) được tự cài đặt để tăng tốc quá trình tìm đỉnh ngắn nhất cho thuật toán Dijkstra; và Máy trạng thái (\texttt{enum AlgoState}) giúp chia nhỏ thuật toán thành từng bước để mô phỏng lên màn hình một cách mượt mà.
 
 Dưới đây là mã nguồn cài đặt các cấu trúc dữ liệu cốt lõi của chương trình:
 
@@ -387,7 +387,7 @@ struct Node {
     int dist;            // Khoang cach tai thoi diem them vao heap
 };
 
-struct piority_queue {
+struct priority_queue {
     Node A[MAX_EDGES];   // Mang chua cac phan tu cua heap
     int heap_size;       // Kich thuoc hien tai cua heap
 };
@@ -414,7 +414,7 @@ struct piority_queue {
         \item \texttt{par[N]}: Mảng lưu vết đỉnh cha liền trước, hỗ trợ truy xuất ngược từ đỉnh đích về đỉnh nguồn sau khi thuật toán kết thúc.
     \end{itemize}
     
-    \item \textbf{\texttt{struct Node} và \texttt{piority\_queue}:} Cấu trúc Hàng đợi ưu tiên (Min-Heap) lưu trữ đỉnh kèm theo khoảng cách tại thời điểm được chèn. Việc đóng gói này giúp duy trì cấu trúc Heap ổn định không bị phá vỡ khi khoảng cách toàn cục thay đổi.
+    \item \textbf{\texttt{struct Node} và \texttt{priority\_queue}:} Cấu trúc Hàng đợi ưu tiên (Min-Heap) lưu trữ đỉnh kèm theo khoảng cách tại thời điểm được chèn. Việc đóng gói này giúp duy trì cấu trúc Heap ổn định không bị phá vỡ khi khoảng cách toàn cục thay đổi.
 \end{itemize}
 \section{Thuật toán}
 Dựa trên thuật toán Dijkstra, nhóm đã tái cấu trúc quy trình loang nhãn thành một Máy trạng thái (State Machine) thông qua \texttt{enum AlgoState}. Việc xé nhỏ thuật toán thành từng "trạng thái rời rạc" giúp chương trình có thể tạm dừng hoặc làm chậm tiến trình (delay).
@@ -568,7 +568,7 @@ Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành 
     \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề hoặc danh sách kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi định dạng luồng nhập.
 \end{itemize}
 \textbf{Hướng cải tiến:}
-Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã hoàn thành  ược việc tích hợp \textbf{Hàng đợi ưu tiên (Priority Queue)} kết hợp với \textbf{Danh sách kề (Adjacency List)} tự chọn. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
+Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã hoàn thành được việc tích hợp \textbf{Hàng đợi ưu tiên (Priority Queue)} kết hợp với \textbf{Danh sách kề (Adjacency List)} tự chọn. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
 
 Trong thời gian tới, nhóm dự kiến phát triển một giao diện cho phép người dùng dùng chuột vẽ đỉnh, nối cạnh trực tiếp trên cửa sổ Raylib thay vì phải tạo file tĩnh. Đồng thời bổ sung các hệ thống bắt lỗi (try-catch) để đảm bảo phần mềm hoạt động bền bỉ nhất.
 % ==================== CHƯƠNG 5 ====================
@@ -599,7 +599,7 @@ Nguyễn Văn Hiệu, \textit{Bài toán đường đi ngắn nhất trên đồ
 \bibitem{ref4}
 Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
 \bibitem{ref5}
-Dang Thien Binh, \textit{Introduction to Algorithms}, Da Nang University of Science and Technology. 
+Đặng Thiện Bình, \textit{Introduction to Algorithms}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
 \end{thebibliography}
 
 % ==================== PHỤ LỤC MÃ NGUỒN CỐT LÕI ====================
@@ -635,7 +635,7 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
     int logCount = 0;
 
     InitWindow(1500, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
-    piority_queue q;
+    priority_queue q;
     q.heap_size=0;
     Node tmp;
     tmp.id=u_start;

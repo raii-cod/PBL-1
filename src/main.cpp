@@ -42,7 +42,7 @@ struct Node {
     int id;
     int dist;
 };
-struct piority_queue {
+struct priority_queue {
     Node A[MAX_EDGES];
     int heap_size;
 };
@@ -221,7 +221,7 @@ int UIRaylib_Dijkstra(struct Graph g, int u_start, int v_target) {
     int logCount = 0;
 
     InitWindow(1500, 900, "PBL1 - Mo phong Dijkstra Step-by-Step - DUT");
-    piority_queue q;
+    priority_queue q;
     q.heap_size=0;
     Node tmp;
     tmp.id=u_start;
