@@ -284,7 +284,7 @@ của các liên kết giữa các cặp nút.
     \item $E \subseteq V \times V$ là tập hợp các cung (cạnh có hướng). Mỗi cung là một cặp có thứ tự $(u, v)$ thể hiện liên kết một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$.
     \item Hàm trọng số $W: E \to \mathbb{R}^+$ gán cho mỗi cung $(u, v)$ một giá trị $W(u, v)$ đại diện cho khoảng cách hoặc chi phí.
 \end{itemize}
-Đồ thị được mã hóa dưới dạng "Ma trận kề" hoặc "Danh sách kề" trong tập tin văn bản đầu vào. Khi nạp vào chương trình bằng Ma trận kề $A_{n \times n}$, phần tử $A[i][j] = W(i, j)$, ngược lại nếu không có cung nối $A[i][j] = 0$. Nếu sử dụng Danh sách kề, thuật toán sẽ tự động phân bổ qua danh sách liên kết để tăng tốc độ truy xuất.
+Đồ thị được mã hóa dưới dạng "Ma trận kề" hoặc "Danh sách kề" trong tập tin văn bản đầu vào. Khi nạp vào chương trình bằng Ma trận kề $A_{n \times n}$, phần tử $A[i][j] = W(i, j)$ nếu tồn tại cung nối, ngược lại nếu không có cung nối thì $A[i][j] = -1$ (quy ước giá trị "không tồn tại cạnh" trong cài đặt). Nếu sử dụng Danh sách kề, thuật toán sẽ tự động phân bổ qua danh sách liên kết để tăng tốc độ truy xuất.
 \subsection{Nguyên lý nới lỏng cạnh (Relaxation)}
 Kỹ thuật nới lỏng cạnh (Edge Relaxation) là một thao tác cơ sở và cốt lõi trong việc thiết kế và triển khai các thuật toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số. Về mặt bản chất, quá trình này liên tục đánh giá và cập nhật lại chi phí (khoảng cách ước lượng) từ đỉnh nguồn đến các đỉnh lân cận cho đến khi hệ thống đạt được trạng thái tối ưu toàn cục.
 
@@ -462,7 +462,7 @@ $\Rightarrow$ \textbf{Kết luận:} Khi chạy chế độ Ma trận kề, hệ
     \item \textbf{Lưu trữ đồ thị:} Nếu dùng Ma trận kề sẽ chiếm không gian $\mathbf{O(V^2)}$. Trong khi đó, tính năng Danh sách kề chỉ tiêu tốn $\mathbf{O(V+E)}$, giải quyết dứt điểm rào cản bộ nhớ.
     \item \textbf{Lưu trữ Heap và trạng thái:} Hàng đợi ưu tiên có thể chứa tối đa $E$ đỉnh tương đương $\mathbf{O(E)}$. Các mảng một chiều \texttt{L[N]}, \texttt{T[N]}, \texttt{par[N]} chiếm $\mathbf{O(V)}$.
 \end{itemize}
-$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật toán là $\mathbf{O(V^2)}$, phù hợp trong giới hạn bộ nhớ của môi trường C/C++.
+$\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật toán là $\mathbf{O(V^2)}$.
 
 % ==================== CHƯƠNG 4 ====================
 \chapter{Chương trình và kết quả}
@@ -482,8 +482,8 @@ Chương trình được phân rã chức năng mạch lạc thành các module 
 
 \begin{itemize}
     \item \textbf{\texttt{main()}:} Điểm khởi đầu của chương trình, chứa vòng lặp vô tận (game loop cơ bản) để quản lý luồng thực thi: in giao diện Console, đọc đường dẫn file, kiểm tra tính hợp lệ của file và kích hoạt hàm mô phỏng Raylib đồ họa.
-    \item \textbf{\texttt{UIConsole()} \& \textbf{\texttt{PrintCentered()}}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng thẩm mỹ.
-    \item \textbf{\texttt{filename()} \& \textbf{\texttt{inputdata()}}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hiện hỗ trợ phân luồng đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} sẽ được thiết lập tự động sau khi đọc.
+    \item \textbf{\texttt{UIConsole()} \& \texttt{PrintCentered()}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng thẩm mỹ.
+    \item \textbf{\texttt{filename()} \& \texttt{inputdata()}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hiện hỗ trợ phân luồng đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} sẽ được thiết lập tự động sau khi đọc.
     \item \textbf{Nhóm hàm Hàng đợi ưu tiên:} Bao gồm các thao tác trực tiếp trên Min-Heap như \texttt{insert\_min\_heap}, \texttt{pop\_min\_heap}, \texttt{min\_heap}, \texttt{swap}, \texttt{parent}, \texttt{Left}, \texttt{Right} để hỗ trợ tìm đỉnh tối ưu nhanh chóng.
     \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Trái tim của ứng dụng đồ họa. Hàm này khởi tạo cửa sổ Raylib 60-FPS, trực tiếp chạy Máy trạng thái (State Machine) thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình elip/tròn và vẽ toàn bộ trạng thái lên màn hình.
     \item \textbf{\texttt{drawArrow()}:} Hàm hình học nâng cao xử lý toán học lượng giác (\texttt{sin}, \texttt{cos}, \texttt{atan2}) để vẽ chính xác mũi tên chỉ hướng giữa hai tọa độ vector, đồng thời đính kèm trọng số của cạnh hiển thị ngay chính giữa mũi tên.
@@ -513,7 +513,7 @@ Hệ thống được lập trình bằng ngôn ngữ C/C++ trên nền tảng t
 \section{Kết quả}
 
 \subsection{Giao diện chính của chương trình}
-Màn hình khởi tạo (Console) đảm nhận vai trò hiển thị thông tin sinh viên thực hiện, giới thiệu hệ thống và xác nhận việc nạp tệp đồ thị thành công. 
+Màn hình khởi tạo (Console) đảm nhận vai trò hiển thị thông tin người dùng thực hiện, giới thiệu hệ thống và xác nhận việc nạp tệp đồ thị thành công. 
 
 \begin{figure}[H]
     \centering
@@ -568,7 +568,7 @@ Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành 
     \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề hoặc danh sách kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi định dạng luồng nhập.
 \end{itemize}
 \textbf{Hướng cải tiến:}
-Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã hoàn thành được việc tích hợp \textbf{Hàng đợi ưu tiên (Priority Queue)} kết hợp với \textbf{Danh sách kề (Adjacency List)} tự chọn. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
+Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã hoàn thành được việc tích hợp \textbf{Hàng đợi ưu tiên (Priority Queue)} kết hợp với \textbf{Danh sách kề (Adjacency List)}. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
 
 Trong thời gian tới, nhóm dự kiến phát triển một giao diện cho phép người dùng dùng chuột vẽ đỉnh, nối cạnh trực tiếp trên cửa sổ Raylib thay vì phải tạo file tĩnh. Đồng thời bổ sung các hệ thống bắt lỗi (try-catch) để đảm bảo phần mềm hoạt động bền bỉ nhất.
 % ==================== CHƯƠNG 5 ====================
@@ -599,7 +599,7 @@ Nguyễn Văn Hiệu, \textit{Bài toán đường đi ngắn nhất trên đồ
 \bibitem{ref4}
 Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
 \bibitem{ref5}
-Đặng Thiện Bình, \textit{Introduction to Algorithms}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
+Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein, \textit{Introduction to Algorithms}, 3rd edition, MIT Press, 2009.
 \end{thebibliography}
 
 % ==================== PHỤ LỤC MÃ NGUỒN CỐT LÕI ====================
