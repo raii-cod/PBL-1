@@ -148,7 +148,7 @@
 \pagenumbering{arabic}
 \chapter*{MỞ ĐẦU}
 \addcontentsline{toc}{chapter}{MỞ ĐẦU}
-Sự phát triển mạnh mẽ của lý thuyết đồ thị đã đặt nền móng vững chắc cho nhiều bước tiến đột phá trong khoa học máy tính, tối ưu hóa hệ thống và quy hoạch mạng lưới giao thông. Trong số các bài toán kinh điển, bài toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số nổi lên như một thách thức trọng tâm với vô vàn ứng dụng thực tiễn—từ việc định tuyến trong mạng Internet, tối ưu hóa lộ trình trong các ứng dụng bản đồ số, đến việc lập lịch trình vận tải và logistics. Việc xác định lộ trình tối ưu không chỉ đơn thuần là tìm kiếm khoảng cách vật lý nhỏ nhất, mà còn liên quan trực tiếp đến việc tối ưu hóa thời gian, chi phí và tài nguyên trong các môi trường mạng lưới có tính chất phân cấp phức tạp.
+Lý thuyết đồ thị là nền tảng quan trọng trong khoa học máy tính, được ứng dụng rộng rãi trong tối ưu hóa hệ thống và quy hoạch mạng lưới giao thông. Trong số các bài toán cơ bản, bài toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số có nhiều ứng dụng thực tiễn như định tuyến trong mạng Internet, tối ưu hóa lộ trình trong các ứng dụng bản đồ số và lập lịch trình vận tải. Việc xác định lộ trình tối ưu không chỉ là tìm khoảng cách nhỏ nhất, mà còn liên quan đến tối ưu hóa thời gian, chi phí và tài nguyên trong các hệ thống mạng lưới.
 
 Đề tài \textbf{"Xây dựng chương trình tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số”} theo phương pháp Dijkstra được thực hiện nhằm hiện thực hóa các cơ sở lý thuyết vào thực tiễn lập trình. Mục tiêu trọng tâm của đề tài là nghiên cứu chuyên sâu về nguyên lý hoạt động, các bất biến toán học của thuật toán Dijkstra, từ đó thiết kế và cài đặt một chương trình ứng dụng hoàn chỉnh, có khả năng xử lý chính xác và tối ưu các dữ liệu trên đồ thị có hướng.
 
@@ -191,7 +191,7 @@ Bài toán này được chia thành các dạng chính dựa trên nhu cầu t�
 \end{itemize}
 
 \subsection*{3. Tầm quan trọng và Ứng dụng thực tiễn}
-Tuy xuất phát từ toán học lý thuyết, Bài toán tìm đường đi ngắn nhất là "trái tim" của vô số công nghệ cốt lõi trong thời đại số hóa ngày nay.
+Xuất phát từ toán học lý thuyết, bài toán tìm đường đi ngắn nhất là nền tảng của nhiều công nghệ quan trọng hiện nay.
 
 \begin{enumerate}
     \item \textbf{Định tuyến Mạng và Internet (Telecommunications \& Networking):} Trong viễn thông, bài toán này thường được hiểu là "bài toán đường đi có độ trễ nhỏ nhất". Các giao thức định tuyến nền tảng của Internet như OSPF (Open Shortest Path First) hay IS-IS đều sử dụng thuật toán Dijkstra để tìm ra đường truyền gói tin nhanh nhất giữa các bộ định tuyến (router) trên toàn cầu.
@@ -211,7 +211,7 @@ Việc chuyển đổi từ giao diện dòng lệnh (CLI) sang mô phỏng tr�
     \item \textbf{Trực quan hóa luồng dữ liệu:} Con người tiếp thu hình ảnh nhanh hơn văn bản. Nhìn các cột cao thấp hoán đổi vị trí cho nhau dễ hiểu và ghi nhớ hơn rất nhiều so với việc đọc hàng trăm dòng mảng số nguyên in ra từ Terminal.
     \item \textbf{Kiểm soát và Tương tác (Interactivity):} Người dùng có thể tua chậm (slow-motion), tạm dừng (pause), hoặc chạy từng bước (step-by-step) quá trình thuật toán thực thi để quan sát sự thay đổi trạng thái—điều rất khó làm mượt mà trên Terminal.
     \item \textbf{Phát hiện lỗi trực giác (Visual Debugging):} Khi thuật toán có lỗi logic (ví dụ: vòng lặp vô hạn, hoặc mảng trỏ sai vùng nhớ), biểu hiện trên đồ họa thường là các chuyển động sai lệch hoặc biến dạng hình ảnh, giúp lập trình viên khoanh vùng lỗi ngay lập tức.
-    \item \textbf{Tăng cảm hứng học tập:} Biến những lý thuyết toán học, các vòng lặp for/while khô khan thành các chuyển động bắt mắt, tạo sự hứng thú đặc biệt cho cả người mới học lập trình lẫn kỹ sư lâu năm.
+    \item \textbf{Hỗ trợ học tập:} Chuyển hóa các khái niệm toán học và cấu trúc điều khiển thành hình ảnh trực quan, giúp người học dễ theo dõi và nắm bắt luồng thực thi của thuật toán hơn so với đọc log văn bản.
 \end{itemize}
 
 \subsection*{3. Các thuật toán thường được mô phỏng đồ họa}
@@ -284,7 +284,6 @@ của các liên kết giữa các cặp nút.
     \item $E \subseteq V \times V$ là tập hợp các cung (cạnh có hướng). Mỗi cung là một cặp có thứ tự $(u, v)$ thể hiện liên kết một chiều từ đỉnh gốc $u$ đến đỉnh ngọn $v$.
     \item Hàm trọng số $W: E \to \mathbb{R}^+$ gán cho mỗi cung $(u, v)$ một giá trị $W(u, v)$ đại diện cho khoảng cách hoặc chi phí.
 \end{itemize}
-Đồ thị được mã hóa dưới dạng "Ma trận kề" hoặc "Danh sách kề" trong tập tin văn bản đầu vào. Khi nạp vào chương trình bằng Ma trận kề $A_{n \times n}$, phần tử $A[i][j] = W(i, j)$ nếu tồn tại cung nối, ngược lại nếu không có cung nối thì $A[i][j] = -1$ (quy ước giá trị "không tồn tại cạnh" trong cài đặt). Nếu sử dụng Danh sách kề, thuật toán sẽ tự động phân bổ qua danh sách liên kết để tăng tốc độ truy xuất.
 \subsection{Nguyên lý nới lỏng cạnh (Relaxation)}
 Kỹ thuật nới lỏng cạnh (Edge Relaxation) là một thao tác cơ sở và cốt lõi trong việc thiết kế và triển khai các thuật toán tìm đường đi ngắn nhất trên đồ thị có hướng có trọng số. Về mặt bản chất, quá trình này liên tục đánh giá và cập nhật lại chi phí (khoảng cách ước lượng) từ đỉnh nguồn đến các đỉnh lân cận cho đến khi hệ thống đạt được trạng thái tối ưu toàn cục.
 
@@ -455,7 +454,7 @@ Dựa trên cách cài đặt linh hoạt cho phép tùy chọn Ma trận kề h
         \item Nếu chọn dùng \textbf{Danh sách kề}, chương trình chỉ duyệt qua các đỉnh kề có thực, tiêu tốn đúng $O(E)$ phép toán. Việc cập nhật và đẩy vào Min-Heap tiêu tốn $O(E \log V)$.
     \end{itemize}
 \end{itemize}
-$\Rightarrow$ \textbf{Kết luận:} Khi chạy chế độ Ma trận kề, hệ thống có độ phức tạp $\mathbf{O(V^2 + E \log V)}$. Đặc biệt, khi chuyển sang \textbf{Danh sách kề}, chương trình đã đạt hiệu suất tối ưu lý tưởng $\mathbf{O((V + E) \log V)}$, xử lý vô cùng mượt mà và vượt trội ngay cả với các đồ thị rất thưa hoặc đồ thị lớn có hàng nghìn đỉnh.
+$\Rightarrow$ \textbf{Kết luận:} Khi chạy chế độ Ma trận kề, hệ thống có độ phức tạp $\mathbf{O(V^2 + E \log V)}$. Khi chuyển sang \textbf{Danh sách kề}, chương trình đạt độ phức tạp $\mathbf{O((V + E) \log V)}$, phù hợp hơn với các đồ thị thưa (ít cạnh so với số đỉnh). Lưu ý: do sử dụng mảng tĩnh với $N = 105$, chương trình hiện hỗ trợ tối đa $100$ đỉnh.
 
 \textbf{2. Độ phức tạp không gian (Bộ nhớ):}
 \begin{itemize}
@@ -485,7 +484,7 @@ Chương trình được phân rã chức năng mạch lạc thành các module 
     \item \textbf{\texttt{UIConsole()} \& \texttt{PrintCentered()}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng thẩm mỹ.
     \item \textbf{\texttt{filename()} \& \texttt{inputdata()}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hiện hỗ trợ phân luồng đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} sẽ được thiết lập tự động sau khi đọc.
     \item \textbf{Nhóm hàm Hàng đợi ưu tiên:} Bao gồm các thao tác trực tiếp trên Min-Heap như \texttt{insert\_min\_heap}, \texttt{pop\_min\_heap}, \texttt{min\_heap}, \texttt{swap}, \texttt{parent}, \texttt{Left}, \texttt{Right} để hỗ trợ tìm đỉnh tối ưu nhanh chóng.
-    \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Trái tim của ứng dụng đồ họa. Hàm này khởi tạo cửa sổ Raylib 60-FPS, trực tiếp chạy Máy trạng thái (State Machine) thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình elip/tròn và vẽ toàn bộ trạng thái lên màn hình.
+    \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Hàm xử lý đồ họa chính của chương trình. Hàm này khởi tạo cửa sổ Raylib 60-FPS, chạy Máy trạng thái (State Machine) thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình tròn và vẽ toàn bộ trạng thái lên màn hình.
     \item \textbf{\texttt{drawArrow()}:} Hàm hình học nâng cao xử lý toán học lượng giác (\texttt{sin}, \texttt{cos}, \texttt{atan2}) để vẽ chính xác mũi tên chỉ hướng giữa hai tọa độ vector, đồng thời đính kèm trọng số của cạnh hiển thị ngay chính giữa mũi tên.
     \item \textbf{\texttt{AddLog()}:} Tiện ích hỗ trợ sao chép chuỗi kí tự thông báo tiến trình toán học đẩy vào mảng chuỗi \texttt{stepLogs} để vẽ lên màn hình đồ họa bên phải.
     \item \textbf{\texttt{MyDelay()}:} Hàm dừng chương trình cưỡng bức dựa trên xung nhịp đồng hồ máy tính (\texttt{clock()}), đóng vai trò làm công cụ tạo nhịp độ chậm cho thuật toán, giúp mắt người dùng kịp quan sát.
@@ -575,7 +574,7 @@ Trong thời gian tới, nhóm dự kiến phát triển một giao diện cho p
 \chapter{Kết luận và hướng phát triển}
 
 \section{Kết luận}
-Qua quá trình nỗ lực nghiên cứu và hoàn thiện đồ án PBL1, nhóm chúng em đã củng cố thành công nền tảng cấu trúc dữ liệu tĩnh và làm chủ giải thuật cốt lõi Dijkstra. Việc áp dụng thành công kỹ thuật hình học lượng giác và thư viện Raylib vào kiến trúc Máy trạng thái phân mảnh đã giúp chương trình vận hành chính xác, minh họa trực quan sinh động tiến trình loang nhãn phức tạp của hệ thống đồ thị.
+Qua quá trình thực hiện đồ án PBL1, nhóm đã củng cố kiến thức về cấu trúc dữ liệu tĩnh và hiểu rõ hơn cơ chế hoạt động của thuật toán Dijkstra. Việc kết hợp kỹ thuật tính toán tọa độ và thư viện Raylib theo kiến trúc Máy trạng thái giúp chương trình minh họa được từng bước của quá trình loang nhãn trên đồ thị một cách trực quan.
 
 \section{Hướng phát triển}
 Dựa trên những ưu điểm về mặt thuật toán và đồ họa đã làm được, nhóm chúng em dự định sẽ tiếp tục nâng cấp đồ án theo các hướng sau nếu có thêm thời gian:
