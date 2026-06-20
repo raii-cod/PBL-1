@@ -471,8 +471,9 @@ $\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật
 Để đảm bảo tính khoa học và dễ bảo trì, dự án được tổ chức thành các thư mục riêng biệt với từng vai trò cụ thể như sau:
 \begin{itemize}
     \item \textbf{\texttt{src/}:} Chứa mã nguồn C/C++ cốt lõi của chương trình (file \texttt{main.cpp}).
-    \item \textbf{\texttt{DATA/}:} Thư mục lưu trữ các tệp văn bản đầu vào (ví dụ: \texttt{input.dat}) chứa kích thước đỉnh, thông tin đồ thị (cấu trúc ma trận hoặc danh sách kề) và đỉnh bắt đầu/kết thúc.
-    \item \textbf{\texttt{lib/} và \texttt{obj/}:} Thư mục hệ thống chứa các thư viện đồ họa Raylib và các file đối tượng sinh ra trong quá trình biên dịch.
+    \item \textbf{\texttt{DATA/}:} Thư mục lưu trữ các tệp văn bản đầu vào (ví dụ: \texttt{input.dat}) chứa số lượng đỉnh, thông tin đồ thị theo định dạng Ma trận kề hoặc Danh sách kề, cùng chỉ số đỉnh xuất phát và đỉnh đích.
+    \item \textbf{\texttt{lib/} và \texttt{obj/}:} Thư mục hệ thống chứa các tệp thư viện đồ họa Raylib được liên kết tĩnh và các tệp đối tượng (\texttt{.o}) sinh ra trong quá trình biên dịch.
+    \item \textbf{\texttt{Picture/}:} Thư mục chứa các ảnh chụp màn hình kết quả chương trình, được nhúng vào báo cáo LaTeX.
     \item \textbf{\texttt{Makefile}:} Tập lệnh được cấu hình sẵn để tự động hóa quá trình biên dịch toàn bộ dự án từ mã nguồn thành file thực thi (\texttt{main.exe}).
 \end{itemize}
 
@@ -480,14 +481,14 @@ $\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật
 Chương trình được phân rã chức năng mạch lạc thành các module tuyến tính trong tệp tin duy nhất \texttt{src/main.cpp}. Cấu trúc này giúp dễ dàng kiểm soát vòng đời của chương trình từ lúc đọc file đến lúc vẽ hình. Dưới đây là chi tiết các hàm đã được cài đặt:
 
 \begin{itemize}
-    \item \textbf{\texttt{main()}:} Điểm khởi đầu của chương trình, chứa vòng lặp vô tận (game loop cơ bản) để quản lý luồng thực thi: in giao diện Console, đọc đường dẫn file, kiểm tra tính hợp lệ của file và kích hoạt hàm mô phỏng Raylib đồ họa.
-    \item \textbf{\texttt{UIConsole()} \& \texttt{PrintCentered()}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng thẩm mỹ.
-    \item \textbf{\texttt{filename()} \& \texttt{inputdata()}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hiện hỗ trợ phân luồng đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} sẽ được thiết lập tự động sau khi đọc.
-    \item \textbf{Nhóm hàm Hàng đợi ưu tiên:} Bao gồm các thao tác trực tiếp trên Min-Heap như \texttt{insert\_min\_heap}, \texttt{pop\_min\_heap}, \texttt{min\_heap}, \texttt{swap}, \texttt{parent}, \texttt{Left}, \texttt{Right} để hỗ trợ tìm đỉnh tối ưu nhanh chóng.
-    \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Hàm xử lý đồ họa chính của chương trình. Hàm này khởi tạo cửa sổ Raylib 60-FPS, chạy Máy trạng thái (State Machine) thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình tròn và vẽ toàn bộ trạng thái lên màn hình.
-    \item \textbf{\texttt{drawArrow()}:} Hàm hình học nâng cao xử lý toán học lượng giác (\texttt{sin}, \texttt{cos}, \texttt{atan2}) để vẽ chính xác mũi tên chỉ hướng giữa hai tọa độ vector, đồng thời đính kèm trọng số của cạnh hiển thị ngay chính giữa mũi tên.
-    \item \textbf{\texttt{AddLog()}:} Tiện ích hỗ trợ sao chép chuỗi kí tự thông báo tiến trình toán học đẩy vào mảng chuỗi \texttt{stepLogs} để vẽ lên màn hình đồ họa bên phải.
-    \item \textbf{\texttt{MyDelay()}:} Hàm dừng chương trình cưỡng bức dựa trên xung nhịp đồng hồ máy tính (\texttt{clock()}), đóng vai trò làm công cụ tạo nhịp độ chậm cho thuật toán, giúp mắt người dùng kịp quan sát.
+    \item \textbf{\texttt{main()}:} Điểm khởi đầu của chương trình. Chứa vòng lặp \texttt{while (mode == 1)} để quản lý luồng thực thi: hiển thị giao diện Console, cho người dùng chọn định dạng file và nhập đường dẫn, sau đó kích hoạt hàm mô phỏng đồ họa. Vòng lặp kết thúc khi người dùng nhấn \texttt{[ESC]} trong cửa sổ Raylib.
+    \item \textbf{\texttt{UIConsole()} \& \texttt{PrintCentered()}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng văn bản.
+    \item \textbf{\texttt{filename()} \& \texttt{inputdata()}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hỗ trợ đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} được khởi tạo tự động sau khi đọc xong.
+    \item \textbf{Nhóm hàm Min-Heap:} Bao gồm \texttt{insert\_min\_heap} (chèn phần tử), \texttt{pop\_min\_heap} (lấy phần tử nhỏ nhất), \texttt{min\_heap} (heapify -- vun lại cấu trúc heap), cùng các hàm hỗ trợ \texttt{swap}, \texttt{parent}, \texttt{Left}, \texttt{Right} tính chỉ số nút trong mảng.
+    \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Hàm xử lý đồ họa chính của chương trình. Hàm này khởi tạo cửa sổ Raylib 60-FPS, chạy Máy trạng thái (State Machine) của thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình tròn và vẽ toàn bộ trạng thái lên màn hình. Tốc độ mô phỏng được điều tiết bằng biến \texttt{timer} và \texttt{speed} theo từng khung hình (frame).
+    \item \textbf{\texttt{drawArrow()}:} Sử dụng các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để vẽ mũi tên có hướng giữa hai đỉnh, đồng thời hiển thị trọng số cạnh ở giữa mũi tên.
+    \item \textbf{\texttt{AddLog()}:} Ghi thông báo trạng thái thuật toán vào mảng \texttt{stepLogs} để hiển thị trên bảng nhật ký bên phải cửa sổ đồ họa.
+    \item \textbf{\texttt{MyDelay()}:} Tạo độ trễ dựa trên xung nhịp \texttt{clock()}, được dùng cho animation dấu chấm loading trên màn hình Console khi chuẩn bị khởi chạy Raylib. Việc làm chậm thuật toán trong cửa sổ đồ họa được thực hiện riêng bằng cơ chế đếm \texttt{timer} theo frame.
 \end{itemize}
 
 \section{Ngôn ngữ và thư viện cài đặt}
@@ -566,12 +567,10 @@ Khi tìm thấy đỉnh đích, toàn bộ các cạnh và đỉnh cấu thành 
 \begin{itemize}
     \item \textbf{Cách nhập dữ liệu còn cứng nhắc:} Hiện tại, người dùng bắt buộc phải tự tạo file text và gõ ma trận kề hoặc danh sách kề cho đúng định dạng thì chương trình mới chạy được. Nếu gõ sai hoặc dư dấu cách, chương trình dễ bị lỗi định dạng luồng nhập.
 \end{itemize}
-\textbf{Hướng cải tiến:}
-Mặc dù còn một số nhược điểm về nhập liệu thủ công, dự án đã hoàn thành được việc tích hợp \textbf{Hàng đợi ưu tiên (Priority Queue)} kết hợp với \textbf{Danh sách kề (Adjacency List)}. Điều này nâng tầm giải thuật từ mô hình đồ thị lý thuyết (độ phức tạp $O(V^2)$) lên phiên bản đồ thị động chuyên nghiệp với hiệu năng lý tưởng $\mathbf{O((V+E)\log V)}$.
-
-Trong thời gian tới, nhóm dự kiến phát triển một giao diện cho phép người dùng dùng chuột vẽ đỉnh, nối cạnh trực tiếp trên cửa sổ Raylib thay vì phải tạo file tĩnh. Đồng thời bổ sung các hệ thống bắt lỗi (try-catch) để đảm bảo phần mềm hoạt động bền bỉ nhất.
+Các hướng cải tiến và phát triển tiếp theo được trình bày chi tiết tại Chương~\ref{chap:ketluan}.
 % ==================== CHƯƠNG 5 ====================
 \chapter{Kết luận và hướng phát triển}
+\label{chap:ketluan}
 
 \section{Kết luận}
 Qua quá trình thực hiện đồ án PBL1, nhóm đã củng cố kiến thức về cấu trúc dữ liệu tĩnh và hiểu rõ hơn cơ chế hoạt động của thuật toán Dijkstra. Việc kết hợp kỹ thuật tính toán tọa độ và thư viện Raylib theo kiến trúc Máy trạng thái giúp chương trình minh họa được từng bước của quá trình loang nhãn trên đồ thị một cách trực quan.
