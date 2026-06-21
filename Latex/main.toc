@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {2.2.3}Nguyên lý nới lỏng cạnh (Relaxation)}{9}{subsection.2.2.3}%
 \contentsline {subsubsection}{Ý nghĩa hoạt động}{9}{subsubsection*.7}%
 \contentsline {subsubsection}{Cơ sở toán học và Cấu trúc logic}{9}{subsubsection*.8}%
-\contentsline {subsubsection}{Ứng dụng trong các thuật toán nền tảng}{10}{subsubsection*.9}%
+\contentsline {subsubsection}{Ứng dụng trong các thuật toán nền tảng}{9}{subsubsection*.9}%
 \contentsline {section}{\numberline {2.3}Thuật toán Dijkstra}{10}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Giới thiệu}{10}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Nguyên lý}{10}{subsection.2.3.2}%
@@ -37,8 +37,8 @@
 \contentsline {subsection}{\numberline {4.3.1}Giao diện chính của chương trình}{18}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Kết quả thực thi của chương trình}{20}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Nhận xét đánh giá}{21}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Kết luận và hướng phát triển}{23}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kết luận}{23}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Hướng phát triển}{23}{section.5.2}%
-\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{24}{section.5.2}%
-\contentsline {chapter}{PHỤ LỤC}{25}{chapter*.11}%
+\contentsline {chapter}{\numberline {5}Kết luận và hướng phát triển}{22}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kết luận}{22}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Hướng phát triển}{22}{section.5.2}%
+\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{23}{section.5.2}%
+\contentsline {chapter}{PHỤ LỤC}{24}{chapter*.11}%

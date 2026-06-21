@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1780834523.45962 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1780834528.48826 0
-  "C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1779817243 88371 b965f57369ed322039596060d18f4416 ""
+["pdflatex"] 1781981131.76453 "d:/PBL-1/Latex/main.tex" "main.pdf" "main" 1781981136.32789 0
+  "C:/Users/Hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1781515918 88371 b965f57369ed322039596060d18f4416 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1779065606 14064 318fd82ca32a8752618f02c160d0e2f9 ""
   "C:/Users/Hp/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1779065523 13332035 cb4ac74bf02d92c1e07bd8e20bf2fc70 ""
   "C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
@@ -219,12 +219,12 @@
   "Picture/hinh3_nhat_ky_thuat_toan.png" 1779679529 18418 a8e5740ee04818112e6a6364ce767144 ""
   "Picture/hinh4_ket_qua_lo_trinh.png" 1779679550 22203 9c669a8ffbabe65527ef1ec337170485 ""
   "Picture/itf.jpg" 1780653474 50575 28df0be127ff810070dd6ad57ddd65e6 ""
-  "d:/PBL-1/Latex/main.tex" 1780834522 66540 b5b6c5af8926601ac7009f69331612f4 ""
-  "main.aux" 1780834527 8168 22df32628698d81796304b2e52160c9b "pdflatex"
-  "main.lof" 1780834527 810 f7c839baa07bedb7f89c0cc516d57327 "pdflatex"
-  "main.out" 1780834527 7567 465f2c337918f6af3dce3c6c935429c1 "pdflatex"
-  "main.tex" 1780834522 66540 b5b6c5af8926601ac7009f69331612f4 ""
-  "main.toc" 1780834527 3944 8bb6a41a55b892d530614cd4cd8baa38 "pdflatex"
+  "d:/PBL-1/Latex/main.tex" 1781981126 65487 6d44e4cbd1778008ff111391b90ae8e3 ""
+  "main.aux" 1781981135 8254 e77bf990256e2c1d382c2d872284f43b "pdflatex"
+  "main.lof" 1781981135 810 f7c839baa07bedb7f89c0cc516d57327 "pdflatex"
+  "main.out" 1781981135 7567 465f2c337918f6af3dce3c6c935429c1 "pdflatex"
+  "main.tex" 1781981126 65487 6d44e4cbd1778008ff111391b90ae8e3 ""
+  "main.toc" 1781981135 3943 0fc656c50bc545fb7650d0b57d7c602b "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

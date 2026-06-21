@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  7 JUN 2026 19:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  21 JUN 2026 01:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1031,7 +1031,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [11]
 Ch\uhorn \ohorn ng 3.
-LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 353.
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 352.
 (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) (C:\Users\Hp\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -1042,7 +1042,7 @@ File: lstlang1.sty 2025/11/14 1.11b listings language file
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 )
 LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 358.
+(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 357.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1055,7 +1055,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 LaTeX Font Info:    Font shape `T5/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 402.
+(Font)              Font shape `T5/cmtt/m/n' tried instead on input line 401.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1065,7 +1065,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [13]
-Overfull \hbox (10.71722pt too wide) in paragraph at lines 424--426
+Overfull \hbox (10.71722pt too wide) in paragraph at lines 423--425
 \T5/cmtt/m/n/12 INF\T5/cmr/m/n/12 , ri∂ng ^^_ønh nguÁn \T5/cmtt/m/n/12 g.L[u_start] = 0\T5/cmr/m/n/12 . Tr§ng th°i ^^_˜Òc ^^_∞t v∑ \T5/cmtt/m/n/12 STATE_FIND_MIN\T5/cmr/m/n/12 . 
  []
 
@@ -1077,7 +1077,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
 [14]
-Overfull \hbox (7.29149pt too wide) in paragraph at lines 451--452
+Overfull \hbox (7.29149pt too wide) in paragraph at lines 450--451
 []\T5/cmr/bx/n/12 Tºm ^^_ønh nh‰ nhßt (\T5/cmtt/m/n/12 STATE_FIND_MIN\T5/cmr/bx/n/12 ): \T5/cmr/m/n/12 Lßy ^^_ønh t¯ Min-Heap ti∂u tËn $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 ([] \OML/cmm/m/it/12 V\OT1/cmr/m/n/12 )$\T5/cmr/m/n/12 .
  []
 
@@ -1100,6 +1100,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [16
 
 ]
+Overfull \hbox (17.45604pt too wide) in paragraph at lines 487--488
+[]\T5/cmr/bx/n/12 Nh‚m h†m Min-Heap: \T5/cmr/m/n/12 Bao gÁm \T5/cmtt/m/n/12 insert_min_heap \T5/cmr/m/n/12 (ch±n ph¶n t˚), \T5/cmtt/m/n/12 pop_min_heap
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1186,8 +1190,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.573 T
-       rong th·ªùi gian t·ªõi, nh√≥m d·ª± ki·∫øn ph√°t tri·ªÉn m·ªôt giao di... <./Picture/hinh4_ket_qua_lo_trinh.png>]
+l.572 \chapter
+              {K·∫øt lu·∫≠n v√† h∆∞·ªõng ph√°t tri·ªÉn} <./Picture/hinh4_ket_qua_lo_trinh.png>]
+Ch\uhorn \ohorn ng 5.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1195,8 +1200,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[22]
-Ch\uhorn \ohorn ng 5.
+[22
+
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1224,9 +1230,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[25
-
-]
+[25]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.50983pt, for example:
@@ -1258,15 +1262,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
 
-[29]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.50983pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.50983pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.50983pt}.
-
-[30] (main.aux)
+[29] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1275,17 +1271,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 465F2C337918F6AF3DCE3C6C935429C1;7567.
  ) 
 Here is how much of TeX's memory you used:
- 30672 strings out of 467871
- 607147 string characters out of 5419828
- 1906211 words of memory out of 5000000
- 58723 multiletter control sequences out of 15000+600000
+ 30674 strings out of 467871
+ 607178 string characters out of 5419828
+ 1906274 words of memory out of 5000000
+ 58726 multiletter control sequences out of 15000+600000
  647936 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,13n,109p,1001b,2182s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,109p,820b,2182s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbxti10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnitt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr6.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnti12.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/Hp/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on main.pdf (34 pages, 554065 bytes).
+Output written on main.pdf (33 pages, 551735 bytes).
 PDF statistics:
- 830 PDF objects out of 1000 (max. 8388607)
- 335 named destinations out of 1000 (max. 500000)
+ 827 PDF objects out of 1000 (max. 8388607)
+ 334 named destinations out of 1000 (max. 500000)
  494 words of extra memory for PDF output out of 10000 (max. 10000000)
 
