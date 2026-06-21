@@ -1,53 +1,68 @@
-# PBL1: Mô phỏng thuật toán Dijkstra tìm đường đi ngắn nhất
-
-Dự án mô phỏng trực quan từng bước thuật toán Dijkstra tìm đường đi ngắn nhất trên đồ thị có hướng, có trọng số. Đồ án được thực hiện trong học phần Đồ án Lập trình Tính toán (PBL1) tại Trường Đại học Bách Khoa - ĐHĐN.
-
-Ngôn ngữ lập trình: **C++**
-Thư viện đồ họa: **Raylib**
+<div align="center">
+  <h1>🚀 Mô Phỏng Thuật Toán Dijkstra Trực Quan</h1>
+  <p><b>Đồ án Học phần Lập trình Tính toán (PBL1)</b><br>Trường Đại học Bách Khoa - ĐHĐN</p>
+</div>
 
 ---
 
-## 📌 Tính năng chính
+## 📖 Giới thiệu
+Dự án này là một ứng dụng mô phỏng trực quan từng bước thuật toán Dijkstra để tìm đường đi ngắn nhất trên đồ thị có hướng và có trọng số. 
 
-- **Mô phỏng thuật toán trực quan:** Hiển thị từng bước duyệt đồ thị và cập nhật khoảng cách.
-- **Tối ưu hóa bằng Min-Heap:** Thuật toán Dijkstra được tối ưu tốc độ bằng cấu trúc Hàng đợi ưu tiên (Min-Heap).
-- **Sắp xếp đỉnh tự động:** Đọc dữ liệu từ file văn bản và tự động vẽ các đỉnh dàn đều theo hình tròn.
-- **Nhật ký hoạt động (Log):** Hiển thị chi tiết lịch sử xử lý và các trạng thái bên phải màn hình.
-- **Màu sắc dễ nhìn:**
-  - `Màu Cam`: Đỉnh bắt đầu.
-  - `Màu Vàng`: Đỉnh đang được xét.
-  - `Màu Xanh lá`: Đỉnh đã tìm được khoảng cách ngắn nhất.
-  - `Màu Đỏ`: Đường đi ngắn nhất cuối cùng khi kết thúc.
+Ứng dụng giúp người dùng dễ dàng quan sát cách thuật toán duyệt qua các đỉnh, cập nhật khoảng cách và tìm ra đường đi tối ưu nhất thông qua giao diện đồ họa sống động.
+
+- **Ngôn ngữ lập trình:** C/C++
+- **Thư viện đồ họa:** [Raylib](https://www.raylib.com/)
 
 ---
 
-## 🎮 Phím tắt điều khiển
-
-- `SPACE`: Bắt đầu chạy thuật toán.
-- `R`: Khôi phục đồ thị về trạng thái ban đầu.
-- `N`: Đóng cửa sổ đồ họa hiện tại để nhập file dữ liệu mới.
-- `ESC`: Thoát chương trình.
+## ✨ Tính năng nổi bật
+- **Mô phỏng trực quan, sinh động:** Hiển thị chi tiết từng bước thuật toán, quá trình cập nhật khoảng cách giữa các đỉnh.
+- **Tối ưu hóa bằng Min-Heap:** Sử dụng cấu trúc Hàng đợi ưu tiên (Priority Queue / Min-Heap) để tối ưu tốc độ xử lý của thuật toán.
+- **Vẽ đồ thị tự động:** Đọc thông tin từ file dữ liệu đầu vào và tự động bố trí các đỉnh dàn đều theo hình tròn.
+- **Nhật ký hệ thống (Log):** Bảng trạng thái chi tiết hiển thị bên phải màn hình giúp theo dõi lịch sử xử lý.
+- **Hệ thống màu sắc dễ nhận biết:**
+  - 🟠 **Màu Cam:** Đỉnh xuất phát.
+  - 🟡 **Màu Vàng:** Đỉnh đang được xét.
+  - 🟢 **Màu Xanh lá:** Đỉnh đã xác định được khoảng cách ngắn nhất.
+  - 🔴 **Màu Đỏ:** Đường đi ngắn nhất cuối cùng.
 
 ---
 
-## ⚙️ Cài đặt và biên dịch
+## 🖼️ Hình ảnh minh họa
+*(Giao diện Console khi khởi chạy chương trình)*
 
-**Yêu cầu hệ thống:**
-1. Trình biên dịch C/C++ (GCC/MinGW).
-2. Thư viện đồ họa **Raylib**.
+![Giao diện Console](Picture/hinh1_giao_dien_console.png)
 
-**Cách biên dịch và chạy chương trình:**
+---
 
-Mở Terminal/Command Prompt tại thư mục dự án và chạy lệnh sau để biên dịch:
+## 🎮 Hướng dẫn sử dụng (Phím tắt)
+Bạn có thể tương tác với chương trình bằng các phím tắt sau:
+- <kbd>SPACE</kbd> : Bắt đầu chạy mô phỏng thuật toán.
+- <kbd>R</kbd> : Làm mới (Reset) đồ thị về trạng thái ban đầu.
+- <kbd>N</kbd> : Đóng giao diện đồ họa hiện tại để nhập file dữ liệu đồ thị mới từ Console.
+- <kbd>ESC</kbd> : Thoát chương trình.
 
+---
+
+## ⚙️ Cài đặt & Khởi chạy
+
+### 1. Yêu cầu hệ thống
+- Trình biên dịch **C/C++** (GCC/MinGW cho Windows).
+- Thư viện đồ họa **Raylib** (đã được cấu hình).
+- Lệnh `make` (sử dụng `mingw32-make` đối với Windows).
+
+### 2. Biên dịch và chạy chương trình
+Mở Terminal hoặc Command Prompt tại thư mục gốc của dự án và chạy các lệnh dưới đây.
+
+**Bước 1: Biên dịch chương trình**
 ```bash
 mingw32-make 
-# Hoặc:
+# Hoặc sử dụng lệnh sau nếu máy bạn hỗ trợ:
 # make
 ```
 
-Sau khi biên dịch xong, khởi chạy chương trình bằng lệnh:
-
+**Bước 2: Khởi chạy**
+Sau khi biên dịch thành công, chạy file thực thi:
 ```bash
 ./game
 ```
