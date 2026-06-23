@@ -337,6 +337,22 @@ Quy trình thực thi của thuật toán được chia thành các bước cơ 
     x_i &= x_0 + R \cdot \cos\left((i - 1) \frac{2\pi}{n}\right) \\
     y_i &= y_0 + R \cdot \sin\left((i - 1) \frac{2\pi}{n}\right)
 \end{align}
+\section{Các thư viện hỗ trợ của ngôn ngữ lập trình}
+\begin{table}[H]
+\centering
+\caption{Các thư viện sử dụng trong chương trình}
+\vspace{0.5em}
+\begin{tabular}{|c|l|p{9cm}|}
+\hline
+\textbf{STT} & \textbf{Tên thư viện} & \textbf{Vai trò và chức năng trong chương trình} \\ \hline
+1 & \texttt{<stdio.h>} & Hỗ trợ luồng nhập xuất chuẩn, phục vụ đọc đồ thị và các tham số cấu hình từ tệp tin văn bản (\texttt{.dat}). \\ \hline
+2 & \texttt{<stdlib.h>} & Cung cấp các hàm tiện ích hệ thống, trong chương trình này được sử dụng chủ yếu để gọi lệnh xóa màn hình Console (\texttt{system("cls")}). \\ \hline
+3 & \texttt{<string.h>} & Xử lý và định dạng các chuỗi văn bản, sao chép nhật ký toán học phục vụ bảng hiển thị Log thời gian thực. \\ \hline
+4 & \texttt{<math.h>} & Cung cấp các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để tính tọa độ đỉnh vòng tròn và xác định góc quay của mũi tên hướng cạnh. \\ \hline
+5 & \texttt{<time.h>} & Quản lý bộ đếm nhịp xung vật lý, làm cơ sở xây dựng hàm tạo độ trễ (\texttt{delay}) làm chậm tiến trình loang của thuật toán. \\ \hline
+6 & \texttt{<raylib.h>} & Thư viện đồ họa cốt lõi; quản lý cửa sổ tương tác, duy trì vòng lặp 60-FPS và thực hiện vẽ các thực thể hình học. \\ \hline
+\end{tabular}
+\end{table}
 
 % ==================== CHƯƠNG 3 ====================
 \chapter{Tổ chức cấu trúc dữ liệu và thuật toán}
@@ -481,34 +497,41 @@ $\Rightarrow$ \textbf{Kết luận:} Độ phức tạp bộ nhớ của thuật
 Chương trình được phân rã chức năng mạch lạc thành các module tuyến tính trong tệp tin duy nhất \texttt{src/main.cpp}. Cấu trúc này giúp dễ dàng kiểm soát vòng đời của chương trình từ lúc đọc file đến lúc vẽ hình. Dưới đây là chi tiết các hàm đã được cài đặt:
 
 \begin{itemize}
-    \item \textbf{\texttt{main()}:} Điểm khởi đầu của chương trình. Chứa vòng lặp \texttt{while (mode == 1)} để quản lý luồng thực thi: hiển thị giao diện Console, cho người dùng chọn định dạng file và nhập đường dẫn, sau đó kích hoạt hàm mô phỏng đồ họa. Vòng lặp kết thúc khi người dùng nhấn \texttt{[ESC]} trong cửa sổ Raylib.
-    \item \textbf{\texttt{UIConsole()} \& \texttt{PrintCentered()}:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng văn bản.
-    \item \textbf{\texttt{filename()} \& \texttt{inputdata()}:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hỗ trợ đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} được khởi tạo tự động sau khi đọc xong.
-    \item \textbf{Nhóm hàm Min-Heap:} Bao gồm \texttt{insert\_min\_heap} (chèn phần tử), \texttt{pop\_min\_heap} (lấy phần tử nhỏ nhất), \texttt{min\_heap} (heapify -- vun lại cấu trúc heap), cùng các hàm hỗ trợ \texttt{swap}, \texttt{parent}, \texttt{Left}, \texttt{Right} tính chỉ số nút trong mảng.
-    \item \textbf{\texttt{UIRaylib\_Dijkstra()}:} Hàm xử lý đồ họa chính của chương trình. Hàm này khởi tạo cửa sổ Raylib 60-FPS, chạy Máy trạng thái (State Machine) của thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình tròn và vẽ toàn bộ trạng thái lên màn hình. Tốc độ mô phỏng được điều tiết bằng biến \texttt{timer} và \texttt{speed} theo từng khung hình (frame).
-    \item \textbf{\texttt{drawArrow()}:} Sử dụng các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để vẽ mũi tên có hướng giữa hai đỉnh, đồng thời hiển thị trọng số cạnh ở giữa mũi tên.
-    \item \textbf{\texttt{AddLog()}:} Ghi thông báo trạng thái thuật toán vào mảng \texttt{stepLogs} để hiển thị trên bảng nhật ký bên phải cửa sổ đồ họa.
-    \item \textbf{\texttt{MyDelay()}:} Tạo độ trễ dựa trên xung nhịp \texttt{clock()}, được dùng cho animation dấu chấm loading trên màn hình Console khi chuẩn bị khởi chạy Raylib. Việc làm chậm thuật toán trong cửa sổ đồ họa được thực hiện riêng bằng cơ chế đếm \texttt{timer} theo frame.
+    \item \textbf{\texttt{int main()}:} Điểm khởi đầu của chương trình. Chứa vòng lặp \texttt{while (mode == 1)} để quản lý luồng thực thi: hiển thị giao diện Console, cho người dùng chọn định dạng file và nhập đường dẫn, sau đó kích hoạt hàm mô phỏng đồ họa. Vòng lặp kết thúc khi người dùng nhấn \texttt{[ESC]} trong cửa sổ Raylib.
+    
+    \item \textbf{Nhóm hàm giao diện Console:} Đảm nhận chức năng in giao diện trang bìa của đồ án trên màn hình dòng lệnh (Terminal), sử dụng các mã màu ANSI để định dạng văn bản.
+    \begin{itemize}
+        \item \textbf{\texttt{void UIConsole()}}
+        \item \textbf{\texttt{void PrintCentered(const char* text, const char* color)}}
+    \end{itemize}
+    
+    \item \textbf{Cụm hàm giao tiếp dữ liệu:} Cụm hàm giao tiếp với người dùng để lấy đường dẫn tệp. Chương trình hỗ trợ đọc file theo 2 định dạng: Ma trận kề (\texttt{inputdata()}) hoặc Danh sách kề (\texttt{inputdata\_adjlist()}). Cấu trúc đồ thị \texttt{Graph} được khởi tạo tự động sau khi đọc xong.
+    \begin{itemize}
+        \item \textbf{\texttt{void filename(char file[128], char path[256])}}
+        \item \textbf{\texttt{void inputdata(struct Graph *g, int *u, int *v, const char *path)}}
+        \item \textbf{\texttt{void inputdata\_adjlist(struct Graph *g, int *u, int *v, const char *path)}}
+    \end{itemize}
+    
+    \item \textbf{Nhóm hàm Min-Heap:} Các hàm cài đặt cấu trúc dữ liệu hàng đợi ưu tiên, tối ưu thuật toán Dijkstra.
+    \begin{itemize}
+        \item \textbf{\texttt{void insert\_min\_heap(Node A[], int *heap\_size, Node key)}} (chèn phần tử)
+        \item \textbf{\texttt{Node pop\_min\_heap(Node A[], int *heap\_size)}} (lấy phần tử nhỏ nhất)
+        \item \textbf{\texttt{void min\_heap(Node A[], int i, int heap\_size)}} (heapify -- vun lại cấu trúc heap)
+        \item Các hàm hỗ trợ: \textbf{\texttt{void swap(Node *a, Node *b)}}, \textbf{\texttt{int parent(int i)}}, \textbf{\texttt{int Left(int i)}}, \textbf{\texttt{int Right(int i)}} tính chỉ số nút trong mảng.
+    \end{itemize}
+    
+    \item \textbf{\texttt{int UIRaylib\_Dijkstra(struct Graph g, int u\_start, int v\_target)}:} Hàm xử lý đồ họa chính của chương trình. Hàm này khởi tạo cửa sổ Raylib 60-FPS, chạy Máy trạng thái (State Machine) của thuật toán Dijkstra, tính toán tọa độ phân bố đều các đỉnh trên hình tròn và vẽ toàn bộ trạng thái lên màn hình. Tốc độ mô phỏng được điều tiết bằng biến \texttt{timer} và \texttt{speed} theo từng khung hình (frame).
+    
+    \item \textbf{\texttt{void drawArrow(Vector2 start, Vector2 end, float rDinh, Color mau, int trongSo, float thickness)}:} Sử dụng các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để vẽ mũi tên có hướng giữa hai đỉnh, đồng thời hiển thị trọng số cạnh ở giữa mũi tên.
+    
+    \item \textbf{\texttt{void AddLog(const char* msg, char stepLogs[300][128], int *logCount)}:} Ghi thông báo trạng thái thuật toán vào mảng \texttt{stepLogs} để hiển thị trên bảng nhật ký bên phải cửa sổ đồ họa.
+    
+    \item \textbf{\texttt{void MyDelay(float seconds)}:} Tạo độ trễ dựa trên xung nhịp \texttt{clock()}, được dùng cho animation dấu chấm loading trên màn hình Console khi chuẩn bị khởi chạy Raylib. Việc làm chậm thuật toán trong cửa sổ đồ họa được thực hiện riêng bằng cơ chế đếm \texttt{timer} theo frame.
 \end{itemize}
 
-\section{Ngôn ngữ và thư viện cài đặt}
+\section{Ngôn ngữ}
 Hệ thống được lập trình bằng ngôn ngữ C/C++ trên nền tảng trình biên dịch GCC (MinGW). Công cụ xây dựng chương trình được cấu hình tự động thông qua \texttt{Makefile}. Dưới đây là các thư viện được sử dụng để xây dựng ứng dụng:
 
-\begin{table}[H]
-\centering
-\caption{Các thư viện sử dụng trong chương trình}
-\vspace{0.5em}
-\begin{tabular}{|c|l|p{9cm}|}
-\hline
-\textbf{STT} & \textbf{Tên thư viện} & \textbf{Vai trò và chức năng trong chương trình} \\ \hline
-1 & \texttt{<stdio.h>} & Hỗ trợ luồng nhập xuất chuẩn, phục vụ đọc đồ thị và các tham số cấu hình từ tệp tin văn bản (\texttt{.dat}). \\ \hline
-2 & \texttt{<stdlib.h>} & Cung cấp các hàm tiện ích hệ thống, trong chương trình này được sử dụng chủ yếu để gọi lệnh xóa màn hình Console (\texttt{system("cls")}). \\ \hline
-3 & \texttt{<string.h>} & Xử lý và định dạng các chuỗi văn bản, sao chép nhật ký toán học phục vụ bảng hiển thị Log thời gian thực. \\ \hline
-4 & \texttt{<math.h>} & Cung cấp các hàm lượng giác (\texttt{sinf}, \texttt{cosf}, \texttt{atan2f}) để tính tọa độ đỉnh vòng tròn và xác định góc quay của mũi tên hướng cạnh. \\ \hline
-5 & \texttt{<time.h>} & Quản lý bộ đếm nhịp xung vật lý, làm cơ sở xây dựng hàm tạo độ trễ (\texttt{delay}) làm chậm tiến trình loang của thuật toán. \\ \hline
-6 & \texttt{<raylib.h>} & Thư viện đồ họa cốt lõi; quản lý cửa sổ tương tác, duy trì vòng lặp 60-FPS và thực hiện vẽ các thực thể hình học. \\ \hline
-\end{tabular}
-\end{table}
 
 \section{Kết quả}
 
@@ -596,7 +619,7 @@ Nguyễn Văn Hiệu, \textit{Bài toán đường đi ngắn nhất trên đồ
 \bibitem{ref4}
 Nguyễn Văn Hiệu, \textit{Tập bài giảng Toán rời rạc}, Trường Đại học Bách Khoa - Đại học Đà Nẵng.
 \bibitem{ref5}
-Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein, \textit{Introduction to Algorithms}, 3rd edition, MIT Press, 2009.
+Đặng Thiên Bình, \textit{Bài giảng cấu trúc dữ liệu}, Trường Đại học Bách Khoa – Đại học Đà Nẵng.
 \end{thebibliography}
 
 % ==================== PHỤ LỤC MÃ NGUỒN CỐT LÕI ====================
